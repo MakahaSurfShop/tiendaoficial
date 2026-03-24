@@ -1,2 +1,0 @@
-# tiendaoficial
-tienda de surf
