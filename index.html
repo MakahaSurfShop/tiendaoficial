@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 	
 <style>
 
@@ -771,6 +773,38 @@ button[onclick*="buyNow"]:hover {
   white-space: nowrap;
 }
 
+/* --- AJUSTES PARA BUSCADOR MÓVIL --- */
+
+@media (max-width: 768px) {
+  /* Ocultamos el input de texto largo en móvil */
+  #search-input {
+    display: none !important;
+  }
+}
+
+/* Estilo para resaltar el buscador cuando se activa en móvil (opcional) */
+.search-active {
+  border-color: #0F4C5C !important;
+  ring: 2px;
+  ring-color: #0F4C5C;
+}
+
+/* Estilo especial para cuando el buscador se activa en móvil */
+.search-mobile-active {
+    display: block !important;
+    position: fixed !important;
+    top: 64px; /* Justo debajo del top bar */
+    left: 0;
+    width: 100% !important;
+    max-width: none !important;
+    background: white;
+    padding: 15px 20px !important;
+    z-index: 100;
+    border-bottom: 2px solid #0F4C5C;
+    border-radius: 0 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 </style>
 </head>
 
@@ -895,7 +929,7 @@ whitespace-nowrap tracking-tight">
 }
 </style>
 
-<div class="menu-dropdown absolute left-[-350px] top-[250%] 
+<div class="menu-dropdown absolute left-[-280px] top-[250%] 
   w-[1250px] bg-white shadow-2xl rounded-xl border border-black 
   grid grid-cols-7 gap-6 pl-8 pr-24 py-8">
 
@@ -1095,6 +1129,10 @@ class="hidden md:block w-full max-w-xs xl:max-w-md px-5 py-2 border border-gray-
 onkeydown="handleSearch(event)"
 >
 
+<button id="mobile-search-trigger" onclick="focusMobileSearch()" class="md:hidden text-black hover:text-[#0F4C5C] transition-colors p-2">
+  <i class="fa-solid fa-magnifying-glass text-xl"></i>
+</button>
+
 <button onclick="toggleCart()" class="relative">
 <i id="cart-icon" class="fa-solid fa-cart-shopping text-xl"></i>
 <span id="cart-count"
@@ -1278,6 +1316,15 @@ Redirigiendo...
             </div>
         </div>
     </div>
+
+<div id="mobile-search-bar" class="hidden fixed top-0 left-0 w-full bg-white z-[100] p-4 shadow-xl border-b-2 border-[#0F4C5C] flex items-center gap-3 animate-in slide-in-from-top duration-300">
+    <input type="text" id="mobile-search-input" 
+           placeholder="¿Qué buscas hoy?" 
+           class="flex-1 border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:border-[#0F4C5C]">
+    <button onclick="closeMobileSearch()" class="text-gray-500 text-xl px-2">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+</div>
 
 </body>
 </html>
@@ -1571,10 +1618,10 @@ condition: "Oferta",
 category:"Neoprenos",
 subcategory:"Hombre",
 keywords:["traje","wetsuit","neopreno","gul","surf","trajes"],
-img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773880261/3_stdm2v.jpg",
+img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774419776/188_oozjrr.jpg",
 images:[
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773880261/3_stdm2v.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773880262/4_uo7jjf.jpg",
+"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774419776/188_oozjrr.jpg",
+"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774419776/1777_x0dx3t.jpg",
 "https://i.imgur.com/hqyG0Jw.jpeg"
 ],
 description:"El traje de neopreno ECHO combina el ADN de nuestra gama de rendimiento de élite con un precio accesible.",
@@ -2429,7 +2476,7 @@ stockBySize:{"MT":1}
 },
 {
 id:51,
-name:"Traje Gul Response Echo FZ BS Steamer 3/2mm",
+name:"Traje Gul Response Echo 3/2mm Flatlock Steamer",
 price:199,
 category:"Neoprenos",
 subcategory:"Hombre",
@@ -2437,7 +2484,7 @@ keywords:["traje","wetsuit","neopreno","gul","surf","trajes"],
 img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773880272/12_itov1x.jpg",
 images:[
 "https://res.cloudinary.com/dtz97n9cv/image/upload/v1773880272/12_itov1x.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773880278/13_vujn5c.jpg"
+"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774420118/188_1_yddnx5.jpg"
 ],
 description:"Traje neopreno Response Echo front zip blindstitched steamer 3/2mm.",
 sizes:["S"],
@@ -2610,42 +2657,52 @@ stock:1,
 stockBySize:{"L":1}
 },
 {
-id:64,
-name:"Camiseta termica gul EVOTHERM LS FL",
-price:65,
-category:"Prendas Termicas",
-subcategory:"Camisetas",
-keywords:["licras","camisetas","termicas","camiseta","termica"],
-img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773899990/7_z10yz7.jpg",
-images:[
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773899990/7_z10yz7.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773899990/8_llok2r.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773900032/Dise%C3%B1o_sin_t%C3%ADtulo_1_oqdfpp.jpg"
-],
-description:"Camiseta termica manga larga con protección UV+50.",
-sizes:["S","M","L","XL"],
-colors:["Negro"],
-stock:10,
-stockBySize:{"S":4,"M":0,"L":3,"XL":3}
+  "id": 64,
+  "name": "Camiseta termica gul EVOTHERM LS FL",
+  "price": 65,
+  "category": "Prendas Termicas",
+  "subcategory": "Camisetas",
+  "keywords": ["licras", "camisetas", "termicas", "camiseta", "termica", "manga larga", "gul", "evotherm", "kayak", "paddleboard"],
+  "img": "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421047/18238_sxdybq.jpg",
+  "images": [
+    "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421047/18238_sxdybq.jpg",
+    "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421046/18238_2_bm35hj.jpg",
+    "https://res.cloudinary.com/dtz97n9cv/image/upload/v1773900032/Dise%C3%B1o_sin_t%C3%ADtulo_1_oqdfpp.jpg"
+  ],
+  "description": "La evolución definitiva en protección térmica: la GUL Evotherm de manga larga es una prenda base premium diseñada para mantener el calor corporal en las condiciones más exigentes. Combina un forro polar de polipropileno ultrasuave con un exterior de nailon repelente al agua y al viento. Su diseño ergonómico 3D RevoFit, costuras planas y presillas elásticas para los pulgares aseguran que las mangas no se muevan, ofreciendo máxima comodidad bajo trajes de neopreno o secos. Ideal para kayak, paddleboard y navegación durante todo el año. Incluye protección UV Shield 50+.",
+  "sizes": ["S", "M", "L", "XL"],
+  "colors": ["Negro"],
+  "stock": 10,
+  "stockBySize": {
+    "S": 4,
+    "M": 0,
+    "L": 3,
+    "XL": 3
+  }
 },
 {
-id:65,
-name:"Camiseta termica gul EVOTHERM FL SS",
-price:55,
-category:"Prendas Termicas",
-subcategory:"Camisetas",
-keywords:["licras","camisetas","termicas","camiseta","termica"],
-img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773899993/10_zyouif.jpg",
-images:[
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773899995/11_qbliku.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773899997/12_jmks8r.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773900032/Dise%C3%B1o_sin_t%C3%ADtulo_1_oqdfpp.jpg"
-],
-description:"Camiseta termica manga corta con protección UV+50.",
-sizes:["S","M","L","XL"],
-colors:["Negro"],
-stock:8,
-stockBySize:{"S":2,"M":2,"L":2,"XL":2}
+  "id": 65,
+  "name": "Camiseta termica gul EVOTHERM FL SS",
+  "price": 55,
+  "category": "Prendas Termicas",
+  "subcategory": "Camisetas",
+  "keywords": ["licras", "camisetas", "termicas", "camiseta", "termica", "gul", "evotherm", "surf", "vela"],
+  "img": "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774420601/18238_hjcdxt.jpg",
+  "images": [
+    "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774420601/18238_hjcdxt.jpg",
+    "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774420613/1834448_mdnnng.jpg",
+    "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774420614/1882314_fwzyuq.jpg"
+  ],
+  "description": "Maximiza tu rendimiento en aguas frías con la camiseta GUL Evotherm de manga corta. Esta prenda técnica de alto rendimiento combina un suave forro polar térmico interior con un exterior de nailon repelente al agua, manteniéndote abrigado y seco por más tiempo. Su diseño ergonómico 3D RevoFit y las costuras planas garantizan total libertad de movimiento sin irritaciones, ya sea que la uses sola o bajo tu traje de neopreno. Incluye dobladillo con agarre de silicona para evitar que se mueva y protección solar UV Shield 50+.",
+  "sizes": ["S", "M", "L", "XL"],
+  "colors": ["Negro"],
+  "stock": 8,
+  "stockBySize": {
+    "S": 2,
+    "M": 2,
+    "L": 2,
+    "XL": 2
+  }
 },
 {
 id:66,
@@ -4625,12 +4682,11 @@ price:90,
 category:"Neoprenos",
 subcategory:"Jacket",
 keywords:["licras","camisetas","termicas","camiseta","termica"],
-img:"https://res.cloudinary.com/dfdwxgvdg/image/upload/v1773604899/1165882_bmi1ik.webp",
+img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421401/1822238_g2cdci.jpg",
 images:[
-"https://res.cloudinary.com/dfdwxgvdg/image/upload/v1773604899/1165882_bmi1ik.webp",
-"https://res.cloudinary.com/dfdwxgvdg/image/upload/v1773604900/1165882_6_n8zf5a.webp",
-"https://res.cloudinary.com/dfdwxgvdg/image/upload/v1773604899/1165882_3_struym.jpg",
-"https://res.cloudinary.com/dfdwxgvdg/image/upload/v1773604899/1165882_5_apcprn.webp"
+"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421401/1822238_g2cdci.jpg",
+"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421401/182314138_jotg4b.jpg",
+"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421401/183214238_a6wwzl.jpg"
 ],
 description:"Camiseta thermotop de neopreno de 1mm marca GUL.",
 sizes:["S","M","L","XL"],
@@ -7717,6 +7773,7 @@ function changePage(direction, category, subcategory, searchQuery = null) {
 }
 
 /* ================= DETALLE PRODUCTO ================= */
+
 function renderProductDetail(id){
   currentProductId = id;
   const product = products_db.tablas.find(p => p.id === id);
@@ -7809,7 +7866,7 @@ function renderProductDetail(id){
 
 <div class="px-1 mb-8">
   <button onclick="goBack()" class="text-sm uppercase font-bold text-gray-500 hover:text-black">
-    ← Volver al catálogo
+    ← Volver
   </button>
 </div>
 
@@ -9902,47 +9959,77 @@ en cualquier momento. Los cambios serán efectivos una vez publicados en el siti
 /* ================= LIBRO DE RECLAMACIONES ================= */
 
 function renderReclamaciones(){
+    document.getElementById("main-content").innerHTML = `
+    <section class="max-w-4xl mx-auto py-8 md:py-16 px-4 md:px-6">
+        <button onclick="goBack()" class="mb-6 text-xs md:text-sm uppercase font-bold text-gray-400 hover:text-black transition-colors">
+            ← Volver al inicio
+        </button>
 
-document.getElementById("main-content").innerHTML = `
-<section class="max-w-4xl mx-auto py-16 px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl heading-font text-[#001f3f]">Libro de Reclamaciones</h1>
+                <p class="text-gray-500 text-xs md:text-sm mt-1 uppercase tracking-widest font-bold">Consorcio Franper EIRL - RUC: 20550185459</p>
+            </div>
+            <img src="https://i.imgur.com/BPUD4wx.png" class="w-16 md:w-20 opacity-90" alt="Logo Makaha">
+        </div>
 
-<button onclick="goBack()" 
-class="mb-8 text-sm uppercase font-bold text-gray-500">
-← Volver
-</button>
+        <div class="mb-8 text-gray-700 leading-relaxed bg-blue-50 p-4 border-l-4 border-[#0F4C5C] text-xs md:text-sm">
+            <p>Conforme al Código de Protección y Defensa del Consumidor, Makaha Surf Shop pone a su disposición este libro virtual. Sus datos serán tratados según la Ley de Protección de Datos Personales.</p>
+        </div>
 
-<h1 class="text-4xl heading-font mb-8 text-[#001f3f]">
-Libro de Reclamaciones
-</h1>
+        <form id="reclamo-form" class="grid gap-6 bg-white p-5 md:p-8 rounded-2xl shadow-xl border border-gray-100">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="md:col-span-2"><h2 class="font-bold text-[#001f3f] border-b pb-2 mb-2 text-sm md:text-base">1. Identificación del Consumidor</h2></div>
+                <input type="text" id="nombre" placeholder="Nombre completo" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
+                <input type="text" id="dni" placeholder="DNI / CE" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
+                <input type="email" id="email" placeholder="Correo electrónico" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none md:col-span-2" required>
+                <input type="text" id="telefono" placeholder="Teléfono / Celular" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
+                <input type="text" id="direccion" placeholder="Dirección en Perú" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
+            </div>
 
-<p class="mb-6 text-gray-700 leading-relaxed">
-Conforme al Código de Protección y Defensa del Consumidor del Perú,
-Makaha Surf Shop pone a disposición de sus clientes el siguiente
-Libro de Reclamaciones virtual.
-</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="md:col-span-2"><h2 class="font-bold text-[#001f3f] border-b pb-2 mb-2 mt-4 text-sm md:text-base">2. Detalle de la Reclamación</h2></div>
+                <select id="tipo-bien" class="reclamo-input border p-3 rounded-lg bg-white text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
+                    <option value="">Tipo de bien...</option>
+                    <option value="Producto">Producto (Tabla, Wetsuit, etc)</option>
+                    <option value="Servicio">Servicio</option>
+                </select>
+                <input type="text" id="pedido" placeholder="Monto reclamado (S/)" class="reclamo-input border p-3 rounded-lg text-sm">
+                
+                <div class="md:col-span-2 flex flex-col gap-2 my-2 text-xs md:text-sm">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="tipo" value="Reclamo" checked> Reclamo (Disconformidad con el producto)
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="tipo" value="Queja"> Queja (Malestar en la atención)
+                    </label>
+                </div>
 
-<form class="grid gap-4 max-w-xl">
+                <textarea id="detalle" placeholder="Describa lo sucedido..." 
+                    class="reclamo-input border p-3 rounded-lg h-32 md:col-span-2 text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required></textarea>
+            </div>
 
-<input type="text" placeholder="Nombre completo"
-class="border p-3 rounded">
+            <div class="flex flex-col md:flex-row gap-4 mt-4 w-full">
+                <button id="btn-pdf" type="button" disabled
+                    class="w-full md:flex-1 bg-gray-200 text-gray-400 py-4 px-6 rounded-xl font-bold uppercase text-xs md:text-sm transition-all duration-300 cursor-not-allowed flex items-center justify-center text-center">
+                    1. Descargar Hoja (PDF)
+                </button>
 
-<input type="email" placeholder="Correo electrónico"
-class="border p-3 rounded">
+                <button id="btn-ws" type="button" disabled
+                    class="w-full md:flex-1 bg-gray-200 text-gray-400 py-4 px-6 rounded-xl font-bold uppercase text-xs md:text-sm transition-all duration-300 cursor-not-allowed flex items-center justify-center text-center">
+                    2. Enviar Reclamo
+                </button>
+            </div>
+            
+            <p id="msg-instruccion" class="text-center text-[10px] md:text-xs text-red-500 font-bold uppercase tracking-widest mt-2">
+                ⚠ Complete los campos obligatorios
+            </p>
+        </form>
+    </section>
+    `;
 
-<input type="text" placeholder="Número de pedido (opcional)"
-class="border p-3 rounded">
-
-<textarea placeholder="Detalle de la reclamación"
-class="border p-3 rounded h-32"></textarea>
-
-<button class="bg-[#1f6f78] text-white py-3 rounded hover:opacity-90">
-Enviar reclamación
-</button>
-
-</form>
-
-</section>
-`;
+    initReclamacionesLogic(); 
 }
 
 /* ================= ENVIOS Y DELIVERY ================= */
@@ -10109,7 +10196,38 @@ function handleSearch(event) {
     }
 }
 
+function focusMobileSearch() {
+    const searchBar = document.getElementById("mobile-search-bar");
+    const searchInput = document.getElementById("mobile-search-input");
+    
+    // Mostrar la barra
+    searchBar.classList.remove("hidden");
+    
+    // Forzar el foco para que salga el teclado
+    setTimeout(() => {
+        searchInput.focus();
+    }, 100);
 
+    // Escuchar la tecla Enter para buscar
+    searchInput.onkeypress = function(e) {
+        if (e.key === 'Enter') {
+            const query = this.value;
+            if (query.trim() !== "") {
+                // Usamos tu función de navegación existente
+                navigateTo('filtrados', null, null, null);
+                // Ejecutamos tu lógica de filtrado
+                renderFilteredProducts(null, null, query);
+                closeMobileSearch();
+            }
+        }
+    };
+}
+
+function closeMobileSearch() {
+    const searchBar = document.getElementById("mobile-search-bar");
+    searchBar.classList.add("hidden");
+    document.getElementById("mobile-search-input").value = "";
+}
 
 function animateCart(){
 
@@ -11513,18 +11631,33 @@ let startY = 0;
 
 /* DOBLE CLICK PARA ZOOM */
 
-img.addEventListener("dblclick",()=>{
+img.addEventListener("dblclick", (e) => {
+    // Definimos los pasos del zoom: 1 -> 2 -> 3 -> vuelve a 1
+    let nextScale;
+    if (scale === 1) nextScale = 2;
+    else if (scale === 2) nextScale = 3;
+    else nextScale = 1;
 
-if(scale === 1){
-scale = 2;
-}else{
-scale = 1;
-posX = 0;
-posY = 0;
-}
+    if (nextScale !== 1) {
+        // Calculamos la posición del clic relativa a la imagen
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-updateTransform();
+        // Fórmula para que el zoom no se centre, sino que siga al cursor:
+        // Se desplaza el origen en función de la diferencia de escala
+        posX -= (x - rect.width / 2) * (nextScale / scale - 1);
+        posY -= (y - rect.height / 2) * (nextScale / scale - 1);
+        
+        scale = nextScale;
+    } else {
+        // Si vuelve a escala 1, reseteamos todo
+        scale = 1;
+        posX = 0;
+        posY = 0;
+    }
 
+    updateTransform();
 });
 
 /* DRAG */
@@ -12082,8 +12215,125 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-	document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     renderHome();
 });
+
+// SOLUCIÓN: Cerrar visualizadores o modales al darle "Atrás"
+window.addEventListener('popstate', function() {
+    // 1. Buscar el visualizador de imágenes (ID: imageViewer)
+    const viewer = document.getElementById('imageViewer');
+    if (viewer) {
+        viewer.remove(); // Elimina el elemento del DOM inmediatamente
+    }
+
+    // 2. Si tienes otros modales (como el de WhatsApp o carrito), también ciérralos
+    const cartSidebar = document.getElementById("cart-sidebar");
+    if (cartSidebar) {
+        cartSidebar.classList.add("translate-x-full");
+    }
+});
+
+function initReclamacionesLogic() {
+    const { jsPDF } = window.jspdf;
+    const btnPdf = document.getElementById('btn-pdf');
+    const btnWs = document.getElementById('btn-ws');
+    const inputs = document.querySelectorAll('.reclamo-input');
+    const msg = document.getElementById('msg-instruccion');
+
+    function validar() {
+        let todoLleno = Array.from(inputs).every(i => !i.hasAttribute('required') || i.value.trim() !== "");
+        
+        if (todoLleno) {
+            btnPdf.disabled = false;
+            // Usamos classList para no perder el tamaño (md:flex-1)
+            btnPdf.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+            btnPdf.classList.add('bg-red-600', 'text-white', 'cursor-pointer', 'shadow-lg');
+            
+            msg.innerText = "✓ DATOS COMPLETOS. GENERE SU HOJA DE RECLAMACIÓN.";
+            msg.className = "text-center text-[10px] md:text-xs text-green-600 font-bold mt-2 uppercase tracking-widest";
+        } else {
+            btnPdf.disabled = true;
+            btnPdf.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+            btnPdf.classList.remove('bg-red-600', 'text-white', 'cursor-pointer', 'shadow-lg');
+            
+            msg.innerText = "⚠ DEBE COMPLETAR LOS CAMPOS OBLIGATORIOS";
+            msg.className = "text-center text-[10px] md:text-xs text-red-500 font-bold mt-2 uppercase tracking-widest";
+        }
+    }
+
+    inputs.forEach(i => i.addEventListener('input', validar));
+
+    btnPdf.addEventListener('click', () => {
+        const doc = new jsPDF();
+        const fecha = new Date().toLocaleString();
+        const numReclamo = Date.now().toString().slice(-6);
+
+        // Cabecera Makaha
+        doc.setFillColor(15, 76, 92);
+        doc.rect(0, 0, 210, 50, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(24);
+        doc.setFont("helvetica", "bold");
+        doc.text("HOJA DE RECLAMACIÓN", 15, 25);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Número de Registro: RECLAMO-${numReclamo}`, 15, 35);
+        doc.text(`Fecha y Hora de Recepción: ${fecha}`, 15, 40);
+
+        const logoUrl = "https://i.imgur.com/BPUD4wx.png";
+        doc.addImage(logoUrl, 'PNG', 150, 10, 35, 30); 
+
+        doc.setTextColor(0, 0, 0);
+        // 1. Proveedor
+        doc.setFontSize(12); doc.setFont("helvetica", "bold");
+        doc.text("1. IDENTIFICACIÓN DEL PROVEEDOR", 15, 65);
+        doc.line(15, 67, 195, 67);
+        doc.setFontSize(10); doc.setFont("helvetica", "normal");
+        doc.text("Razón Social: CONSORCIO FRANPER EIRL", 15, 75);
+        doc.text("RUC: 20550185459", 15, 80);
+        doc.text("Establecimiento: Makaha Surf Shop - Barranco, Lima, Perú", 15, 85);
+
+        // 2. Consumidor
+        doc.setFontSize(12); doc.setFont("helvetica", "bold");
+        doc.text("2. IDENTIFICACIÓN DEL CONSUMIDOR", 15, 105);
+        doc.line(15, 107, 195, 107);
+        doc.setFontSize(10); doc.setFont("helvetica", "normal");
+        doc.text(`Nombre completo: ${document.getElementById("nombre").value}`, 15, 115);
+        doc.text(`DNI / CE: ${document.getElementById("dni").value}`, 15, 120);
+        doc.text(`Dirección: ${document.getElementById("direccion").value}`, 15, 125);
+        doc.text(`Email: ${document.getElementById("email").value}`, 15, 130);
+
+        // 3. Detalle
+        doc.setFontSize(12); doc.setFont("helvetica", "bold");
+        doc.text("3. DETALLE DE LA RECLAMACIÓN Y PEDIDO", 15, 150);
+        doc.line(15, 152, 195, 152);
+        const tipo = document.querySelector('input[name="tipo"]:checked').value;
+        doc.setFontSize(10); doc.setFont("helvetica", "normal");
+        doc.text(`Tipo de incidencia: ${tipo.toUpperCase()}`, 15, 160);
+        doc.text(`Bien reclamado: ${document.getElementById("tipo-bien").value}`, 15, 165);
+        const detalle = document.getElementById("detalle").value;
+        const splitText = doc.splitTextToSize(`Descripción detallada: ${detalle}`, 180);
+        doc.text(splitText, 15, 175);
+
+        doc.save(`Hoja_Reclamo_Makaha_${numReclamo}.pdf`);
+
+        // Activar WhatsApp
+        btnWs.disabled = false;
+        btnWs.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+        btnWs.classList.add('bg-green-600', 'text-white', 'cursor-pointer', 'shadow-lg');
+        msg.innerText = "✓ PDF Descargado. Ahora puede enviar el reclamo vía WhatsApp.";
+        msg.className = "text-center text-xs text-green-600 font-bold mt-2";
+    });
+
+    btnWs.addEventListener('click', () => {
+        const nombre = document.getElementById("nombre").value;
+        const dni = document.getElementById("dni").value;
+        const texto = `*RECLAMO FORMAL - MAKAHA SURF SHOP*\n\nHola, acabo de generar mi hoja de reclamación.\n*Cliente:* ${nombre}\n*DNI:* ${dni}\n\n_Adjunto el PDF generado._`;
+        window.open(`https://wa.me/51965890641?text=${encodeURIComponent(texto)}`, '_blank');
+        alert("Se abrirá WhatsApp. No olvide adjuntar el archivo PDF que descargó.");
+        goBack(); 
+    });
+}
 
 </script>
