@@ -1364,7 +1364,7 @@ z-[9999]">
 </div>
 
 <!-- FOOTER GLOBAL -->
-<footer class="bg-[#0F4C5C] text-white pt-16 pb-8">
+<footer class="bg-[#0F4C5C] text-white pt-16 pb-8 border-t border-white/10">
   <div class="max-w-6xl mx-auto px-6">
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -1374,7 +1374,7 @@ z-[9999]">
           <img src="https://i.imgur.com/7gGeUQS.png" class="h-20 mb-2 object-contain transition-transform duration-300 group-hover:scale-105" alt="Makaha Logo">
         </div>
         <p class="text-sm text-gray-300 max-w-xs text-center md:text-left leading-relaxed">
-          Pasión por el surf desde 2013. Equipándote con lo mejor para dominar las olas.
+          Pasión por el surf desde 2013. Equipándote con lo mejor para dominar las olas en Barranco, Lima.
         </p>
       </div>
 
@@ -1397,36 +1397,48 @@ z-[9999]">
       </div>
 
       <div class="flex flex-col items-center md:items-start">
-        <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 mb-6">Información</h4>
-        <div class="space-y-3 text-sm w-full">
-          <button onclick="navigateTo('garantia')" class="block hover:translate-x-1 transition-transform hover:text-gray-300 text-center md:text-left w-full">Garantía</button>
-          <button onclick="navigateTo('delivery')" class="block hover:translate-x-1 transition-transform hover:text-gray-300 text-center md:text-left w-full">Envíos y Delivery</button>
-          <button onclick="navigateTo('cambios')" class="block hover:translate-x-1 transition-transform hover:text-gray-300 text-center md:text-left w-full">Cambios y Devoluciones</button>
-          <button onclick="navigateTo('reclamaciones')" class="block hover:translate-x-1 transition-transform hover:text-gray-300 text-center md:text-left w-full">Libro de Reclamaciones</button>
+        <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-gray-400 mb-6">Información Legal</h4>
+        <div class="space-y-4 text-sm w-full">
+          <button onclick="navigateTo('terms')" class="block font-bold hover:text-emerald-400 transition-colors text-center md:text-left w-full uppercase tracking-wider text-[13px]">Términos y Condiciones</button>
+          <button onclick="navigateTo('privacy')" class="block font-bold hover:text-emerald-400 transition-colors text-center md:text-left w-full uppercase tracking-wider text-[13px]">Políticas de Privacidad</button>
+          <button onclick="navigateTo('cambios')" class="block font-bold hover:text-emerald-400 transition-colors text-center md:text-left w-full uppercase tracking-wider text-[13px]">Cambios y Devoluciones</button>
+          
+          <div class="h-[1px] bg-white/10 my-2 w-full"></div>
+
+          <button onclick="navigateTo('garantia')" class="block hover:text-gray-300 text-center md:text-left w-full text-gray-400 italic">Garantía</button>
+          <button onclick="navigateTo('delivery')" class="block hover:text-gray-300 text-center md:text-left w-full text-gray-400 italic">Envíos y Delivery</button>
+          
+          <div class="pt-4 flex justify-center md:justify-start">
+            <button onclick="navigateTo('reclamaciones')" class="flex items-center gap-3 group bg-white/5 p-3 rounded-lg border border-white/20 hover:bg-white/10 transition border-dashed hover:border-solid">
+              <img src="https://i.imgur.com/8mX5Z5Y.png" class="h-8 object-contain" alt="Libro de Reclamaciones">
+              <div class="text-left">
+                <span class="block text-[10px] text-gray-400 leading-none">Visita nuestro</span>
+                <span class="block text-[11px] font-bold uppercase">Libro de Reclamaciones</span>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-between items-center py-6 border-y border-white/10 gap-4 text-xs">
-      <div class="flex items-center gap-2 text-gray-300 italic">
-        <i class="fa-regular fa-clock"></i>
-        <span>Lun - Sab 10am-8pm / Dom 10am-5pm</span>
-      </div>
-      <a href="mailto:ssuksperu@gmail.com" class="bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10 transition">
-        <i class="fa-regular fa-envelope mr-2"></i> ssuksperu@gmail.com
-      </a>
-    </div>
-
-    <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 tracking-wider">
-      <p onclick="navigateTo('home')" class="cursor-pointer hover:text-white transition">
-        © 2026 MAKAHA SURF SHOP • TODOS LOS DERECHOS RESERVADOS
-      </p>
-      <div class="flex gap-6 uppercase">
-        <button onclick="navigateTo('privacy')" class="hover:text-white transition">Privacidad</button>
-        <button onclick="navigateTo('terms')" class="hover:text-white transition">Términos</button>
-      </div>
-    </div>
+<div class="flex flex-col md:flex-row justify-between items-center py-6 border-y border-white/10 gap-4 text-xs text-gray-300">
+  
+  <div class="flex items-center gap-2">
+    <i class="fa-regular fa-clock text-emerald-400"></i>
+    <span>Lun - Sab 10am-8pm / Dom 10am-5pm</span>
   </div>
+
+  <a href="https://www.google.com/maps/search/?api=1&query=Av.+Almirante+Grau+1420,+Barranco,+Lima" target="_blank" class="flex items-center gap-2 hover:text-white transition group">
+    <i class="fa-solid fa-location-dot text-emerald-400"></i>
+    <span class="border-b border-transparent group-hover:border-white/30 pb-0.5">Av. Almirante Grau 1420, Barranco, Lima</span>
+  </a>
+
+<a href="mailto:ssuksperu@gmail.com" class="bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10 transition flex items-center group">
+    <i class="fa-regular fa-envelope mr-2 text-emerald-400 group-hover:text-white"></i> 
+    <span>ssuksperu@gmail.com</span>
+</a>
+  
+</div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -8887,7 +8899,7 @@ function renderVender() {
 
                         <div class="mt-16 py-4 border-t border-gray-200">
                             <p class="text-[8px] uppercase tracking-[0.3em] font-black text-[#1f6f78]">Makaha Surf Shop</p>
-                            <p class="text-xs font-bold text-[#001f3f]">EST. 2026</p>
+                            <p class="text-xs font-bold text-[#001f3f]">EST. 2013</p>
                         </div>
                     </div>
                 </div>
@@ -9543,427 +9555,292 @@ window.location.href = link;
 /* ================= CAMBIOS Y DEVOLUCIONES ================= */
 
 function renderCambios(){
+    document.getElementById("main-content").innerHTML = `
+    <section class="w-full mx-auto py-16 px-6 animate-fadeIn">
 
-document.getElementById("main-content").innerHTML = `
-<section class="max-w-4xl mx-auto py-16 px-6">
+        <div class="border-b border-gray-200 pb-8 mb-10">
+            <h2 class="text-4xl font-black text-[#0F4C5C] uppercase tracking-tight mb-2">
+                Cambios y Devoluciones
+            </h2>
+            <p class="text-sm text-gray-500 italic">
+                Garantía de Satisfacción Makaha Surf Shop • 2026
+            </p>
+        </div>
 
-<button onclick="goBack()" 
-class="mb-8 text-sm uppercase font-bold text-gray-500">
-← Volver
-</button>
+        <div class="space-y-10 text-gray-700 leading-relaxed text-sm md:text-base">
+            
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">1. Nuestra Filosofía</h3>
+                <p>En <strong>Makaha Surf Shop</strong>, nuestro objetivo es que cuentes con el equipo adecuado para ir al agua. Si por alguna razón no estás satisfecho con tu compra, facilitamos el proceso de cambio o devolución bajo las normativas de protección al consumidor vigentes en Perú.</p>
+            </section>
 
-<h1 class="text-4xl heading-font mb-8 text-[#001f3f]">
-Cambios y Devoluciones
-</h1>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">2. Plazos y Vigencia</h3>
+                <p>El cliente dispone de un plazo máximo de <strong>15 días calendario</strong>, contados desde la fecha de recepción del producto o recojo en tienda, para solicitar un cambio de artículo o la devolución del monto pagado.</p>
+            </section>
 
-<p class="mb-6 text-gray-700 leading-relaxed">
-En <strong>Makaha Surf Shop</strong> queremos que estés completamente satisfecho con tu compra. 
-Si el producto que recibiste no cumple con tus expectativas, puedes solicitar un cambio o devolución 
-siguiendo las condiciones descritas a continuación.
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">3. Condiciones del Producto</h3>
+                <p>Para que el cambio o devolución sea procedente, el artículo debe cumplir estrictamente con lo siguiente:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li>Estar en <strong>perfectas condiciones</strong>, sin señales de uso, lavado o maltrato.</li>
+                    <li>Conservar todas las etiquetas, empaques originales y accesorios (quillas, llaves, fundas, etc.).</li>
+                    <li><strong>Nota Especial:</strong> En tablas de surf y neoprenos, no se aceptarán cambios si presentan rastros de parafina (wax), marcas de presión por rodillas/manos o daños por exposición al sol o salitre.</li>
+                </ul>
+            </section>
 
-<h2 class="text-xl font-bold mt-8 mb-3">Plazo para solicitar cambios</h2>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">4. Proceso de Solicitud</h3>
+                <p>Para iniciar el proceso, el cliente debe presentar su comprobante de pago (Boleta o Factura) a través de nuestros canales oficiales:</p>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-3 mt-4">
+                    <p class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-green-600 text-lg"></i> <strong>WhatsApp:</strong> 965 890 641</p>
+                    <p class="flex items-center gap-3"><i class="fa-regular fa-envelope text-[#0F4C5C] text-lg"></i> <strong>Email:</strong> ssuksperu@gmail.com</p>
+                </div>
+            </section>
 
-<p class="text-gray-700 mb-6">
-Puedes solicitar un cambio o devolución dentro de los <strong>7 días</strong> posteriores a la recepción del producto.
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">5. Logística y Costos</h3>
+                <p>La responsabilidad del costo de envío se define bajo los siguientes criterios:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li><strong>Error de Tienda o Defecto:</strong> Si el producto presenta fallas de fábrica o se envió un modelo/talla incorrecto, Makaha Surf Shop asumirá el 100% de los gastos de recojo y reenvío.</li>
+                    <li><strong>Elección del Cliente:</strong> Si el cambio es por motivos de preferencia (talla, color o modelo diferente), los gastos de transporte correrán por cuenta del cliente.</li>
+                    <li><strong>Recojo Presencial:</strong> El cliente puede realizar el cambio directamente en nuestra tienda de Barranco sin costo logístico adicional.</li>
+                </ul>
+            </section>
 
-<h2 class="text-xl font-bold mt-8 mb-3">Condiciones del producto</h2>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">6. Reembolsos</h3>
+                <p>En caso de devoluciones de dinero, el proceso se realizará a través del mismo medio de pago utilizado (extorno en tarjeta vía <strong>Culqi</strong>). El tiempo de procesamiento dependerá de la entidad bancaria del cliente, pudiendo tardar entre 7 a 25 días hábiles.</p>
+            </section>
+        </div>
 
-<ul class="list-disc ml-6 text-gray-700 space-y-2">
-<li>El producto debe estar sin uso.</li>
-<li>Debe conservar etiquetas, empaque y accesorios originales.</li>
-<li>No debe presentar daños por uso incorrecto.</li>
-</ul>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Cómo solicitar un cambio</h2>
-
-<p class="text-gray-700 mb-6">
-Para iniciar el proceso contáctanos vía:
-</p>
-
-<ul class="list-disc ml-6 text-gray-700 space-y-2">
-<li>WhatsApp: 965 890 641</li>
-<li>Email: ssuksperu@gmail.com</li>
-</ul>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Costos de envío</h2>
-
-<ul class="list-disc ml-6 text-gray-700 space-y-2">
-<li>Si el producto llegó defectuoso o incorrecto, cubrimos el envío.</li>
-<li>Si el cambio es por elección del cliente, el costo de envío corre por cuenta del cliente.</li>
-</ul>
-
-</section>
-`;
+        <div class="mt-16 p-6 border border-dashed border-gray-300 rounded-xl text-center bg-gray-50">
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Makaha Surf Shop - Política de Garantía y Retorno - 2026</p>
+        </div>
+    </section>
+    `;
+    window.scrollTo(0, 0);
 }
 
 /* ================= GARANTÍA ================= */
 
 function renderGarantia(){
+    document.getElementById("main-content").innerHTML = `
+    <section class="w-full mx-auto py-16 px-6 animate-fadeIn text-left">
 
-document.getElementById("main-content").innerHTML = `
-<section class="max-w-4xl mx-auto py-16 px-6">
+        <div class="border-b border-gray-200 pb-8 mb-10 text-left">
+            <h2 class="text-4xl font-black text-[#0F4C5C] uppercase tracking-tight mb-2">
+                Póliza de Garantía
+            </h2>
+            <p class="text-sm text-gray-500 italic">
+                Compromiso de Calidad Makaha Surf Shop • 2026
+            </p>
+        </div>
 
-<button onclick="goBack()" 
-class="mb-8 text-sm uppercase font-bold text-gray-500">
-← Volver
-</button>
+        <div class="space-y-10 text-gray-700 leading-relaxed text-sm md:text-base text-left">
+            
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">1. Cobertura de Calidad</h3>
+                <p>Todos los productos comercializados en <strong>Makaha Surf Shop</strong> cuentan con garantía oficial contra defectos de fabricación. Esta garantía asegura que el producto entregado está libre de fallas en materiales y mano de obra que impidan su uso técnico previsto en el agua o fuera de ella.</p>
+            </section>
 
-<h1 class="text-4xl heading-font mb-8 text-[#001f3f]">
-Garantía
-</h1>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">2. Periodo de Vigencia</h3>
+                <p>La garantía estándar tiene una duración de <strong>30 días calendario</strong> contados a partir de la fecha de entrega o recojo. Algunos productos específicos (como marcas internacionales de accesorios o tecnología) pueden contar con plazos extendidos directamente con el fabricante, los cuales serán comunicados al momento de la compra.</p>
+            </section>
 
-<p class="mb-6 text-gray-700 leading-relaxed">
-Todos los productos vendidos en <strong>Makaha Surf Shop</strong> cuentan con garantía 
-contra defectos de fabricación.
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">3. Procedimiento de Reclamo</h3>
+                <p>Para hacer efectiva la garantía, el cliente debe seguir los siguientes pasos para una evaluación técnica inmediata:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li>Presentar el comprobante de pago original (Boleta o Factura).</li>
+                    <li>Enviar un mensaje a nuestro <strong>WhatsApp 965 890 641</strong> indicando el número de pedido.</li>
+                    <li>Adjuntar fotografías nítidas o un video breve donde se aprecie claramente el defecto de fabricación mencionado.</li>
+                    <li>Nuestro equipo técnico responderá en un plazo máximo de 48 horas hábiles.</li>
+                </ul>
+            </section>
 
-<h2 class="text-xl font-bold mt-8 mb-3">Cobertura</h2>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">4. Resoluciones de Garantía</h3>
+                <p>Una vez validado el defecto de fábrica, Makaha Surf Shop procederá bajo el siguiente orden de prioridad:</p>
+                <ol class="list-decimal ml-6 mt-3 space-y-3">
+                    <li><strong>Reparación Especializada:</strong> Si el producto puede ser restaurado a su estado funcional óptimo sin comprometer su rendimiento.</li>
+                    <li><strong>Sustitución:</strong> Cambio por un artículo nuevo de idénticas características o modelo similar en caso de falta de stock.</li>
+                    <li><strong>Nota de Crédito o Reembolso:</strong> Si ninguna de las opciones anteriores es viable, se procederá al retorno del valor pagado mediante el mismo canal de pago original.</li>
+                </ol>
+            </section>
 
-<p class="text-gray-700 mb-6">
-La garantía cubre defectos de fábrica que afecten el funcionamiento o calidad del producto 
-en condiciones normales de uso.
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">5. Exclusiones Importantes</h3>
+                <p>La garantía queda sin efecto bajo las siguientes circunstancias comunes en el deporte:</p>
+                <div class="bg-red-50 p-6 rounded-xl border border-red-100 space-y-3 mt-4">
+                    <p>• Daños causados por impacto contra rocas, arena u otros surfistas.</p>
+                    <li>• Rotura de tablas de surf por presión de las olas o caídas ("wipeouts").</li>
+                    <li>• Desgaste natural por exposición prolongada al sol o salitre.</li>
+                    <li>• Modificaciones o reparaciones realizadas por terceros ajenos a la tienda.</li>
+                    <li>• Uso inadecuado o negligente del equipo (especialmente en neoprenos y fundas).</li>
+                </div>
+            </section>
+        </div>
 
-<h2 class="text-xl font-bold mt-8 mb-3">Duración</h2>
-
-<p class="text-gray-700 mb-6">
-La garantía tiene una duración de <strong>30 días desde la fecha de compra</strong>, salvo que el fabricante indique otro periodo.
-</p>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Proceso de garantía</h2>
-
-<ul class="list-disc ml-6 text-gray-700 space-y-2">
-<li>Contacta con nuestro equipo vía WhatsApp o email.</li>
-<li>Indica tu número de pedido.</li>
-<li>Adjunta fotos o video del defecto.</li>
-</ul>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Soluciones posibles</h2>
-
-<ul class="list-disc ml-6 text-gray-700 space-y-2">
-<li>Reparación del producto.</li>
-<li>Cambio por uno nuevo.</li>
-<li>Reembolso si no se puede reparar o reemplazar.</li>
-</ul>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Excepciones</h2>
-
-<p class="text-gray-700">
-La garantía no cubre daños causados por mal uso, golpes, modificaciones o desgaste normal.
-</p>
-
-</section>
-`;
+        <div class="mt-16 p-6 border border-dashed border-gray-300 rounded-xl text-center bg-gray-50">
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Makaha Surf Shop - Lima, Perú - Respaldo Técnico 2026</p>
+        </div>
+    </section>
+    `;
+    window.scrollTo(0, 0);
 }
 
 function renderPrivacy(){
+    document.getElementById("main-content").innerHTML = `
+    <section class="w-full mx-auto py-16 px-6 animate-fadeIn">
 
-document.getElementById("main-content").innerHTML = `
-<section class="max-w-4xl mx-auto py-16 px-6">
+        <div class="border-b border-gray-200 pb-8 mb-10">
+            <h2 class="text-4xl font-black text-[#0F4C5C] uppercase tracking-tight mb-2">
+                Política de Privacidad
+            </h2>
+            <p class="text-sm text-gray-500 italic">
+                Última actualización: 25 de Marzo, 2026
+            </p>
+        </div>
 
+        <div class="space-y-10 text-gray-700 leading-relaxed text-sm md:text-base">
+            
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">1. Compromiso de Privacidad</h3>
+                <p>En <strong>Makaha Surf Shop (CONSORCIO FRANPER EIRL)</strong>, respetamos su privacidad y cumplimos estrictamente con la <strong>Ley N° 29733</strong>, Ley de Protección de Datos Personales en Perú. Esta política detalla cómo recopilamos, usamos y protegemos la información de nuestros clientes.</p>
+            </section>
 
-<button onclick="goBack()" class="back-btn">
-← Volver
-</button>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">2. Información Recopilada</h3>
+                <p>Para procesar sus compras y garantizar una entrega eficiente, solicitamos datos específicos que incluyen:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li>Nombres y apellidos completos.</li>
+                    <li>Número de Documento de Identidad (DNI/RUC).</li>
+                    <li>Dirección de envío y facturación.</li>
+                    <li>Teléfono de contacto y correo electrónico.</li>
+                </ul>
+            </section>
 
-<h2 class="text-3xl heading-font mb-2 text-[#001f3f]">
-Privacy Policy
-</h2>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">3. Finalidad del Tratamiento</h3>
+                <p>La información recopilada tiene como fin exclusivo:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li>Gestionar y validar sus pedidos en la plataforma.</li>
+                    <li>Coordinar la logística de entrega de productos (Tablas, neoprenos y accesorios).</li>
+                    <li>Atender consultas de soporte técnico o comercial vía WhatsApp.</li>
+                    <li>Enviar actualizaciones sobre el estado de su pedido.</li>
+                </ul>
+            </section>
 
-<p class="text-sm text-gray-500 mb-8">
-Última actualización: 2026
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">4. Seguridad en los Pagos</h3>
+                <p>Su seguridad financiera es prioridad. Todos los pagos se procesan a través de la pasarela <strong>Culqi</strong>, la cual cuenta con certificación PCI DSS. <strong>Makaha Surf Shop no almacena, ni tiene acceso</strong> a los datos de su tarjeta de crédito o débito; la transacción ocurre de forma cifrada entre usted y la pasarela.</p>
+            </section>
 
-<div class="space-y-6 text-gray-600 leading-relaxed">
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">5. Transferencia a Terceros</h3>
+                <p>Sus datos personales solo serán compartidos con terceros cuando sea estrictamente necesario para el cumplimiento del servicio:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li>Empresas de courier y transporte para la entrega del pedido.</li>
+                    <li>Pasarelas de pago para la validación de la transacción bancaria.</li>
+                </ul>
+            </section>
 
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">1. Información del comercio</h3>
-<p>
-Este sitio web es operado por <strong>Makaha Surf Shop Barranco</strong>.
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">6. Derechos ARCO</h3>
+                <p>Usted puede ejercer en cualquier momento sus derechos de <strong>Acceso, Rectificación, Cancelación y Oposición</strong> sobre sus datos. Para ello, puede contactarnos directamente al correo <strong>consorciofranper@gmail.com</strong> indicando su requerimiento.</p>
+            </section>
 
-<ul class="list-disc ml-6 mt-2 space-y-1">
-<li>Razón social: CONSORCIO FRANPER EIRL.</li>
-<li>RUC: 20550185459</li>
-<li>Ubicación: Lima, Perú</li>
-<li>Email: consorciofranper@gmail.com</li>
-<li>
-  <a href="https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias"
-     target="_blank"
-     class="text-blue-600 underline">
-     Consultar RUC en SUNAT
-  </a>
-</li>
-</ul>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">7. Uso de Cookies</h3>
+                <p>Utilizamos cookies para mejorar su experiencia de navegación y analizar el tráfico del sitio. Estas no recopilan información que identifique personalmente al usuario a menos que este la proporcione voluntariamente en los formularios de compra.</p>
+            </section>
+        </div>
 
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">2. Información que recopilamos</h3>
-<p>
-Podemos recopilar información personal cuando realizas una compra o utilizas nuestro sitio web,
-como por ejemplo:
-</p>
-
-<ul class="list-disc ml-6 mt-2 space-y-1">
-<li>Nombre completo</li>
-<li>Correo electrónico</li>
-<li>Dirección de envío</li>
-<li>Número de teléfono</li>
-<li>Información necesaria para procesar pedidos</li>
-</ul>
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">3. Uso de la información</h3>
-
-<p>La información recopilada se utiliza para:</p>
-
-<ul class="list-disc ml-6 mt-2 space-y-1">
-<li>Procesar y gestionar pedidos</li>
-<li>Coordinar envíos y entregas</li>
-<li>Brindar soporte al cliente</li>
-<li>Mejorar nuestros productos y servicios</li>
-<li>Comunicarnos contigo respecto a tu pedido o consultas</li>
-</ul>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">4. Procesamiento de pagos</h3>
-
-<p>
-Los pagos realizados en nuestro sitio web se procesan mediante plataformas de pago seguras.
-Makaha Surf Shop no almacena información completa de tarjetas de crédito o débito en sus servidores.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">5. Compartición de información</h3>
-
-<p>
-No vendemos ni compartimos tu información personal con terceros, excepto cuando sea necesario para:
-</p>
-
-<ul class="list-disc ml-6 mt-2 space-y-1">
-<li>Procesar pagos mediante pasarelas de pago</li>
-<li>Realizar envíos mediante empresas de transporte</li>
-<li>Cumplir con obligaciones legales</li>
-</ul>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">6. Cookies</h3>
-
-<p>
-Nuestro sitio web puede utilizar cookies para mejorar la experiencia de navegación,
-analizar el uso del sitio y optimizar nuestros servicios.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">7. Seguridad de la información</h3>
-
-<p>
-Implementamos medidas razonables de seguridad para proteger tu información personal
-contra accesos no autorizados, pérdida o uso indebido.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">8. Derechos del usuario</h3>
-
-<p>
-Puedes solicitar el acceso, modificación o eliminación de tus datos personales
-contactándonos a través de nuestro correo electrónico.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">9. Aceptación de la política</h3>
-
-<p>
-Al utilizar nuestro sitio web aceptas esta Política de Privacidad.
-</p>
-
-</div>
-
-</div>
-
-</section>
-`;
+        <div class="mt-16 p-6 border border-dashed border-gray-300 rounded-xl text-center bg-gray-50">
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Makaha Surf Shop - Protección de Datos Personales - 2026</p>
+        </div>
+    </section>
+    `;
+    window.scrollTo(0, 0);
 }
 
 function renderTerms(){
+    document.getElementById("main-content").innerHTML = `
+    <section class="w-full mx-auto py-16 px-6 animate-fadeIn">
 
-document.getElementById("main-content").innerHTML = `
-<section class="max-w-4xl mx-auto py-16 px-6">
+        <div class="border-b border-gray-200 pb-8 mb-10">
+            <h2 class="text-4xl font-black text-[#0F4C5C] uppercase tracking-tight mb-2">
+                Términos y Condiciones
+            </h2>
+            <p class="text-sm text-gray-500 italic">
+                Última actualización: 25 de Marzo, 2026
+            </p>
+        </div>
 
-<button onclick="goBack()" 
-class="mb-6 text-sm uppercase font-bold text-gray-500">
-← Volver
-</button>
+        <div class="space-y-10 text-gray-700 leading-relaxed text-sm md:text-base">
+            
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">1. Información del Comercio</h3>
+                <p>El presente sitio web es de propiedad y cuenta con la administración de <strong>CONSORCIO FRANPER EIRL</strong>, identificado con <strong>RUC 20550185459</strong>, con domicilio legal en Av. Almirante Grau 1420, Barranco, Lima, Perú. Toda transacción realizada a través de nuestra plataforma se rige por los términos aquí descritos y por la legislación peruana vigente.</p>
+            </section>
 
-<h2 class="text-3xl heading-font mb-2 text-[#001f3f]">
-Terms of Service
-</h2>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">2. Aceptación de los Términos</h3>
+                <p>El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación plena de estas condiciones. El usuario declara ser mayor de edad y tener capacidad legal para contratar. Makaha Surf Shop se reserva el derecho de actualizar estos términos para adecuarlos a nuevas normativas legales o comerciales.</p>
+            </section>
 
-<p class="text-sm text-gray-500 mb-8">
-Última actualización: 2026
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">3. Precios y Medios de Pago</h3>
+                <p>Todos los precios están expresados en <strong>Dólares Americanos (USD)</strong> o Soles (PEN) según se indique, e incluyen el IGV correspondiente. Los pagos se procesan a través de la pasarela segura <strong>Culqi</strong>, garantizando la protección de los datos bancarios del cliente. No almacenamos números de tarjetas en nuestros servidores.</p>
+            </section>
 
-<div class="space-y-6 text-gray-600 leading-relaxed">
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">4. Comprobantes de Pago</h3>
+                <p>Según el Reglamento de Comprobantes de Pago, el usuario deberá decidir si solicita <strong>Boleta de Venta o Factura</strong> al momento de la compra. Una vez emitido el documento, no procederán cambios de boleta a factura ni viceversa por motivos atribuibles al cliente.</p>
+            </section>
 
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">1. Información del comercio</h3>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">5. Despacho y Entrega de Productos</h3>
+                <p>Los productos adquiridos se sujetarán a las condiciones de despacho disponibles:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li><strong>Recojo en Tienda:</strong> Sin costo adicional en nuestro local de Barranco previa confirmación de stock listo.</li>
+                    <li><strong>Envíos Lima y Provincias:</strong> El costo es asumido por el cliente y se coordina vía WhatsApp tras la validación del pago. El tiempo estimado es de 24 a 72 horas hábiles.</li>
+                    <li>La entrega se realiza en la dirección indicada por el usuario. Es responsabilidad del cliente asegurar que haya alguien para recibir el pedido.</li>
+                </ul>
+            </section>
 
-<p>Este sitio web es operado por <strong>Makaha Surf Shop Barranco</strong>.</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">6. Derecho de Cambio y Devolución</h3>
+                <p>Para Makaha Surf Shop, la satisfacción es prioridad. El cliente tiene un plazo de <strong>7 días calendario</strong> desde la recepción para solicitar un cambio, siempre que el producto esté sin señales de uso, con empaques y etiquetas originales.</p>
+                <p class="mt-2 text-xs bg-gray-100 p-3 rounded">Nota: En el caso de tablas de surf y neoprenos, no se aceptarán cambios si presentan parafina, marcas de presión o daños por uso en el mar.</p>
+            </section>
 
-<ul class="list-disc ml-6 mt-2 space-y-1">
-<li>Razón social: CONSORCIO FRANPER EIRL.</li>
-<li>RUC: 20550185459</li>
-<li>Ubicación: Lima, Perú</li>
-<li>Email: consorciofranper@gmail.com</li>
-<li>
-  <a href="https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias"
-     target="_blank"
-     class="text-blue-600 underline">
-     Consultar RUC en SUNAT
-  </a>
-</li>
-</ul>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">7. Protección de Datos Personales</h3>
+                <p>En cumplimiento de la <strong>Ley N° 29733</strong>, los datos proporcionados serán utilizados exclusivamente para gestionar su compra y envío. No compartimos información con terceros con fines publicitarios sin su consentimiento previo.</p>
+            </section>
 
-</div>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">8. Jurisdicción y Solución de Conflictos</h3>
+                <p>Cualquier controversia derivada de este contrato será sometida a las leyes de la República del Perú, siendo competentes los jueces y tribunales de la ciudad de Lima.</p>
+            </section>
+        </div>
 
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">2. Uso del sitio web</h3>
-
-<p>
-Al acceder y utilizar el sitio web de Makaha Surf Shop aceptas utilizarlo únicamente
-para fines legales y personales. Queda prohibido utilizar el sitio para actividades
-fraudulentas, ilegales o que puedan afectar el funcionamiento del sitio web.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">3. Información de productos</h3>
-
-<p>
-Nos esforzamos por mostrar información precisa sobre nuestros productos. Sin embargo:
-</p>
-
-<ul class="list-disc ml-6 mt-2 space-y-1">
-<li>Los precios pueden cambiar sin previo aviso.</li>
-<li>Los productos están sujetos a disponibilidad.</li>
-<li>Pueden existir errores tipográficos o de precio.</li>
-</ul>
-
-<p class="mt-2">
-Makaha Surf Shop se reserva el derecho de corregir cualquier error y cancelar pedidos si fuese necesario.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">4. Pedidos y cancelaciones</h3>
-
-<p>Nos reservamos el derecho de cancelar o rechazar pedidos en casos como:</p>
-
-<ul class="list-disc ml-6 mt-2 space-y-1">
-<li>Errores de precio o información</li>
-<li>Problemas de disponibilidad de stock</li>
-<li>Sospecha de fraude o uso indebido del sistema</li>
-<li>Problemas con el procesamiento del pago</li>
-</ul>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">5. Envíos y Entregas</h3>
-
-<p>
-Todos los envíos se coordinan una vez finalizada la compra y tienen un costo adicional que varía según la distancia. Los tiempos de entrega pueden variar de acuerdo con la ubicación del cliente y la disponibilidad del producto.
-
-Una vez confirmada la compra, nuestro equipo se comunicará contigo por WhatsApp o llamada telefónica para coordinar el método de envío. Cuando nos envíes tu resumen de compra junto con el comprobante de pago, se calculará el costo correspondiente y el tiempo estimado de entrega.
-
-Makaha Surf Shop no se responsabiliza por retrasos ocasionados por empresas de transporte externas.
-
-<p>
-
-<p class="mt-2">
-También puedes elegir la opción de recojo en tienda sin costo adicional. Nuestro equipo te avisará cuando tu pedido esté listo para recoger.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">6. Devoluciones y cambios</h3>
-
-<p>
-Los productos pueden estar sujetos a políticas de devolución o cambio
-según las condiciones establecidas por la tienda.
-</p>
-
-<p class="mt-2">
-Para solicitar un cambio o devolución el cliente deberá contactar previamente
-con nuestro servicio de atención al cliente.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">7. Propiedad del contenido</h3>
-
-<p>
-Las imágenes, marcas y material visual utilizados en el sitio pueden
-pertenecer a sus respectivos fabricantes o marcas comerciales y se utilizan
-únicamente con fines informativos y de comercialización de los productos.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">8. Uso indebido</h3>
-
-<p>
-Cualquier intento de manipulación del sistema, fraude o acceso no autorizado
-podrá resultar en la suspensión del acceso al sitio web.
-</p>
-
-</div>
-
-<div>
-<h3 class="font-bold text-lg text-[#001f3f] mb-2">9. Modificaciones</h3>
-
-<p>
-Makaha Surf Shop se reserva el derecho de modificar estos términos y condiciones
-en cualquier momento. Los cambios serán efectivos una vez publicados en el sitio web.
-</p>
-
-</div>
-
-</div>
-
-</section>
-`;
+        <div class="mt-16 p-6 border border-dashed border-gray-300 rounded-xl text-center bg-gray-50">
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Makaha Surf Shop - Lima, Perú - 2026</p>
+        </div>
+    </section>
+    `;
+    window.scrollTo(0, 0);
 }
 
 /* ================= LIBRO DE RECLAMACIONES ================= */
 
 function renderReclamaciones(){
     document.getElementById("main-content").innerHTML = `
-    <section class="max-w-4xl mx-auto py-8 md:py-16 px-4 md:px-6">
-        <button onclick="goBack()" class="mb-6 text-xs md:text-sm uppercase font-bold text-gray-400 hover:text-black transition-colors">
-            ← Volver al inicio
-        </button>
+    <section class="w-full mx-auto py-8 md:py-16 px-4 md:px-6">
 
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
@@ -10033,67 +9910,82 @@ function renderReclamaciones(){
 }
 
 /* ================= ENVIOS Y DELIVERY ================= */
-
 function renderDelivery(){
+    document.getElementById("main-content").innerHTML = `
+    <section class="w-full mx-auto py-16 px-6 animate-fadeIn text-left">
 
-document.getElementById("main-content").innerHTML = `
-<section class="max-w-4xl mx-auto py-16 px-6">
+        <div class="border-b border-gray-200 pb-8 mb-10 text-left">
+            <h2 class="text-4xl font-black text-[#0F4C5C] uppercase tracking-tight mb-2">
+                Envíos y Delivery
+            </h2>
+            <p class="text-sm text-gray-500 italic">
+                Logística y Distribución Nacional Makaha Surf Shop • 2026
+            </p>
+        </div>
 
-<button onclick="goBack()" 
-class="mb-8 text-sm uppercase font-bold text-gray-500">
-← Volver
-</button>
+        <div class="space-y-10 text-gray-700 leading-relaxed text-sm md:text-base text-left">
+            
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">1. Cobertura Nacional</h3>
+                <p>En <strong>Makaha Surf Shop</strong> realizamos envíos a todo el territorio peruano. Contamos con una red logística preparada para transportar desde accesorios pequeños hasta tablas de surf de gran volumen (Longboards, Funboards), garantizando que el equipo llegue en perfectas condiciones a su destino.</p>
+            </section>
 
-<h1 class="text-4xl heading-font mb-8 text-[#001f3f]">
-Envíos y Delivery
-</h1>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">2. Modalidades de Entrega</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <h4 class="font-bold text-[#0F4C5C] mb-2 uppercase text-xs tracking-wider">Lima Metropolitana</h4>
+                        <p class="text-sm">Contamos con servicio de delivery motorizado para accesorios y neoprenos. Para tablas de surf, coordinamos movilidad especializada para asegurar la integridad del producto.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <h4 class="font-bold text-[#0F4C5C] mb-2 uppercase text-xs tracking-wider">Provincias</h4>
+                        <p class="text-sm">Utilizamos agencias de transporte reconocidas (Shalom, Olva Courier, Marvisur, entre otras). Los envíos a provincia se realizan usualmente bajo la modalidad de pago en destino para el flete de la agencia.</p>
+                    </div>
+                </div>
+            </section>
 
-<p class="mb-6 text-gray-700 leading-relaxed">
-En <strong>Makaha Surf Shop</strong> realizamos envíos a todo el Perú para que puedas
-recibir tus productos de surf de forma segura y rápida.
-</p>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">3. Coordinación y Costos</h3>
+                <p>Es importante notar que el precio de los productos <strong>no incluye el costo de envío</strong>. El proceso de coordinación es el siguiente:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li>Tras finalizar su compra en la web, nuestro equipo lo contactará vía <strong>WhatsApp (965 890 641)</strong>.</li>
+                    <li>Se calculará el costo de envío exacto basándose en el peso, volumen del paquete y distrito/provincia de destino.</li>
+                    <li>Una vez confirmado el pago del envío (o acordado el recojo en agencia), se procederá con el despacho en un plazo de 24 a 48 horas hábiles.</li>
+                </ul>
+            </section>
 
-<h2 class="text-xl font-bold mt-8 mb-3">Coordinación del envío</h2>
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">4. Tiempos de Entrega</h3>
+                <p>Los tiempos estimados son:</p>
+                <ul class="list-disc ml-6 mt-3 space-y-2">
+                    <li><strong>Lima:</strong> Entre 24 a 48 horas hábiles tras la validación del pedido.</li>
+                    <li><strong>Provincias:</strong> Entre 2 a 5 días hábiles, dependiendo de la frecuencia de la agencia de transporte y la lejanía del destino.</li>
+                </ul>
+            </section>
 
-<p class="text-gray-700">
-Una vez recibido tu resumen de compra y el comprobante de pago, calcularemos el costo final y el tiempo estimado de entrega.
-Tras la confirmación de tu pedido, nuestro equipo se pondrá en contacto contigo por WhatsApp o llamada telefónica para coordinar los detalles del envío.
+            <section>
+                <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">5. Recojo en Tienda (Gratis)</h3>
+                <p>Puede optar por el recojo presencial en nuestro local físico de Barranco sin ningún costo adicional. </p>
+                <div class="mt-4 p-6 bg-emerald-50 border border-emerald-100 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div>
+                        <p class="font-bold text-[#0F4C5C] uppercase text-xs">Punto de Recojo Oficial:</p>
+                        <p class="text-lg">Av. Almirante Grau 1420, Barranco – Lima</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-emerald-700 uppercase">Horarios:</p>
+                        <p class="text-sm text-emerald-800 italic">Lun - Sab 10am-8pm / Dom 10am-5pm</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-xs text-gray-500">*Le notificaremos vía WhatsApp cuando su pedido esté debidamente embalado y listo para ser recogido.</p>
+            </section>
+        </div>
 
-</p>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Costo de envío</h2>
-
-<p class="text-gray-700 mb-6">
-Todos los pedidos enviados mediante delivery o courier tienen un 
-<strong>costo adicional</strong>, el cual se calcula según el distrito,
-ciudad o región de destino el cual se coordina al finalizar el pedido.
-</p>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Cobertura</h2>
-
-<ul class="list-disc ml-6 text-gray-700 space-y-2">
-<li>Realizamos envíos a <strong>todo el Perú</strong>.</li>
-<li>En Lima Metropolitana se puede coordinar delivery directo.</li>
-<li>Para provincias utilizamos servicios de courier o transporte.</li>
-</ul>
-
-<h2 class="text-xl font-bold mt-8 mb-3">Recojo en tienda</h2>
-
-<p class="text-gray-700 mb-6">
-También puedes elegir la opción de <strong>recojo en tienda sin costo adicional</strong>.
-Nuestro equipo te avisará cuando tu pedido esté listo para recoger.
-</p>
-
-<div class="mt-6 p-4 bg-gray-100 rounded-lg">
-
-<p class="font-semibold">Dirección de recojo</p>
-
-<p>Av. Almirante Grau 1420, Barranco – Lima</p>
-
-</div>
-
-</section>
-`;
+        <div class="mt-16 p-6 border border-dashed border-gray-300 rounded-xl text-center bg-gray-50">
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Makaha Surf Shop - Envíos Seguros a Todo el Perú - 2026</p>
+        </div>
+    </section>
+    `;
+    window.scrollTo(0, 0);
 }
 
 window.onload = function(){
