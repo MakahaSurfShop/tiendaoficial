@@ -18,6 +18,13 @@
 <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("1wuQB-gzoT910vgEQ"); // Reemplaza con tu Public Key de EmailJS
+   })();
+</script>
 	
 <style>
 
@@ -1408,13 +1415,17 @@ z-[9999]">
           <button onclick="navigateTo('garantia')" class="block hover:text-gray-300 text-center md:text-left w-full text-gray-400 italic">Garantía</button>
           <button onclick="navigateTo('delivery')" class="block hover:text-gray-300 text-center md:text-left w-full text-gray-400 italic">Envíos y Delivery</button>
           
-          <div class="pt-4 flex justify-center md:justify-start">
-            <button onclick="navigateTo('reclamaciones')" class="flex items-center gap-3 group bg-white/5 p-3 rounded-lg border border-white/20 hover:bg-white/10 transition border-dashed hover:border-solid">
-              <img src="https://i.imgur.com/8mX5Z5Y.png" class="h-8 object-contain" alt="Libro de Reclamaciones">
-              <div class="text-left">
-                <span class="block text-[10px] text-gray-400 leading-none">Visita nuestro</span>
-                <span class="block text-[11px] font-bold uppercase">Libro de Reclamaciones</span>
-              </div>
+<div class="pt-4 flex justify-center md:justify-start">
+  <button onclick="navigateTo('reclamaciones')" class="flex items-center gap-3 group bg-white p-4 rounded-lg border border-gray-200 hover:bg-gray-100 transition shadow-sm w-full md:w-auto">
+    
+    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1774484312/i1-Photoroom_uh0cfn.png" class="h-12 object-contain" alt="Libro de Reclamaciones">
+    
+    <div class="text-left">
+      <span class="block text-[11px] text-gray-600 leading-none">Visita nuestro</span>
+      <span class="block text-[12px] font-bold uppercase text-black">Libro de Reclamaciones</span>
+    </div>
+  </button>
+</div>
             </button>
           </div>
         </div>
@@ -9840,41 +9851,39 @@ function renderTerms(){
 
 function renderReclamaciones(){
     document.getElementById("main-content").innerHTML = `
-    <section class="w-full mx-auto py-8 md:py-16 px-4 md:px-6">
-
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+    <section class="max-w-4xl mx-auto py-8 md:py-16 px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 bg-white p-6 rounded-t-2xl border-b-4 border-[#0F4C5C]">
             <div>
-                <h1 class="text-3xl md:text-4xl heading-font text-[#001f3f]">Libro de Reclamaciones</h1>
+                <h1 class="text-3xl md:text-4xl font-bold text-[#001f3f]">Libro de Reclamaciones</h1>
                 <p class="text-gray-500 text-xs md:text-sm mt-1 uppercase tracking-widest font-bold">Consorcio Franper EIRL - RUC: 20550185459</p>
+                <p class="text-gray-400 text-[10px]">Av. Almirante Grau 1420, Barranco, Lima</p>
             </div>
             <img src="https://i.imgur.com/BPUD4wx.png" class="w-16 md:w-20 opacity-90" alt="Logo Makaha">
         </div>
 
-        <div class="mb-8 text-gray-700 leading-relaxed bg-blue-50 p-4 border-l-4 border-[#0F4C5C] text-xs md:text-sm">
-            <p>Conforme al Código de Protección y Defensa del Consumidor, Makaha Surf Shop pone a su disposición este libro virtual. Sus datos serán tratados según la Ley de Protección de Datos Personales.</p>
-        </div>
-
-        <form id="reclamo-form" class="grid gap-6 bg-white p-5 md:p-8 rounded-2xl shadow-xl border border-gray-100">
-            
+        <form id="reclamo-form" class="grid gap-6 bg-white p-5 md:p-8 rounded-b-2xl shadow-xl border border-gray-100">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-2"><h2 class="font-bold text-[#001f3f] border-b pb-2 mb-2 text-sm md:text-base">1. Identificación del Consumidor</h2></div>
-                <input type="text" id="nombre" placeholder="Nombre completo" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
-                <input type="text" id="dni" placeholder="DNI / CE" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
-                <input type="email" id="email" placeholder="Correo electrónico" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none md:col-span-2" required>
-                <input type="text" id="telefono" placeholder="Teléfono / Celular" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
-                <input type="text" id="direccion" placeholder="Dirección en Perú" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
+                <input type="text" id="nombre" placeholder="Nombre completo" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78]" required>
+                <input type="text" id="dni" placeholder="DNI / CE" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78]" required>
+                <input type="email" id="email" placeholder="Correo electrónico (donde recibirá copia)" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78] md:col-span-2" required>
+                <input type="text" id="telefono" placeholder="Teléfono / Celular" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78]" required>
+                <input type="text" id="direccion" placeholder="Domicilio en Perú" class="reclamo-input border p-3 rounded-lg text-sm focus:ring-2 focus:ring-[#1f6f78]" required>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="md:col-span-2"><h2 class="font-bold text-[#001f3f] border-b pb-2 mb-2 mt-4 text-sm md:text-base">2. Detalle de la Reclamación</h2></div>
-                <select id="tipo-bien" class="reclamo-input border p-3 rounded-lg bg-white text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required>
-                    <option value="">Tipo de bien...</option>
-                    <option value="Producto">Producto (Tabla, Wetsuit, etc)</option>
+                <div class="md:col-span-2"><h2 class="font-bold text-[#001f3f] border-b pb-2 mb-2 mt-4 text-sm md:text-base">2. Identificación del Bien Contratado</h2></div>
+                <select id="tipo-bien" class="reclamo-input border p-3 rounded-lg bg-white text-sm" required>
+                    <option value="">Seleccione tipo de bien...</option>
+                    <option value="Producto">Producto (Tablas, Wetsuits, etc)</option>
                     <option value="Servicio">Servicio</option>
                 </select>
-                <input type="text" id="pedido" placeholder="Monto reclamado (S/)" class="reclamo-input border p-3 rounded-lg text-sm">
-                
-                <div class="md:col-span-2 flex flex-col gap-2 my-2 text-xs md:text-sm">
+                <input type="number" id="monto" placeholder="Monto reclamado (S/)" class="reclamo-input border p-3 rounded-lg text-sm" required>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="md:col-span-2"><h2 class="font-bold text-[#001f3f] border-b pb-2 mb-2 mt-4 text-sm md:text-base">3. Detalle de Reclamación y Pedido</h2></div>
+                <div class="flex gap-6 my-2 text-sm">
                     <label class="flex items-center gap-2 cursor-pointer">
                         <input type="radio" name="tipo" value="Reclamo" checked> Reclamo (Disconformidad con el producto)
                     </label>
@@ -9882,30 +9891,25 @@ function renderReclamaciones(){
                         <input type="radio" name="tipo" value="Queja"> Queja (Malestar en la atención)
                     </label>
                 </div>
-
-                <textarea id="detalle" placeholder="Describa lo sucedido..." 
-                    class="reclamo-input border p-3 rounded-lg h-32 md:col-span-2 text-sm focus:ring-2 focus:ring-[#1f6f78] outline-none" required></textarea>
+                <textarea id="detalle" placeholder="Detalle del reclamo o queja..." class="reclamo-input border p-3 rounded-lg h-24 text-sm" required></textarea>
+                <textarea id="pedido" placeholder="Pedido del consumidor (¿Qué solicita? Ej: Cambio de producto, devolución)" class="reclamo-input border p-3 rounded-lg h-24 text-sm" required></textarea>
             </div>
 
             <div class="flex flex-col md:flex-row gap-4 mt-4 w-full">
-                <button id="btn-pdf" type="button" disabled
-                    class="w-full md:flex-1 bg-gray-200 text-gray-400 py-4 px-6 rounded-xl font-bold uppercase text-xs md:text-sm transition-all duration-300 cursor-not-allowed flex items-center justify-center text-center">
-                    1. Descargar Hoja (PDF)
+                <button id="btn-pdf" type="button" disabled class="w-full md:flex-1 bg-gray-200 text-gray-400 py-4 px-6 rounded-xl font-bold uppercase text-xs transition-all cursor-not-allowed">
+                    1. Generar Hoja (PDF)
                 </button>
-
-                <button id="btn-ws" type="button" disabled
-                    class="w-full md:flex-1 bg-gray-200 text-gray-400 py-4 px-6 rounded-xl font-bold uppercase text-xs md:text-sm transition-all duration-300 cursor-not-allowed flex items-center justify-center text-center">
-                    2. Enviar Reclamo
+                <button id="btn-enviar" type="button" disabled class="w-full md:flex-1 bg-gray-200 text-gray-400 py-4 px-6 rounded-xl font-bold uppercase text-xs transition-all cursor-not-allowed">
+                    2. Enviar Reclamo Formal
                 </button>
             </div>
             
-            <p id="msg-instruccion" class="text-center text-[10px] md:text-xs text-red-500 font-bold uppercase tracking-widest mt-2">
-                ⚠ Complete los campos obligatorios
+            <p id="msg-instruccion" class="text-center text-[10px] text-red-500 font-bold uppercase mt-2">
+                ⚠ Complete los campos obligatorios para continuar
             </p>
         </form>
     </section>
     `;
-
     initReclamacionesLogic(); 
 }
 
@@ -12129,28 +12133,19 @@ window.addEventListener('popstate', function() {
 function initReclamacionesLogic() {
     const { jsPDF } = window.jspdf;
     const btnPdf = document.getElementById('btn-pdf');
-    const btnWs = document.getElementById('btn-ws');
-    const inputs = document.querySelectorAll('.reclamo-input');
+    const btnEnviar = document.getElementById('btn-enviar');
+    const inputs = document.querySelectorAll('.reclamo-input, #detalle, #pedido');
     const msg = document.getElementById('msg-instruccion');
 
     function validar() {
-        let todoLleno = Array.from(inputs).every(i => !i.hasAttribute('required') || i.value.trim() !== "");
-        
+        let todoLleno = Array.from(inputs).every(i => i.value.trim() !== "");
         if (todoLleno) {
             btnPdf.disabled = false;
-            // Usamos classList para no perder el tamaño (md:flex-1)
-            btnPdf.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
-            btnPdf.classList.add('bg-red-600', 'text-white', 'cursor-pointer', 'shadow-lg');
-            
-            msg.innerText = "✓ DATOS COMPLETOS. GENERE SU HOJA DE RECLAMACIÓN.";
-            msg.className = "text-center text-[10px] md:text-xs text-green-600 font-bold mt-2 uppercase tracking-widest";
-        } else {
-            btnPdf.disabled = true;
-            btnPdf.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
-            btnPdf.classList.remove('bg-red-600', 'text-white', 'cursor-pointer', 'shadow-lg');
-            
-            msg.innerText = "⚠ DEBE COMPLETAR LOS CAMPOS OBLIGATORIOS";
-            msg.className = "text-center text-[10px] md:text-xs text-red-500 font-bold mt-2 uppercase tracking-widest";
+            btnPdf.classList.replace('bg-gray-200', 'bg-red-600');
+            btnPdf.classList.replace('text-gray-400', 'text-white');
+            btnPdf.classList.add('cursor-pointer', 'shadow-lg');
+            msg.innerText = "✓ DATOS COMPLETOS. PRIMERO GENERE EL PDF.";
+            msg.className = "text-center text-xs text-green-600 font-bold mt-2";
         }
     }
 
@@ -12158,73 +12153,81 @@ function initReclamacionesLogic() {
 
     btnPdf.addEventListener('click', () => {
         const doc = new jsPDF();
-        const fecha = new Date().toLocaleString();
-        const numReclamo = Date.now().toString().slice(-6);
+        const fechaActual = new Date();
+        const fechaStr = fechaActual.toLocaleString();
+        const numReclamo = `2026-${Math.floor(1000 + Math.random() * 9000)}`;
 
-        // Cabecera Makaha
+        // Cabecera Institucional
         doc.setFillColor(15, 76, 92);
-        doc.rect(0, 0, 210, 50, 'F');
+        doc.rect(0, 0, 210, 45, 'F');
         doc.setTextColor(255, 255, 255);
-        doc.setFontSize(24);
-        doc.setFont("helvetica", "bold");
-        doc.text("HOJA DE RECLAMACIÓN", 15, 25);
-        doc.setFontSize(10);
-        doc.setFont("helvetica", "normal");
-        doc.text(`Número de Registro: RECLAMO-${numReclamo}`, 15, 35);
-        doc.text(`Fecha y Hora de Recepción: ${fecha}`, 15, 40);
-
-        const logoUrl = "https://i.imgur.com/BPUD4wx.png";
-        doc.addImage(logoUrl, 'PNG', 150, 10, 35, 30); 
+        doc.setFontSize(20); doc.text("HOJA DE RECLAMACIÓN", 15, 20);
+        doc.setFontSize(10); doc.text(`N° Correlativo: ${numReclamo} | Fecha: ${fechaStr}`, 15, 30);
+        doc.text("CONSORCIO FRANPER EIRL - RUC: 20550185459", 15, 38);
 
         doc.setTextColor(0, 0, 0);
-        // 1. Proveedor
-        doc.setFontSize(12); doc.setFont("helvetica", "bold");
-        doc.text("1. IDENTIFICACIÓN DEL PROVEEDOR", 15, 65);
-        doc.line(15, 67, 195, 67);
-        doc.setFontSize(10); doc.setFont("helvetica", "normal");
-        doc.text("Razón Social: CONSORCIO FRANPER EIRL", 15, 75);
-        doc.text("RUC: 20550185459", 15, 80);
-        doc.text("Establecimiento: Makaha Surf Shop - Barranco, Lima, Perú", 15, 85);
+        // 1. Identificación
+        doc.setFont("helvetica", "bold"); doc.text("1. DATOS DEL CONSUMIDOR", 15, 60);
+        doc.line(15, 62, 195, 62);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Nombre: ${document.getElementById("nombre").value}`, 15, 70);
+        doc.text(`DNI: ${document.getElementById("dni").value} | Tel: ${document.getElementById("telefono").value}`, 15, 78);
+        doc.text(`Email: ${document.getElementById("email").value}`, 15, 86);
+        doc.text(`Dirección: ${document.getElementById("direccion").value}`, 15, 94);
 
-        // 2. Consumidor
-        doc.setFontSize(12); doc.setFont("helvetica", "bold");
-        doc.text("2. IDENTIFICACIÓN DEL CONSUMIDOR", 15, 105);
-        doc.line(15, 107, 195, 107);
-        doc.setFontSize(10); doc.setFont("helvetica", "normal");
-        doc.text(`Nombre completo: ${document.getElementById("nombre").value}`, 15, 115);
-        doc.text(`DNI / CE: ${document.getElementById("dni").value}`, 15, 120);
-        doc.text(`Dirección: ${document.getElementById("direccion").value}`, 15, 125);
-        doc.text(`Email: ${document.getElementById("email").value}`, 15, 130);
+        // 2. Bien
+        doc.setFont("helvetica", "bold"); doc.text("2. BIEN CONTRATADO", 15, 110);
+        doc.line(15, 112, 195, 112);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Tipo: ${document.getElementById("tipo-bien").value} | Monto reclamado: S/ ${document.getElementById("monto").value}`, 15, 120);
 
         // 3. Detalle
-        doc.setFontSize(12); doc.setFont("helvetica", "bold");
-        doc.text("3. DETALLE DE LA RECLAMACIÓN Y PEDIDO", 15, 150);
-        doc.line(15, 152, 195, 152);
-        const tipo = document.querySelector('input[name="tipo"]:checked').value;
-        doc.setFontSize(10); doc.setFont("helvetica", "normal");
-        doc.text(`Tipo de incidencia: ${tipo.toUpperCase()}`, 15, 160);
-        doc.text(`Bien reclamado: ${document.getElementById("tipo-bien").value}`, 15, 165);
-        const detalle = document.getElementById("detalle").value;
-        const splitText = doc.splitTextToSize(`Descripción detallada: ${detalle}`, 180);
-        doc.text(splitText, 15, 175);
+        const tipoIncidencia = document.querySelector('input[name="tipo"]:checked').value;
+        doc.setFont("helvetica", "bold"); doc.text(`3. ${tipoIncidencia.toUpperCase()} Y PEDIDO`, 15, 135);
+        doc.line(15, 137, 195, 137);
+        doc.setFont("helvetica", "normal");
+        const detalleText = doc.splitTextToSize(`Detalle: ${document.getElementById("detalle").value}`, 180);
+        doc.text(detalleText, 15, 145);
+        const pedidoText = doc.splitTextToSize(`Pedido del consumidor: ${document.getElementById("pedido").value}`, 180);
+        doc.text(pedidoText, 15, 175);
 
         doc.save(`Hoja_Reclamo_Makaha_${numReclamo}.pdf`);
 
-        // Activar WhatsApp
-        btnWs.disabled = false;
-        btnWs.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
-        btnWs.classList.add('bg-green-600', 'text-white', 'cursor-pointer', 'shadow-lg');
-        msg.innerText = "✓ PDF Descargado. Ahora puede enviar el reclamo vía WhatsApp.";
-        msg.className = "text-center text-xs text-green-600 font-bold mt-2";
+        // Habilitar envío final
+        btnEnviar.disabled = false;
+        btnEnviar.classList.replace('bg-gray-200', 'bg-emerald-600');
+        btnEnviar.classList.replace('text-gray-400', 'text-white');
+        btnEnviar.classList.add('cursor-pointer', 'shadow-lg');
+        msg.innerText = "✓ PDF GENERADO. AHORA ENVÍE EL RECLAMO PARA PROCESARLO.";
     });
 
-    btnWs.addEventListener('click', () => {
-        const nombre = document.getElementById("nombre").value;
-        const dni = document.getElementById("dni").value;
-        const texto = `*RECLAMO FORMAL - MAKAHA SURF SHOP*\n\nHola, acabo de generar mi hoja de reclamación.\n*Cliente:* ${nombre}\n*DNI:* ${dni}\n\n_Adjunto el PDF generado._`;
-        window.open(`https://wa.me/51965890641?text=${encodeURIComponent(texto)}`, '_blank');
-        alert("Se abrirá WhatsApp. No olvide adjuntar el archivo PDF que descargó.");
-        goBack(); 
+    btnEnviar.addEventListener('click', function() {
+        this.innerHTML = "Enviando...";
+        this.disabled = true;
+
+const templateParams = {
+            from_name: document.getElementById("nombre").value,
+            from_email: document.getElementById("email").value,
+            dni: document.getElementById("dni").value,
+            telefono: document.getElementById("telefono").value,
+            direccion: document.getElementById("direccion").value,
+            tipo_bien: document.getElementById("tipo-bien").value,
+            monto: document.getElementById("monto").value,
+            tipo_incidencia: document.querySelector('input[name="tipo"]:checked').value,
+            message: document.getElementById("detalle").value,
+            pedido: document.getElementById("pedido").value
+        };
+
+        // Aquí ya están tus IDs reales insertados
+        emailjs.send('service_xi3sgne', 'template_3gh5hxw', templateParams)
+            .then(() => {
+                alert("Su reclamo ha sido enviado con éxito. Makaha Surf Shop le responderá en un plazo máximo de 15 días hábiles. Revise su correo para ver su copia.");
+                goBack();
+            }, (error) => {
+                alert("Error al enviar el reclamo: " + JSON.stringify(error));
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = "2. Enviar Reclamo Formal";
+            });
     });
 }
 
