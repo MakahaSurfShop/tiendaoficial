@@ -1018,7 +1018,10 @@ button[onclick*="buyNow"]:hover {
       <span class="hidden xl:block text-sm font-bold">CUENTA</span>
     </div>
 
-<input type="text" id="search-input" placeholder="Buscar..." 
+<input type="text" 
+       id="search-input" 
+       onkeypress="handleSearch(event)"
+       placeholder="Buscar..." 
        class="hidden md:block w-full max-w-[100px] xl:max-w-[180px] px-3 py-1.5 border border-gray-300 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-[#0F4C5C]">
 
     <button id="mobile-search-trigger" onclick="focusMobileSearch()" class="md:hidden text-black hover:text-[#0F4C5C] p-2">
@@ -1215,6 +1218,26 @@ Redirigiendo...
     <button onclick="closeMobileSearch()" class="text-gray-500 text-xl px-2">
         <i class="fa-solid fa-xmark"></i>
     </button>
+</div>
+
+<div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-900 text-white p-4 z-[9999] hidden border-t border-yellow-500/30 shadow-2xl">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4">
+        <div class="flex items-center gap-3">
+            <i class="fas fa-cookie-bite text-yellow-500 text-xl"></i>
+            <p class="text-xs md:text-sm text-gray-300 leading-relaxed">
+                En <strong>Makaha Surf Shop</strong> usamos cookies para gestionar tu cuenta y mejorar tu compra. 
+                Al navegar, aceptas nuestra 
+                <a href="javascript:void(0)" 
+                   onclick="renderPrivacy(); window.scrollTo({top: 0, behavior: 'smooth'});" 
+                   class="underline hover:text-yellow-500 transition font-bold">
+                   política de privacidad
+                </a>.
+            </p>
+        </div>
+        <button id="accept-cookies" class="whitespace-nowrap bg-[#0F4C5C] hover:bg-[#15667a] text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all transform hover:scale-105 border border-white/20 shadow-lg">
+            Aceptar y Continuar
+        </button>
+    </div>
 </div>
 
 </body>
@@ -9936,7 +9959,7 @@ function renderPrivacy(){
 
             <section>
                 <h3 class="font-bold text-xl text-[#0F4C5C] mb-4 border-l-4 border-emerald-500 pl-4 uppercase">7. Uso de Cookies</h3>
-                <p>Utilizamos cookies para mejorar su experiencia de navegación y analizar el tráfico del sitio. Estas no recopilan información que identifique personalmente al usuario a menos que este la proporcione voluntariamente en los formularios de compra.</p>
+                <p>Utilizamos cookies para mejorar su experiencia de navegación y analizar el tráfico del sitio. Estas no recopilan información que identifique personalmente al usuario a menos que este la proporcione voluntariamente en los formularios de compra o registro.</p>
             </section>
         </div>
 
@@ -10253,14 +10276,29 @@ function getAllProducts(){
 
 
 function handleSearch(event) {
-    if(event.key === "Enter"){
-        const query = document.getElementById("search-input").value;
-        if (!query.trim()) return;
+    if (event.key === "Enter") {
+        const input = document.getElementById("search-input");
+        const query = input ? input.value.trim() : "";
 
-        currentPageCatalog = 1; // Reiniciamos a la primera página
-        renderFilteredProducts(null, null, query); // Llamamos al catálogo con el query
+        if (!query) return;
 
+        // 1. IMPORTANTE: Cambiamos la vista activa al catálogo/filtrados
+        // Si no haces esto, los resultados se cargan "detrás" de lo que estés viendo.
+        if (typeof navigateTo === "function") {
+            navigateTo('filtrados'); 
+        }
+
+        // 2. Reiniciamos la página a la primera
+        currentPageCatalog = 1; 
+
+        // 3. Renderizamos los productos filtrados por el texto
+        renderFilteredProducts(null, null, query); 
+
+        // 4. Subimos al inicio para que el usuario vea los resultados
         window.scrollTo({ top: 0, behavior: "smooth" });
+        
+        // OPCIONAL: Limpiar el buscador después de buscar
+        // input.value = ""; 
     }
 }
 
@@ -12795,6 +12833,29 @@ function autocompletarDatosUsuario() {
 
     console.log("¡Autocompletado Makaha ejecutado y validado!");
 }
+
+// UBICACIÓN: Dentro de tu etiqueta <script>, puede ser al final de todas tus funciones
+function gestionarAvisoCookies() {
+    const banner = document.getElementById('cookie-banner');
+    const btnAceptar = document.getElementById('accept-cookies');
+
+    // Verificamos si ya aceptó previamente (usando localStorage)
+    if (!localStorage.getItem('cookies_aceptadas')) {
+        banner.classList.remove('hidden');
+    }
+
+    btnAceptar.addEventListener('click', () => {
+        localStorage.setItem('cookies_aceptadas', 'true');
+        banner.classList.add('hidden');
+        console.log("Cookies aceptadas por el usuario");
+    });
+}
+
+// Asegúrate de llamar a la función cuando cargue el documento
+document.addEventListener('DOMContentLoaded', () => {
+    gestionarAvisoCookies();
+    // ... aquí irán tus otras funciones como inicializarCarrito();
+});
 
 </script>
 </body>
