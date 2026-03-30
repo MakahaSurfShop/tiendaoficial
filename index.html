@@ -25,6 +25,10 @@
       emailjs.init("1wuQB-gzoT910vgEQ"); // Reemplaza con tu Public Key de EmailJS
    })();
 </script>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 	
 <style>
 
@@ -882,278 +886,154 @@ button[onclick*="buyNow"]:hover {
   <!-- NAVBAR -->
 <nav class="bg-white border border-black sticky top-8 z-50 h-20 flex items-center px-3 sm:px-4 lg:px-6">
 
-<!-- IZQUIERDA (LOGO) -->
-<div onclick="navigateTo('inicio')" 
-class="flex items-center gap-2 sm:gap-3 cursor-pointer flex-shrink-0 max-w-[65%]">
+  <div onclick="navigateTo('inicio')" class="flex items-center gap-2 sm:gap-3 cursor-pointer flex-shrink-0 max-w-[65%]">
+    <img src="https://i.imgur.com/7gGeUQS.png" class="w-10 sm:w-12 md:w-14">
+    <h1 class="heading-font text-black leading-tight text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl whitespace-nowrap tracking-tight">
+      MAKAHA <span class="text-[#0F4C5C]">SURF SHOP</span>
+    </h1>
+  </div>
 
-<img src="https://i.imgur.com/7gGeUQS.png"
-class="w-10 sm:w-12 md:w-14">
+  <div class="hidden min-[1220px]:flex flex-1 justify-center gap-6 xl:gap-8 h-full items-center font-semibold text-sm whitespace-nowrap [&>*]:shrink-0">
 
-<h1 class="heading-font text-black leading-tight
-text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
-whitespace-nowrap tracking-tight">
+    <div class="relative h-full flex items-center" onmouseenter="openMegaMenu(this)" onmouseleave="closeMegaMenu()">
+      <span class="cursor-pointer hover:text-[#001f3f] flex items-center gap-1 group whitespace-nowrap">
+        CATÁLOGO
+        <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </span>
 
-  MAKAHA <span class="text-[#0F4C5C]">SURF SHOP</span>
+      <style>
+        .menu-dropdown { display: grid; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease-out; pointer-events: none; z-index: 100; }
+        .menu-dropdown.is-active { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      </style>
 
-</h1>
+      <div class="menu-dropdown absolute left-[-280px] top-[100%] w-[1250px] bg-white shadow-2xl rounded-xl border border-black grid grid-cols-7 gap-6 pl-8 pr-24 py-8">
+        <div class="min-w-[140px]">
+          <div class="font-bold mb-3">TABLAS</div>
+          <a onclick="menuClick('Tablas','Shortboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Shortboards</a>
+          <a onclick="menuClick('Tablas','Fish')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Fish</a>
+          <a onclick="menuClick('Tablas','Funboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Funboards</a>
+          <a onclick="menuClick('Tablas','Longboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Longboards</a>
+          <a onclick="menuClick('Tablas','Midlength')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Midlength</a>
+          <a onclick="menuClick('Tablas','Gun')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Gun</a>
+          <a onclick="menuClick('Tablas','Evolutiva')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Evolutiva</a>
+        </div>
 
-</div>
-	
-<!-- CENTRO (MENU) -->
-<div class="hidden min-[1220px]:flex flex-1 justify-center gap-6 xl:gap-8 h-full items-center font-semibold text-sm whitespace-nowrap [&>*]:shrink-0">
+        <div class="min-w-[140px]">
+          <div class="font-bold mb-3">NEOPRENOS</div>
+          <a onclick="menuClick('Neoprenos','Hombre')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Hombre</a>
+          <a onclick="menuClick('Neoprenos','Mujer')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Mujer</a>
+          <a onclick="menuClick('Neoprenos','Niños')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Niños</a>
+          <a onclick="menuClick('Neoprenos','Jacket')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Jacket</a>
+          <a onclick="menuClick('Neoprenos','Botas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Botas</a>
+        </div>
 
-    <div class="relative after:absolute after:left-0 after:top-full after:w-full after:h-5 after:content-['']"
-         onmouseenter="openMegaMenu(this)" 
-         onmouseleave="closeMegaMenu()">
+        <div class="min-w-[140px]">
+          <div class="font-bold mb-3">BODYBOARD</div>
+          <a onclick="menuClick('Bodyboard','Bodyboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Bodyboards</a>
+          <a onclick="menuClick('Bodyboard','Aletas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Aletas</a>
+          <a onclick="menuClick('Bodyboard','Medias')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Medias</a>
+          <a onclick="menuClick('Bodyboard','Sujetadores')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Sujetadores</a>
+        </div>
 
-<span class="cursor-pointer hover:text-[#001f3f] flex items-center gap-1 group whitespace-nowrap">
-  CATÁLOGO
-  
-  <svg 
-    class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-    fill="none" 
-    stroke="currentColor" 
-    viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-  </svg>
-</span>
+        <div class="min-w-[140px]">
+          <div class="font-bold mb-3">PRENDAS TERMICAS</div>
+          <a onclick="menuClick('Prendas Termicas','Licras')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Licras</a>
+          <a onclick="menuClick('Prendas Termicas','Camisetas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Camisetas</a>
+          <a onclick="menuClick('Prendas Termicas','Cambiadores')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Cambiadores</a>
+          <a onclick="menuClick('Prendas Termicas','Gorras')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Gorras</a>
+        </div>
 
-<style>
-.menu-dropdown {
-    display: grid;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease-out;
-    pointer-events: none;
-    z-index: 100;
-}
-.menu-dropdown.is-active {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-    pointer-events: auto !important;
-}
-</style>
+        <div class="min-w-[140px]">
+          <div class="font-bold mb-3">WETBAGS</div>
+          <a onclick="menuClick('Wetbags/Drybags','Wetbags')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Wetbags</a>
+          <a onclick="menuClick('Wetbags/Drybags','Drybags')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Drybags</a>
+        </div>
 
-<div class="menu-dropdown absolute left-[-280px] top-[250%] 
-  w-[1250px] bg-white shadow-2xl rounded-xl border border-black 
-  grid grid-cols-7 gap-6 pl-8 pr-24 py-8">
+        <div class="min-w-[140px]">
+          <div class="font-bold mb-3">SKATE</div>
+          <a onclick="menuClick('Skateboards','Surfskates')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Surfskates</a>
+          <a onclick="menuClick('Skateboards','Skateboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Skateboards</a>
+          <a onclick="menuClick('Skateboards','Longboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Longboards</a>
+          <a onclick="menuClick('Skateboards','Oldschool')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Oldschool</a>
+          <a onclick="menuClick('Skateboards','Componentes')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Componentes</a>
+        </div>
 
-<!-- TABLAS -->
-<div class="min-w-[140px]">
-<div class="font-bold mb-3">TABLAS</div>
+        <div class="pr-6">
+          <div class="font-bold mb-3">ACCESORIOS</div>
+          <div class="grid grid-cols-2 gap-x-28 gap-y-3 text-sm">
+            <div>
+              <div class="text-xs font-bold text-gray-400 mt-1 mb-1">Equipamiento</div>
+              <a onclick="menuClick('Accesorios','Leashes')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Leashes</a>
+              <a onclick="menuClick('Accesorios','Quillas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Quillas</a>
+              <a onclick="menuClick('Accesorios','Decks')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Decks</a>
+              <a onclick="menuClick('Accesorios','Cera')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Cera</a>
+              <a onclick="menuClick('Accesorios','Fundas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Fundas</a>
+              <div class="text-xs font-bold text-gray-400 mt-3 mb-1">Transporte</div>
+              <a onclick="menuClick('Accesorios','Racks')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Racks</a>
+              <a onclick="menuClick('Accesorios','Bolsos')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Bolsos</a>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-gray-400 mt-1 mb-1">Reparación</div>
+              <a onclick="menuClick('Accesorios','Herramientas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Herramientas</a>
+              <a onclick="menuClick('Accesorios','Reparacion')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Reparación</a>
+              <div class="text-xs font-bold text-gray-400 mt-3 mb-1">Seguridad</div>
+              <a onclick="menuClick('Accesorios','Cascos')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Cascos</a>
+              <a onclick="menuClick('Accesorios','Proteccion')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Protección</a>
+              <div class="text-xs font-bold text-gray-400 mt-3 mb-1">Otros</div>
+              <a onclick="menuClick('Accesorios','Natacion')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Natación</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<a onclick="menuClick('Tablas','Shortboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Shortboards</a>
-<a onclick="menuClick('Tablas','Fish')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Fish</a>
-<a onclick="menuClick('Tablas','Funboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Funboards</a>
-<a onclick="menuClick('Tablas','Longboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Longboards</a>
-<a onclick="menuClick('Tablas','Midlength')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Midlength</a>
-<a onclick="menuClick('Tablas','Gun')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Gun</a>
-<a onclick="menuClick('Tablas','Evolutiva')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Evolutiva</a>
+    <div id="usados-menu" class="group relative flex items-center h-full">
+      <span class="cursor-pointer hover:text-[#001f3f] flex items-center gap-1 whitespace-nowrap">
+        USADOS
+        <svg id="arrow-usados" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </span>
+      <div class="absolute left-1/2 -translate-x-1/2 top-[100%] w-54 bg-white shadow-lg rounded-lg p-4 mt-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out">
+        <a onclick="navigateTo('vender');" class="block py-1 hover:text-[#001f3f] cursor-pointer">Vender</a>
+        <a onclick="renderReRideInfo();" class="block py-1 border-t border-gray-100 mt-1 pt-1 text-xs font-bold text-green-600 cursor-pointer">✨ ¿Cómo comprar usados?</a>
+      </div>
+    </div>
 
-</div>
+    <span onclick="navigateTo('nosotros')" class="cursor-pointer hover:text-[#001f3f] whitespace-nowrap">NOSOTROS</span>
+    <span onclick="navigateTo('contacto')" class="cursor-pointer hover:text-[#001f3f] whitespace-nowrap">CONTACTO</span>
+    <span onclick="navigateTo('noticias')" class="cursor-pointer hover:text-[#001f3f] whitespace-nowrap">NOTICIAS</span>
 
-<!-- Neoprenos -->
-<div class="min-w-[140px]">
-<div class="font-bold mb-3">NEOPRENOS</div>
+    <button onclick="navigateTo('productos')" class="hidden lg:block bg-[#1f6f78] text-white px-5 py-2 rounded-full font-bold hover:scale-105 transition ml-4 whitespace-nowrap">
+      Explorar catálogo
+    </button>
+  </div>
 
-<a onclick="menuClick('Neoprenos','Hombre')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Hombre</a>
-<a onclick="menuClick('Neoprenos','Mujer')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Mujer</a>
-<a onclick="menuClick('Neoprenos','Niños')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Niños</a>
-<a onclick="menuClick('Neoprenos','Jacket')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Jacket</a>
-<a onclick="menuClick('Neoprenos','Botas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Botas</a>
+  <div class="flex items-center gap-3 sm:gap-6 ml-auto">
+    
+    <div onclick="navigateTo('cuenta')" class="cursor-pointer hover:text-[#0F4C5C] flex items-center gap-2 flex-shrink-0">
+      <i class="fa-regular fa-user text-xl"></i>
+      <span class="hidden xl:block text-sm font-bold">CUENTA</span>
+    </div>
 
-</div>
+<input type="text" id="search-input" placeholder="Buscar..." 
+       class="hidden md:block w-full max-w-[100px] xl:max-w-[180px] px-3 py-1.5 border border-gray-300 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-[#0F4C5C]">
 
-<!-- BODYBOARD -->
-<div class="min-w-[140px]">
-<div class="font-bold mb-3">BODYBOARD</div>
+    <button id="mobile-search-trigger" onclick="focusMobileSearch()" class="md:hidden text-black hover:text-[#0F4C5C] p-2">
+      <i class="fa-solid fa-magnifying-glass text-xl"></i>
+    </button>
 
-<a onclick="menuClick('Bodyboard','Bodyboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Bodyboards</a>
-<a onclick="menuClick('Bodyboard','Aletas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Aletas</a>
-<a onclick="menuClick('Bodyboard','Medias')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Medias</a>
-<a onclick="menuClick('Bodyboard','Sujetadores')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Sujetadores</a>
+    <button onclick="toggleCart()" class="relative">
+      <i id="cart-icon" class="fa-solid fa-cart-shopping text-xl"></i>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-[#ff4136] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+    </button>
 
-</div>
-
-<!-- PRENDAS TERMICAS -->
-<div class="min-w-[140px]">
-  <div class="font-bold mb-3">PRENDAS TERMICAS</div>
-
-  <a onclick="menuClick('Prendas Termicas','Licras')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Licras
-  </a>
-
-  <a onclick="menuClick('Prendas Termicas','Camisetas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Camisetas
-  </a>
-
-  <a onclick="menuClick('Prendas Termicas','Cambiadores')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Cambiadores
-  </a>
-
-  <a onclick="menuClick('Prendas Termicas','Gorras')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Gorras
-  </a>
-</div>
-
-<!-- WETBAGS -->
-<div class="min-w-[140px]">
-<div class="font-bold mb-3">WETBAGS</div>
-
-<a onclick="menuClick('Wetbags/Drybags','Wetbags')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-Wetbags
-</a>
-
-<a onclick="menuClick('Wetbags/Drybags','Drybags')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-Drybags
-</a>
-</div>
-
-<!-- SKATE -->
-<div class="min-w-[140px]">
-  <div class="font-bold mb-3">SKATE</div>
-
-  <a onclick="menuClick('Skateboards','Surfskates')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Surfskates
-  </a>
-
-  <a onclick="menuClick('Skateboards','Skateboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Skateboards
-  </a>
-
-  <a onclick="menuClick('Skateboards','Longboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Longboards
-  </a>
-
-  <a onclick="menuClick('Skateboards','Oldschool')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Oldschool
-  </a>
-
-  <a onclick="menuClick('Skateboards','Componentes')" class="block py-1 hover:text-[#001f3f] cursor-pointer">
-    Componentes
-  </a>
-</div>
-
-<!-- ACCESORIOS -->
-<div class="pr-6">
-<div class="font-bold mb-3">ACCESORIOS</div>
-
-<div class="grid grid-cols-2 gap-x-28 gap-y-3 text-sm">
-
-<div>
-<div class="text-xs font-bold text-gray-400 mt-1 mb-1">Equipamiento</div>
-<a onclick="menuClick('Accesorios','Leashes')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Leashes</a>
-<a onclick="menuClick('Accesorios','Quillas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Quillas</a>
-<a onclick="menuClick('Accesorios','Decks')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Decks</a>
-<a onclick="menuClick('Accesorios','Cera')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Cera</a>
-<a onclick="menuClick('Accesorios','Fundas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Fundas</a>
-
-<div class="text-xs font-bold text-gray-400 mt-3 mb-1">Transporte</div>
-<a onclick="menuClick('Accesorios','Racks')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Racks</a>
-<a onclick="menuClick('Accesorios','Bolsos')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Bolsos</a>
-</div>
-
-<div>
-<div class="text-xs font-bold text-gray-400 mt-1 mb-1">Reparación</div>
-<a onclick="menuClick('Accesorios','Herramientas')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Herramientas</a>
-<a onclick="menuClick('Accesorios','Reparacion')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Reparación</a>
-
-<div class="text-xs font-bold text-gray-400 mt-3 mb-1">Seguridad</div>
-<a onclick="menuClick('Accesorios','Cascos')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Cascos</a>
-<a onclick="menuClick('Accesorios','Proteccion')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Protección</a>
-
-<div class="text-xs font-bold text-gray-400 mt-3 mb-1">Otros</div>
-<a onclick="menuClick('Accesorios','Natacion')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Natación</a>
-</div>
-
-</div>
-</div>
-</div>
-
-</div>
-
-<!-- USADOS -->
-<div id="usados-menu" class="group relative">
-
-<span class="cursor-pointer hover:text-[#001f3f] flex items-center gap-1 whitespace-nowrap">
-  USADOS
-  <svg id="arrow-usados"
-    class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-      d="M19 9l-7 7-7-7"/>
-  </svg>
-</span>
-
-<div class="absolute left-1/2 -translate-x-1/2 top-full
-w-54	 bg-white shadow-lg rounded-lg p-4 mt-2
-opacity-0 invisible translate-y-2
-group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-transition-all duration-300 ease-out">
-
-<a onclick="navigateTo('vender'); closeUsadosMenu(); setTimeout(resetUsadosMenu, 50);" 
-class="block py-1 hover:text-[#001f3f] cursor-pointer">
-Vender
-</a>
-
-<a onclick="renderReRideInfo(); closeUsadosMenu(); setTimeout(resetUsadosMenu, 50);" 
-class="block py-1 hover:text-[#0F4C5C] cursor-pointer border-t border-gray-100 mt-1 pt-1 text-xs font-bold text-green-600">
-✨ ¿Cómo comprar usados?
-</a>
-
-</div>
-</div>
-
-<span onclick="navigateTo('nosotros')" class="cursor-pointer hover:text-[#001f3f] whitespace-nowrap">
-NOSOTROS
-</span>
-
-<span onclick="navigateTo('contacto')" class="cursor-pointer hover:text-[#001f3f] whitespace-nowrap">
-CONTACTO
-</span>
-
-<span onclick="navigateTo('noticias')" class="cursor-pointer hover:text-[#001f3f] whitespace-nowrap">
-NOTICIAS
-</span>
-
-<button onclick="navigateTo('productos')"
-class="hidden lg:block bg-[#1f6f78] text-white px-5 py-2 rounded-full font-bold hover:scale-105 transition ml-4 whitespace-nowrap">
-Explorar catálogo
-</button>
-
-</div>
-
-<!-- DERECHA -->
-<div class="flex items-center gap-8 ml-auto">
-
-<input 
-type="text"
-id="search-input"
-placeholder="Buscar productos..."
-class="hidden md:block w-full max-w-xs xl:max-w-md px-5 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#0F4C5C] focus:border-[#0F4C5C]"
-onkeydown="handleSearch(event)"
->
-
-<button id="mobile-search-trigger" onclick="focusMobileSearch()" class="md:hidden text-black hover:text-[#0F4C5C] transition-colors p-2">
-  <i class="fa-solid fa-magnifying-glass text-xl"></i>
-</button>
-
-<button onclick="toggleCart()" class="relative">
-<i id="cart-icon" class="fa-solid fa-cart-shopping text-xl"></i>
-<span id="cart-count"
-class="absolute -top-2 -right-2 bg-[#ff4136] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-0
-</span>
-</button>
-
-<button class="xl:hidden text-xl" onclick="toggleMenu()">
-<i class="fa-solid fa-bars"></i>
-</button>
-
-</div>
-
+    <button class="xl:hidden text-xl" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
 </nav>
 
 <!-- NOTIFICACIÓN CARRITO (FUERA DEL NAV) -->
@@ -1491,6 +1371,34 @@ var mkh_startX, mkh_offset;
 let currentPageCatalog = 1;
 const PRODUCTS_PER_PAGE = 16;
 
+// Configuración Real de Makaha Surf Shop
+const firebaseConfig = {
+  apiKey: "AIzaSyAIt7qDixDwPfPPMiqH6hQG2_pyEpwGLLc",
+  authDomain: "surfshop-4b8a9.firebaseapp.com",
+  projectId: "surfshop-4b8a9",
+  storageBucket: "surfshop-4b8a9.firebasestorage.app",
+  messagingSenderId: "443797950812",
+  appId: "1:443797950812:web:03b4006b1d32eda217f199",
+  measurementId: "G-JL5DHKCC2W"
+};
+
+// Inicializar Firebase
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+// Definir la variable auth para usarla en toda la tienda
+const auth = firebase.auth();
+
+// El "Guardián" que vigila la sesión en tiempo real
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    console.log("Sesión activa:", user.email);
+    // Aquí podrías hacer que el icono de "Mi Cuenta" cambie de color o muestre la inicial
+  } else {
+    console.log("No hay usuario activo");
+  }
+});
 
 function captureCheckoutData(){
 
@@ -7148,6 +7056,19 @@ function navigateTo(page, category = null, subcategory = null, id = null, fromPo
   else if (page === "reclamaciones") renderReclamaciones();
   if (page === "delivery") renderDelivery();
 
+else if (page === "reclamaciones") renderReclamaciones();
+  else if (page === "delivery") renderDelivery();
+  
+  // AQUÍ AGREGAS EL BLOQUE PARA LA CUENTA
+  else if (page === 'cuenta') {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      renderPerfilUsuario(user);
+    } else {
+      renderFormularioAuth();
+    }
+  }
+
   window.scrollTo(0, 0);
 }
 
@@ -8801,6 +8722,28 @@ const main = document.getElementById("main-content");
 main.style.marginRight = "0px";
 main.style.marginLeft = "0px";
 
+/* Lógica de Banner de Autocompletado */
+const userActivo = auth.currentUser;
+let bannerAutocompletar = "";
+
+if (userActivo) {
+    bannerAutocompletar = `
+        <div id="aviso-autocompletar" class="bg-[#0F4C5C]/10 border border-[#0F4C5C] p-4 rounded-xl mb-6 flex items-center justify-between animate-pulse">
+            <div class="flex items-center">
+                <div class="bg-[#0F4C5C] p-2 rounded-lg mr-3">
+                    <i class="fas fa-user-check text-white text-sm"></i>
+                </div>
+                <p class="text-xs md:text-sm text-[#0F4C5C] font-bold uppercase italic">
+                   ¿Usamos tus datos de usuario para el formulario?
+                </p>
+            </div>
+            <button onclick="autocompletarDatosUsuario()" class="bg-[#0F4C5C] text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-tighter hover:bg-[#1f6f78] transition shadow-md">
+                SÍ, AUTO-RELLENAR
+            </button>
+        </div>
+    `;
+}
+
 document.getElementById("main-content").innerHTML = `
 
 <section class="max-w-7xl mx-auto pt-[50px] pb-16 px-6">
@@ -8812,7 +8755,7 @@ document.getElementById("main-content").innerHTML = `
 <!-- FORMULARIO -->
 <div>
 
-<h1 class="text-3xl font-black mb-8 uppercase italic text-[#001f3f]">
+${bannerAutocompletar} <h1 class="text-3xl font-black mb-8 uppercase italic text-[#001f3f]">
 Checkout
 <span class="text-sm text-gray-500 normal-case font-medium">
 (completa tus datos)
@@ -12599,4 +12542,260 @@ function generarBoletaPDF(totalSoles) {
     doc.save(`Boleta_Makaha_${getVal('checkout-document')}.pdf`);
 }
 
+
+// --- LAS FUNCIONES DE DISEÑO (RENDERS) ---
+function renderFormularioAuth(modo = 'login') {
+    const main = document.getElementById("main-content");
+    if (!main) return;
+
+    if (modo === 'registro') {
+        main.innerHTML = `
+            <div class="flex flex-col items-center justify-center min-h-[75vh] px-4 py-10 bg-gray-50">
+                <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
+                    <div class="text-center mb-6">
+                        <img src="https://i.imgur.com/BPUD4wx.png" alt="Logo" class="w-16 mx-auto mb-2">
+                        <h2 class="text-2xl font-bold text-[#0F4C5C]">Únete a la Comunidad</h2>
+                        <p class="text-gray-500 text-sm">Regístrate para una compra más rápida</p>
+                    </div>
+                    <div class="space-y-3">
+                        <input id="reg-name" type="text" placeholder="Nombre Completo" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+                        <input id="reg-phone" type="tel" placeholder="Teléfono / WhatsApp" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+                        <input id="reg-dni" type="text" placeholder="DNI / CE" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+                        <input id="reg-email" type="email" placeholder="Correo electrónico" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+                        <input id="reg-pass" type="password" placeholder="Contraseña (mín. 6 caracteres)" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+                        
+                        <button onclick="ejecutarRegistroCompleto()" class="w-full bg-[#0F4C5C] text-white py-3 rounded-lg font-bold shadow-md hover:bg-[#1f6f78] transition">CREAR MI CUENTA</button>
+                        <button onclick="renderFormularioAuth('login')" class="w-full text-[#0F4C5C] text-sm font-medium hover:underline">¿Ya tienes cuenta? Inicia sesión</button>
+                    </div>
+                    <div id="auth-error" class="mt-4 text-red-500 text-sm text-center hidden font-medium"></div>
+                </div>
+            </div>
+        `;
+    } else {
+        main.innerHTML = `
+            <div class="flex flex-col items-center justify-center min-h-[60vh] px-4 py-10 bg-gray-50">
+                <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
+                    <div class="text-center mb-8">
+                        <img src="https://i.imgur.com/BPUD4wx.png" alt="Logo" class="w-20 mx-auto mb-4">
+                        <h2 class="text-2xl font-bold text-[#0F4C5C]">Mi Cuenta Makaha</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <input id="mkh-email" type="email" placeholder="Correo" class="w-full px-4 py-3 border rounded-lg outline-none">
+                        <input id="mkh-pass" type="password" placeholder="Contraseña" class="w-full px-4 py-3 border rounded-lg outline-none">
+                        <button onclick="handleLogin()" class="w-full bg-[#0F4C5C] text-white py-3 rounded-lg font-bold hover:bg-[#1f6f78] transition">INICIAR SESIÓN</button>
+                        <button onclick="renderFormularioAuth('registro')" class="w-full border border-[#0F4C5C] text-[#0F4C5C] py-3 rounded-lg font-bold hover:bg-gray-50 transition">SOY NUEVO / CREAR CUENTA</button>
+                    </div>
+                    <div id="auth-error" class="mt-4 text-red-500 text-sm text-center hidden font-medium"></div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+function renderPerfilUsuario(user) {
+    const main = document.getElementById("main-content");
+    if (!main) return;
+    
+    let nombre = "Surfer";
+    let telefono = "No registrado";
+    let dni = "No registrado";
+    
+    // Separar la info guardada con el símbolo |
+    if (user.displayName && user.displayName.includes('|')) {
+        const datos = user.displayName.split('|');
+        nombre = datos[0] || "Surfer";
+        telefono = datos[1] || "No registrado";
+        dni = datos[2] || "No registrado"; 
+    } else {
+        nombre = user.displayName || "Surfer";
+    }
+
+    main.innerHTML = `
+        <div class="flex flex-col items-center justify-center min-h-[85vh] px-4 py-10 bg-gray-50">
+            <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg border border-gray-100">
+                
+                <div class="flex items-center space-x-4 mb-8 border-b pb-6">
+                    <div class="w-20 h-20 bg-[#0F4C5C] text-white rounded-full flex items-center justify-center text-3xl font-bold shadow-lg">
+                        ${nombre.charAt(0).toUpperCase()}
+                    </div>
+                    <div class="text-left">
+                        <h2 class="text-2xl font-bold text-gray-800 italic uppercase">¡ALOHA, ${nombre}!</h2>
+                        <p class="text-gray-500 text-sm">Miembro Oficial Makaha</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 text-left">
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-400 uppercase font-bold mb-1">Nombre</p>
+                        <p class="text-gray-700 font-medium">${nombre}</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-400 uppercase font-bold mb-1">DNI / Documento</p>
+                        <p class="text-gray-700 font-medium">${dni}</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-400 uppercase font-bold mb-1">Teléfono</p>
+                        <p class="text-gray-700 font-medium">${telefono}</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase font-bold mb-1">Contraseña</p>
+                            <p class="text-gray-700 font-medium tracking-widest">••••••••</p>
+                        </div>
+                        <button onclick="solicitarCambioClave()" class="text-[#0F4C5C] p-1">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 text-left mb-8">
+                    <p class="text-xs text-gray-400 uppercase font-bold mb-1">Correo Electrónico</p>
+                    <p class="text-gray-700 font-medium">${user.email}</p>
+                </div>
+
+                <div class="space-y-3">
+                    <button onclick="navigateTo('productos')" class="w-full py-4 bg-[#0F4C5C] text-white font-bold rounded-xl shadow-md hover:scale-[1.01] transition">
+                        IR AL CATÁLOGO
+                    </button>
+                    <div class="flex gap-2">
+                        <button onclick="handleLogout()" class="flex-1 py-3 bg-white text-gray-600 font-bold rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                            CERRAR SESIÓN
+                        </button>
+                        <button onclick="confirmarEliminarCuenta()" class="px-4 py-3 bg-red-50 text-red-500 rounded-xl border border-red-100 hover:bg-red-100 transition">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="perfil-feedback" class="mt-4 text-sm text-center hidden font-medium"></div>
+            </div>
+        </div>
+    `;
+}
+
+// --- LÓGICA DE LOS BOTONES (HANDLERS) ---
+async function ejecutarRegistroCompleto() {
+    const nombre = document.getElementById('reg-name').value.trim();
+    const tel = document.getElementById('reg-phone').value.trim();
+    const dni = document.getElementById('reg-dni').value.trim();
+    const email = document.getElementById('reg-email').value.trim();
+    const pass = document.getElementById('reg-pass').value;
+    const errorDiv = document.getElementById('auth-error');
+
+    if (!nombre || !tel || !dni || !email || pass.length < 6) {
+        errorDiv.innerText = "Completa todos los campos correctamente.";
+        errorDiv.classList.remove('hidden');
+        return;
+    }
+
+    try {
+        const userCredential = await auth.createUserWithEmailAndPassword(email, pass);
+        // GUARDAMOS LAS 3 COSAS JUNTAS
+        const info = `${nombre}|${tel}|${dni}`;
+        await userCredential.user.updateProfile({ displayName: info });
+        
+        alert("¡Cuenta creada, bienvenido al Team Makaha!");
+        navigateTo('inicio');
+    } catch (error) {
+        errorDiv.innerText = "Error: " + error.message;
+        errorDiv.classList.remove('hidden');
+    }
+}
+
+async function handleLogin() {
+    const email = document.getElementById('mkh-email').value.trim();
+    const pass = document.getElementById('mkh-pass').value;
+    const errorDiv = document.getElementById('auth-error');
+
+    try {
+        await auth.signInWithEmailAndPassword(email, pass);
+        navigateTo('inicio');
+    } catch (error) {
+        errorDiv.innerText = "Error: " + error.message;
+        errorDiv.classList.remove('hidden');
+    }
+}
+
+function handleLogout() {
+    auth.signOut().then(() => navigateTo('inicio'));
+}
+
+function solicitarCambioClave() {
+    const feedback = document.getElementById('perfil-feedback');
+    const email = auth.currentUser.email;
+
+    if (confirm("¿Deseas recibir un correo para cambiar tu contraseña?")) {
+        auth.sendPasswordResetEmail(email)
+            .then(() => {
+                feedback.innerText = "Te hemos enviado un link de cambio a " + email;
+                feedback.className = "mt-4 text-sm text-center text-green-600 font-medium";
+                feedback.classList.remove('hidden');
+            })
+            .catch((error) => {
+                feedback.innerText = "Error: " + error.message;
+                feedback.className = "mt-4 text-sm text-center text-red-500 font-medium";
+                feedback.classList.remove('hidden');
+            });
+    }
+}
+
+function confirmarEliminarCuenta() {
+    const user = auth.currentUser;
+    const confirmacion = prompt("Esta acción es permanente. Para eliminar tu cuenta de Makaha, escribe 'ELIMINAR':");
+
+    if (confirmacion === "ELIMINAR") {
+        user.delete().then(() => {
+            alert("Cuenta eliminada correctamente. Esperamos verte pronto de nuevo en el agua.");
+            location.reload();
+        }).catch((error) => {
+            alert("Por seguridad, para eliminar tu cuenta debes haber iniciado sesión recientemente. Vuelve a entrar e intenta de nuevo.");
+        });
+    }
+}
+
+function autocompletarDatosUsuario() {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    let nombre = "", telefono = "", dni = "";
+    if (user.displayName && user.displayName.includes('|')) {
+        const datos = user.displayName.split('|');
+        nombre = datos[0]; telefono = datos[1]; dni = datos[2];
+    } else {
+        nombre = user.displayName || "";
+    }
+
+    // 1. Llenamos los campos
+    const inputs = {
+        'checkout-name': nombre,
+        'checkout-phone': telefono,
+        'checkout-document': dni,
+        'checkout-email': user.email
+    };
+
+    for (let id in inputs) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.value = inputs[id];
+            // DISPARAMOS EL EVENTO 'INPUT' MANUALMENTE
+            // Esto hace que tu función setupCheckoutValidation() despierte sola
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+    }
+
+    // 2. Marcamos los términos y disparamos su evento 'change'
+    const terms = document.getElementById('terms-checkbox');
+    if (terms) {
+        terms.checked = true;
+        terms.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    // 3. Ocultamos el banner
+    const aviso = document.getElementById('aviso-autocompletar');
+    if (aviso) aviso.style.display = 'none';
+
+    console.log("¡Autocompletado Makaha ejecutado y validado!");
+}
+
 </script>
+</body>
+</html>
