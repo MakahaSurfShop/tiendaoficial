@@ -1495,7 +1495,8 @@ stockBySize:{
 {
   "id": 3,
   "name": "Traje Gul Response SDL FL Steamer 3/2mm",
-  "price": 199,
+  "price": 160,
+  "condition": "Oferta",
   "category": "Neoprenos",
   "subcategory": "Hombre",
   "keywords": ["wetsuit", "neopreno 3/2", "traje surf hombre", "fullsuit", "gul wetsuit", "traje agua fria", "surf gear"],
@@ -1527,7 +1528,8 @@ stockBySize:{
 {
   "id": 4,
   "name": "Traje Gul Response Ladies FX 3/2mm Blindstitched Steamer",
-  "price": 270,
+  "price": 216,
+  "condition": "Oferta",
   "category": "Neoprenos",
   "subcategory": "Mujer",
   "keywords": ["wetsuit mujer", "neopreno mujer 3/2", "traje surf mujer", "fullsuit mujer", "gul wetsuit mujer", "surf gear mujer", "ladies fx", "high performance"],
@@ -1621,8 +1623,9 @@ stockBySize:{
 {
   "id": 8,
   "name": "Traje Response FX CZ BS Steamer 3/2mm",
-  "price": 270,
+  "price": 216,
   "category": "Neoprenos",
+  "condition": "Oferta",
   "subcategory": "Hombre",
   "keywords": ["traje", "wetsuit", "neopreno", "gul", "surf", "trajes", "response fx", "competition"],
   "img": "https://res.cloudinary.com/dtz97n9cv/image/upload/v1773880262/5_a8dvpk.jpg",
@@ -2422,7 +2425,7 @@ stockBySize:{"8'0":1}
   "id": 49,
   "name": "Traje Onda flex FRONTZIP 4/3mm",
   "price": 169,
-  "condition": "Oferta",
+  "condition": "",
   "category": "Neoprenos",
   "subcategory": "Hombre",
   "keywords": ["traje", "wetsuit", "neopreno", "onda brasil", "surf", "4/3mm", "invierno", "front zip"],
@@ -2483,7 +2486,8 @@ stockBySize:{"8'0":1}
 {
   "id": 54,
   "name": "Traje Gul Junior G-Force Back Zip 3mm",
-  "price": 100,
+  "price": 80,
+  "condition": "Oferta",
   "category": "Neoprenos",
   "subcategory": "Niños",
   "keywords": ["traje", "wetsuit", "neopreno", "kids", "surf", "trajes", "junior", "g-force"],
@@ -2533,7 +2537,8 @@ stockBySize:{"8'0":1}
 {
   "id": 56,
   "name": "Traje Gul Response SDL Kids 3/2mm",
-  "price": 100,
+  "price": 60,
+  "condition": "Oferta",
   "category": "Neoprenos",
   "subcategory": "Niños",
   "keywords": ["traje", "wetsuit", "neopreno", "kids", "surf", "trajes", "niños", "fullsuit"],
@@ -3212,7 +3217,6 @@ stockBySize:{"15gr":35}
 id:92,
 name:"Surf waterborne adapter",
 price:100,
-condition:"Oferta",
 category:"Skateboards",
 subcategory:"Surfskates",
 keywords:["skateboards","surf","surfskate","skateboard","skate"],
@@ -4689,8 +4693,9 @@ stockByVariant:{
 {
 id:147,
 name:"Response 1Mm Fl Thermotop GUL",
-price:90,
+price:72,
 category:"Neoprenos",
+condition: "Oferta",
 subcategory:"Jacket",
 keywords:["licras","camisetas","termicas","camiseta","termica"],
 img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1774421401/1822238_g2cdci.jpg",
@@ -4708,8 +4713,9 @@ stockBySize:{"S":1,"M":1,"L":2,"XL":2}
 {
 id:148,
 name:"Response 3Mm FL Jacket GUL",
-price:90,
+price:72,
 category:"Neoprenos",
+condition: "Oferta",
 subcategory:"Jacket",
 keywords:["licras","camisetas","termicas","camiseta","termica"],
 img:"https://res.cloudinary.com/dfdwxgvdg/image/upload/v1773706751/ASDyu_gdaq35.jpg",
@@ -6200,7 +6206,6 @@ stockBySize:{"6,8":2,"6,10":1}
     id: 212,
     name: "Makaha Waterborne Surfskate",
     price: 247,
-    condition:"Oferta",
     category: "Skateboards",
     subcategory: "Surfskates",
     keywords: ["surfskate", "waterborne", "skate", "surf", "skateboards", "training"],
@@ -6229,7 +6234,6 @@ stockBySize:{"6,8":2,"6,10":1}
     id: 213,
     name: "Makaha Waterborne Waysted Surfskate",
     price: 213,
-    condition:"Oferta",
     category: "Skateboards",
     subcategory: "Surfskates",
     keywords: ["waysted", "surfskate", "skate", "waterborne", "skateboards"],
@@ -7249,51 +7253,70 @@ document.getElementById("main-content").innerHTML=`
       <div class="w-20 h-1.5 bg-red-600 mt-2"></div>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
-      ${(() => {
-          // Filtrado por condición "Oferta"
-          const ofertas = products_db.tablas.filter(p => p.condition === "Oferta").slice(0, 6);
-          
-          if (ofertas.length === 0) {
-              return `<p class="w-full text-center py-10 text-gray-400 italic">Próximamente nuevas ofertas...</p>`;
-          }
+    <div class="max-h-[700px] overflow-y-auto px-2 py-4 custom-scrollbar">
+        <div class="flex flex-wrap justify-center gap-6">
+          ${(() => {
+              // 1. Quitamos el .slice(0, 6) para mostrar todos los productos
+              const ofertas = products_db.tablas.filter(p => p.condition === "Oferta");
+              
+              if (ofertas.length === 0) {
+                  return `<p class="w-full text-center py-10 text-gray-400 italic">Próximamente nuevas ofertas...</p>`;
+              }
 
-          return ofertas.map(p => {
-              const dcto = p.descuento || 20; 
-              const precioOriginal = p.price / (1 - (dcto / 100));
+              return ofertas.map(p => {
+                  const dcto = p.descuento || 20; 
+                  const precioOriginal = p.price / (1 - (dcto / 100));
 
-              return `
-                <div class="bg-white border border-gray-100 rounded-sm p-4 flex flex-col group cursor-pointer hover:shadow-lg transition-all 
-                            w-full md:w-[280px] lg:w-[300px]" 
-                     onclick="navigateTo('detalle', null, null, ${p.id})">
-                  
-                  <div class="relative aspect-square bg-[#f9f9f9] mb-4 overflow-hidden">
-                    <div class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded-sm z-10">
-                      OFERTA
+                  return `
+                    <div class="bg-white border border-gray-100 rounded-sm p-4 flex flex-col group cursor-pointer hover:shadow-lg transition-all 
+                                w-full md:w-[280px] lg:w-[300px]" 
+                         onclick="navigateTo('detalle', null, null, ${p.id})">
+                      
+                      <div class="relative aspect-square bg-[#f9f9f9] mb-4 overflow-hidden">
+                        <div class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded-sm z-10">
+                          OFERTA
+                        </div>
+                        <img src="${p.img}" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500">
+                      </div>
+
+                      <div class="flex-1 flex flex-col items-center text-center">
+                        <h3 class="text-[13px] font-black text-gray-900 uppercase leading-tight mb-1 h-10 line-clamp-2">${p.name}</h3>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase mb-3">${p.category}</p>
+                        
+                        <div class="mt-auto">
+                          <p class="text-gray-400 text-[11px] line-through font-bold">$${precioOriginal.toFixed(2)}</p>
+                          <p class="text-gray-900 text-lg font-black italic">$${p.price.toFixed(2)}</p>
+                        </div>
+
+                        <button class="mt-5 w-full py-3 bg-[#1f6f78] text-white text-[11px] font-black uppercase rounded-full hover:bg-black hover:shadow-md transition-all duration-300">
+                          Ver Oferta
+                        </button>
+                      </div>
                     </div>
-                    <img src="${p.img}" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500">
-                  </div>
-
-                  <div class="flex-1 flex flex-col items-center text-center">
-                    <h3 class="text-[13px] font-black text-gray-900 uppercase leading-tight mb-1 h-10 line-clamp-2">${p.name}</h3>
-                    <p class="text-[10px] font-bold text-gray-400 uppercase mb-3">${p.category}</p>
-                    
-                    <div class="mt-auto">
-                      <p class="text-gray-400 text-[11px] line-through font-bold">$${precioOriginal.toFixed(2)}</p>
-                      <p class="text-gray-900 text-lg font-black italic">$${p.price.toFixed(2)}</p>
-                    </div>
-
-                    <button class="mt-5 w-full py-3 bg-[#1f6f78] text-white text-[11px] font-black uppercase rounded-full hover:bg-black hover:shadow-md transition-all duration-300">
-                      Ver Oferta
-                    </button>
-                  </div>
-                </div>
-              `;
-          }).join("");
-      })()}
+                  `;
+              }).join("");
+          })()}
+        </div>
     </div>
-
+  </div>
 </section>
+
+<style>
+/* Estilo para que la barra de scroll de las ofertas sea discreta y no rompa el diseño premium */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e5e7eb; /* Gris suave */
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #1f6f78; /* Color de tu marca al pasar el mouse */
+}
+</style>
 
 <!-- PRODUCTOS DESTACADOS -->
 
@@ -7819,7 +7842,6 @@ function toggleCategory(cat) {
 }
 
 /* ================= PRODUCTOS ================= */
-
 function renderFilteredProducts(category, subcategory, searchQuery = null) {
     // Definimos la cantidad según el dispositivo
     const PRODUCTS_PER_PAGE_DYNAMIC = window.innerWidth < 768 ? 4 : 12;
@@ -7876,6 +7898,9 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
                 <div class="absolute top-1.5 md:top-3 left-1.5 md:left-3 z-30 flex flex-col gap-0.5 md:gap-1">
                     ${isAgotado ? `<span class="bg-gray-800 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase">AGOTADO</span>` : ''}
                     ${isUltimo ? `<span class="bg-yellow-400 text-black text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase shadow-sm">¡ÚLTIMO!</span>` : ''}
+                    
+                    ${p.condition === "Oferta" ? `<span class="bg-red-600 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase shadow-sm">OFERTA</span>` : ''}
+                    
                     ${p.condition === "Segunda" ? `
                         <span onclick="event.stopPropagation(); renderReRideInfo()" 
                               class="bg-blue-600 hover:bg-blue-700 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase cursor-pointer transition-colors shadow-sm">
@@ -7885,32 +7910,32 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
                 </div>
             </div>
 
-<div class="p-3 md:p-5 flex flex-col items-start min-w-0" style="text-align: left !important;">
-    <h3 onclick="navigateTo('detalle',null,null,${p.id}); window.scrollTo(0,0);"
-        class="font-bold text-[10px] md:text-[13px] uppercase text-gray-800 cursor-pointer hover:text-red-700 mb-2 md:mb-3 w-full block break-words leading-tight"
-        style="text-align: left !important; margin-left: 0 !important;">
-        ${p.name}
-    </h3>
+            <div class="p-3 md:p-5 flex flex-col items-start min-w-0" style="text-align: left !important;">
+                <h3 onclick="navigateTo('detalle',null,null,${p.id}); window.scrollTo(0,0);"
+                    class="font-bold text-[10px] md:text-[13px] uppercase text-gray-800 cursor-pointer hover:text-red-700 mb-2 md:mb-3 w-full block break-words leading-tight"
+                    style="text-align: left !important; margin-left: 0 !important;">
+                    ${p.name}
+                </h3>
 
-    <div class="flex flex-wrap md:flex-nowrap justify-between items-end md:items-center w-full gap-2 mt-auto" style="text-align: left !important;">
-        
-        <div class="min-w-0 flex-1">
-            <p class="text-[12px] md:text-[17px] font-black text-black leading-none whitespace-nowrap">$${p.price.toFixed(2)}</p>
-            <p class="text-[10px] md:text-[11px] text-gray-400 mt-1 font-medium leading-none whitespace-nowrap">S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}</p>
-        </div>
+                <div class="flex flex-wrap md:flex-nowrap justify-between items-end md:items-center w-full gap-2 mt-auto" style="text-align: left !important;">
+                    
+                    <div class="min-w-0 flex-1">
+                        <p class="text-[12px] md:text-[17px] font-black text-black leading-none whitespace-nowrap">$${p.price.toFixed(2)}</p>
+                        <p class="text-[10px] md:text-[11px] text-gray-400 mt-1 font-medium leading-none whitespace-nowrap">S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}</p>
+                    </div>
 
-        <div class="flex gap-1 shrink-0">
-            <button onclick="navigateTo('detalle', null, null, ${p.id}); window.scrollTo(0,0);" 
-                    class="hidden md:inline-block bg-gray-100 hover:bg-black hover:text-white p-1.5 md:p-2.5 rounded-full transition-colors">
-                <i class="fa-solid fa-eye text-[9px] md:text-xs"></i>
-            </button>
-            <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
-                    class="bg-black hover:bg-red-700 text-white p-1.5 md:p-2.5 rounded-full shadow-lg transition-colors">
-                <i class="fa-solid fa-cart-plus text-[10px] md:text-xs"></i>
-            </button>
-        </div>
-    </div>
-</div>
+                    <div class="flex gap-1 shrink-0">
+                        <button onclick="navigateTo('detalle', null, null, ${p.id}); window.scrollTo(0,0);" 
+                                class="hidden md:inline-block bg-gray-100 hover:bg-black hover:text-white p-1.5 md:p-2.5 rounded-full transition-colors">
+                            <i class="fa-solid fa-eye text-[9px] md:text-xs"></i>
+                        </button>
+                        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
+                                class="bg-black hover:bg-red-700 text-white p-1.5 md:p-2.5 rounded-full shadow-lg transition-colors">
+                            <i class="fa-solid fa-cart-plus text-[10px] md:text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         `;
     }).join("");
@@ -7922,41 +7947,39 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
         productsArea = document.getElementById("products-area");
     }
 
-if (productsArea) {
+    if (productsArea) {
         // Título dinámico
         const displayTitle = searchQuery ? `Resultados: ${searchQuery}` : (subcategory ? subcategory : "Catálogo General");
 
         productsArea.innerHTML = ` 
-    <section class="pt-0 pb-6 md:pb-12 max-w-full mx-auto px-4 md:px-6 overflow-hidden">
-        <div class="flex flex-col items-center mb-6 md:mb-8 gap-4 w-full">
-            
+        <section class="pt-0 pb-6 md:pb-12 max-w-full mx-auto px-4 md:px-6 overflow-hidden">
+            <div class="flex flex-col items-center mb-6 md:mb-8 gap-4 w-full">
+                <h2 class="text-[16px] md:text-2xl heading-font uppercase text-center leading-[1.1] break-words">
+                    ${displayTitle}
+                </h2>
+            </div>
 
-            <h2 class="text-[16px] md:text-2xl heading-font uppercase text-center leading-[1.1] break-words">
-                ${displayTitle}
-            </h2>
-        </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
+                ${html || `<p class="col-span-full text-center py-10 text-gray-500">No se encontraron productos.</p>`}
+            </div>
+            <div class="flex justify-center items-center gap-4 mt-10">
+                <button 
+                    onclick="changePage(-1, ${category ? `'${category}'` : 'null'}, ${subcategory ? `'${subcategory}'` : 'null'}, ${searchQuery ? `'${searchQuery}'` : 'null'}); window.scrollTo(0,0);"
+                    class="px-4 py-2 border rounded text-sm ${currentPageCatalog === 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">
+                    ←
+                </button>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
-            ${html || `<p class="col-span-full text-center py-10 text-gray-500">No se encontraron productos.</p>`}
-        </div>
-        <div class="flex justify-center items-center gap-4 mt-10">
-            <button 
-                onclick="changePage(-1, ${category ? `'${category}'` : 'null'}, ${subcategory ? `'${subcategory}'` : 'null'}, ${searchQuery ? `'${searchQuery}'` : 'null'}); window.scrollTo(0,0);"
-                class="px-4 py-2 border rounded text-sm ${currentPageCatalog === 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">
-                ←
-            </button>
+                <span class="text-sm font-bold">
+                    ${currentPageCatalog} / ${totalPages}
+                </span>
 
-            <span class="text-sm font-bold">
-                ${currentPageCatalog} / ${totalPages}
-            </span>
-
-            <button 
-                onclick="changePage(1, ${category ? `'${category}'` : 'null'}, ${subcategory ? `'${subcategory}'` : 'null'}, ${searchQuery ? `'${searchQuery}'` : 'null'}); window.scrollTo(0,0);"
-                class="px-4 py-2 border rounded text-sm ${currentPageCatalog === totalPages ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">
-                →
-            </button>
-        </div>
-    </section>
+                <button 
+                    onclick="changePage(1, ${category ? `'${category}'` : 'null'}, ${subcategory ? `'${subcategory}'` : 'null'}, ${searchQuery ? `'${searchQuery}'` : 'null'}); window.scrollTo(0,0);"
+                    class="px-4 py-2 border rounded text-sm ${currentPageCatalog === totalPages ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">
+                    →
+                </button>
+            </div>
+        </section>
 `;
     }
 }
@@ -12661,7 +12684,7 @@ function renderFormularioAuth(modo = 'login') {
                     <div class="space-y-3">
                         <input id="reg-name" type="text" placeholder="Nombre Completo" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         <input id="reg-phone" type="tel" placeholder="Teléfono / WhatsApp" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
-                        <input id="reg-dni" type="text" placeholder="DNI / CE" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+                        <input id="reg-dni" type="text" placeholder="DNI / RUC" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         <input id="reg-email" type="email" placeholder="Correo electrónico" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         <input id="reg-pass" type="password" placeholder="Contraseña (mín. 6 caracteres)" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         
@@ -12701,7 +12724,6 @@ function renderPerfilUsuario(user) {
     let telefono = "No registrado";
     let dni = "No registrado";
     
-    // Separar la info guardada con el símbolo |
     if (user.displayName && user.displayName.includes('|')) {
         const datos = user.displayName.split('|');
         nombre = datos[0] || "Surfer";
@@ -12712,63 +12734,99 @@ function renderPerfilUsuario(user) {
     }
 
     main.innerHTML = `
-        <div class="flex flex-col items-center justify-center min-h-[85vh] px-4 py-10 bg-gray-50">
-            <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg border border-gray-100">
+        <div class="flex flex-col items-center justify-center min-h-[90vh] px-4 py-12 bg-gradient-to-b from-white to-gray-100">
+            <div class="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] w-full max-w-lg overflow-hidden border border-gray-50">
                 
-                <div class="flex items-center space-x-4 mb-8 border-b pb-6">
-                    <div class="w-20 h-20 bg-[#0F4C5C] text-white rounded-full flex items-center justify-center text-3xl font-bold shadow-lg">
-                        ${nombre.charAt(0).toUpperCase()}
-                    </div>
-                    <div class="text-left">
-                        <h2 class="text-2xl font-bold text-gray-800 italic uppercase">¡ALOHA, ${nombre}!</h2>
-                        <p class="text-gray-500 text-sm">Miembro Oficial Makaha</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 text-left">
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                        <p class="text-xs text-gray-400 uppercase font-bold mb-1">Nombre</p>
-                        <p class="text-gray-700 font-medium">${nombre}</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                        <p class="text-xs text-gray-400 uppercase font-bold mb-1">DNI / Documento</p>
-                        <p class="text-gray-700 font-medium">${dni}</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                        <p class="text-xs text-gray-400 uppercase font-bold mb-1">Teléfono</p>
-                        <p class="text-gray-700 font-medium">${telefono}</p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 flex justify-between items-center">
-                        <div>
-                            <p class="text-xs text-gray-400 uppercase font-bold mb-1">Contraseña</p>
-                            <p class="text-gray-700 font-medium tracking-widest">••••••••</p>
+                <div class="h-24 bg-[#0F4C5C] w-full relative">
+                    <div class="absolute -bottom-12 left-1/2 -translate-x-1/2">
+                        <div class="w-24 h-24 bg-white rounded-full p-1 shadow-lg">
+                            <div class="w-full h-full bg-[#0F4C5C] rounded-full flex items-center justify-center text-3xl font-black text-white border-2 border-white">
+                                ${nombre.charAt(0).toUpperCase()}
+                            </div>
                         </div>
-                        <button onclick="solicitarCambioClave()" class="text-[#0F4C5C] p-1">
-                            <i class="fas fa-eye"></i>
-                        </button>
                     </div>
                 </div>
 
-                <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 text-left mb-8">
-                    <p class="text-xs text-gray-400 uppercase font-bold mb-1">Correo Electrónico</p>
-                    <p class="text-gray-700 font-medium">${user.email}</p>
-                </div>
+                <div class="pt-16 pb-8 px-8">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-black text-gray-900 italic uppercase tracking-tighter">¡Aloha, ${nombre}!</h2>
+                        <span class="inline-block px-3 py-1 bg-red-50 text-red-600 text-[10px] font-bold uppercase tracking-widest rounded-full mt-2">
+                            Miembro Oficial Makaha
+                        </span>
+                    </div>
 
-                <div class="space-y-3">
-                    <button onclick="navigateTo('productos')" class="w-full py-4 bg-[#0F4C5C] text-white font-bold rounded-xl shadow-md hover:scale-[1.01] transition">
-                        IR AL CATÁLOGO
-                    </button>
-                    <div class="flex gap-2">
-                        <button onclick="handleLogout()" class="flex-1 py-3 bg-white text-gray-600 font-bold rounded-xl border border-gray-200 hover:bg-gray-50 transition">
-                            CERRAR SESIÓN
+                    <div class="grid grid-cols-1 gap-3 mb-8">
+                        <div class="flex items-center p-4 bg-gray-50 rounded-2xl border border-gray-100 group hover:bg-white hover:border-blue-100 transition-all">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm mr-4 text-[#0F4C5C]">
+                                <i class="fas fa-user text-sm"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-[10px] text-gray-400 uppercase font-black tracking-wider">Nombre Completo</p>
+                                <p class="text-gray-800 font-bold">${nombre}</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="flex items-center p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                                <div class="text-left">
+                                    <p class="text-[10px] text-gray-400 uppercase font-black tracking-wider">DNI / RUC</p>
+                                    <p class="text-gray-800 font-bold">${dni}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                                <div class="text-left">
+                                    <p class="text-[10px] text-gray-400 uppercase font-black tracking-wider">Teléfono</p>
+                                    <p class="text-gray-800 font-bold">${telefono}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm mr-4 text-[#0F4C5C]">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </div>
+                            <div class="text-left flex-1">
+                                <p class="text-[10px] text-gray-400 uppercase font-black tracking-wider">Email Registrado</p>
+                                <p class="text-gray-800 font-bold truncate">${user.email}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm mr-4 text-[#0F4C5C]">
+                                    <i class="fas fa-lock text-sm"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-[10px] text-gray-400 uppercase font-black tracking-wider">Seguridad</p>
+                                    <p class="text-gray-800 font-bold tracking-widest">••••••••</p>
+                                </div>
+                            </div>
+                            <button onclick="solicitarCambioClave()" class="text-[10px] font-black text-[#0F4C5C] bg-white px-3 py-1.5 rounded-lg shadow-sm hover:bg-[#0F4C5C] hover:text-white transition-all uppercase">
+                                Cambiar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <button onclick="navigateTo('productos')" class="w-full py-4 bg-[#0F4C5C] text-white font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-blue-900/20 hover:bg-black transition-all duration-300 transform hover:-translate-y-1">
+                            Explorar Catálogo
                         </button>
-                        <button onclick="confirmarEliminarCuenta()" class="px-4 py-3 bg-red-50 text-red-500 rounded-xl border border-red-100 hover:bg-red-100 transition">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                        
+                        <div class="flex gap-3">
+                            <button onclick="handleLogout()" class="flex-1 py-4 bg-white text-gray-500 font-bold text-xs uppercase tracking-widest rounded-2xl border border-gray-200 hover:bg-gray-50 transition-all">
+                                Salir de la cuenta
+                            </button>
+                            <button onclick="confirmarEliminarCuenta()" class="px-5 py-4 bg-red-50 text-red-400 rounded-2xl hover:bg-red-500 hover:text-white transition-all duration-300">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div id="perfil-feedback" class="mt-4 text-sm text-center hidden font-medium"></div>
+                
+                <div id="perfil-feedback" class="pb-6 text-sm text-center hidden font-medium"></div>
             </div>
+            
+            <p class="mt-8 text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em]">Makaha Surf Shop — Est. 2013</p>
         </div>
     `;
 }
