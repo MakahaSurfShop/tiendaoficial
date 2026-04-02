@@ -6,8 +6,8 @@
     
     <meta name="google-site-verification" content="GOf9z22KQLEo-48ARnbAoyt1nzCHGfva-0TKJi1QjQ4" />
 
-    <title>Makaha Surf Shop Perú | Tablas de Surf, Wetsuits y Accesorios en Barranco, Lima</title>
-    <meta name="description" content="Compra tablas de surf, wetsuits, neoprenos y accesorios en Makaha Surf Shop. Tienda de surf en Barranco, Lima con envíos rápidos a todo el Perú.">
+    <title>Makaha Surf Shop Perú | Tablas de Surf, Wetsuits y Accesorios en Lima-Barranco, Perú</title>
+    <meta name="description" content="Compra tablas de surf, wetsuits, neoprenos y accesorios de surf, bodyboard y skate en Makaha Surf and Skate Shop. Tienda de surf en Lima-Barranco. Con envíos rápidos a todo lima y el Perú.">
 
     <meta name="robots" content="index, follow">
     <meta name="author" content="Makaha Surf Shop">
@@ -1178,41 +1178,39 @@ Redirigiendo...
         </div>
     </div>
 
-    <div id="whatsapp-modal" class="fixed inset-0 z-[100000] flex items-center justify-center bg-black/95 backdrop-blur-md px-4">
-        <div class="bg-white w-full max-w-md rounded-2xl p-8 shadow-2xl border-t-4 border-green-500">
-            <div class="flex justify-center mb-6">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                    <i class="fa-brands fa-whatsapp text-4xl text-green-600"></i>
-                </div>
-            </div>
-
-            <h2 class="text-xl font-black text-center uppercase tracking-tight text-gray-900 mb-4">
-                Confirmación Obligatoria
-            </h2>
-
-<p class="text-[13px] text-gray-600 text-center leading-relaxed mb-8">
-    ¡<span class="text-red-600 font-bold">IMPORTANTE</span>!: Al finalizar tu compra, 
-    <span class="font-bold text-black uppercase"> 
-        serás redirigido automáticamente a WhatsApp. 
-    </span> 
-    Asegúrate de tener la aplicación o versión web abierta para confirmar tu pedido y coordinar la entrega.
-    <br><br>
-    <span class="italic font-medium text-gray-500">¡Bienvenido a Makaha Surf Shop!</span>
-</p>
-
-            <div class="space-y-4">
-                <label class="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors border border-gray-200">
-                    <input type="checkbox" id="confirm-whatsapp" class="w-5 h-5 accent-green-600 cursor-pointer">
-                    <span class="text-[10px] font-bold uppercase text-gray-700 select-none">He leído y acepto las condiciones</span>
-                </label>
-
-                <button id="btn-entendido" disabled 
-                        class="w-full py-4 bg-gray-300 text-white font-black uppercase text-xs tracking-widest rounded-xl transition-all cursor-not-allowed">
-                    Continuar al sitio
-                </button>
+<div id="whatsapp-modal" class="hidden fixed inset-0 z-[100000] flex items-center justify-center bg-black/95 backdrop-blur-md px-4">
+    <div class="bg-white w-full max-w-md rounded-2xl p-8 shadow-2xl border-t-4 border-green-500">
+        <div class="flex justify-center mb-6">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <i class="fa-brands fa-whatsapp text-4xl text-green-600"></i>
             </div>
         </div>
+
+        <h2 class="text-xl font-black text-center uppercase tracking-tight text-gray-900 mb-4">
+            Confirmación de Pedido
+        </h2>
+
+        <p class="text-[13px] text-gray-600 text-center leading-relaxed mb-8">
+            ¡<span class="text-red-600 font-bold">IMPORTANTE</span>!: Al finalizar tu compra, 
+            <span class="font-bold text-black uppercase"> 
+                serás redirigido automáticamente a WhatsApp. 
+            </span> 
+            Asegúrate de tener la aplicación en tu celular o la versión web abierta para confirmar tu pedido y coordinar la entrega.
+        </p>
+
+        <div class="space-y-4">
+            <label class="flex items-center justify-center gap-3 p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors border border-gray-200">
+                <input type="checkbox" id="confirm-whatsapp" class="w-5 h-5 accent-green-600 cursor-pointer">
+                <span class="text-[10px] font-bold uppercase text-gray-700 select-none">Acepto coordinar por WhatsApp</span>
+            </label>
+
+            <button id="btn-entendido" disabled 
+                    class="w-full py-4 bg-gray-300 text-white font-black uppercase text-xs tracking-widest rounded-xl transition-all cursor-not-allowed">
+                Confirmar e ir al Pago
+            </button>
+        </div>
     </div>
+</div>
 
 <div id="mobile-search-bar" class="hidden fixed top-0 left-0 w-full bg-white z-[100] p-4 shadow-xl border-b-2 border-[#0F4C5C] flex items-center gap-3 animate-in slide-in-from-top duration-300">
     <input type="text" id="mobile-search-input" 
@@ -1271,7 +1269,7 @@ z-[9999]">
     </div>
 
 <button id="checkout-btn"
-        onclick="goToCheckout()"
+        onclick="abrirConfirmacionWhatsapp()"
         class="w-full bg-[#1f6f78] text-white py-3 uppercase font-bold rounded-xl tracking-wide hover:bg-[#175b63] transition">
   Check out
 </button>
@@ -3135,8 +3133,8 @@ images:["https://res.cloudinary.com/dkazbai91/image/upload/v1774127441/qaaa2_fml
 description:"Cera para tablas de surf",
 sizes:["15gr"],
 colors:["Blanco"],
-stock:31,
-stockBySize:{"15gr":31}
+stock:35,
+stockBySize:{"15gr":35}
 },
 {
 id:87,
@@ -3180,8 +3178,8 @@ images:["https://res.cloudinary.com/dkazbai91/image/upload/v1774127442/213134123
 description:"Cera para tablas de surf",
 sizes:["15gr"],
 colors:["Blanco"],
-stock:14,
-stockBySize:{"15gr":14}
+stock:15,
+stockBySize:{"15gr":15}
 },
 {
 id:90,
@@ -3210,8 +3208,8 @@ images:["https://res.cloudinary.com/dkazbai91/image/upload/v1774127441/112222333
 description:"Cera para tablas de surf de 18 a 26 grados",
 sizes:["15gr"],
 colors:["Coconut"],
-stock:32,
-stockBySize:{"15gr":32}
+stock:35,
+stockBySize:{"15gr":35}
 },
 {
 id:92,
@@ -4308,11 +4306,11 @@ images:["https://res.cloudinary.com/dkazbai91/image/upload/v1774132938/Dise%C3%B
 description:"Funda de tela marca free life.",
 sizes:["6,4","6,8"],
 colors:["Rojo/Negro"],
-stock:3,
+stock:4,
 
 stockBySize:{
 "6,4":1,
-"6,8":2,
+"6,8":3,
 },
 
 stockByVariant:{
@@ -5440,11 +5438,11 @@ colors:["Blanco","Rosa","Verde"],
 stock:14,
 
 stockBySize:{
-"Peine":14,
+"Peine":15,
 },
 
 stockByVariant:{
-"Peine-Blanco":1,
+"Peine-Blanco":2,
 "Peine-Rosa":11,
 "Peine-Verde":2
 
@@ -5496,8 +5494,8 @@ images:[
 description:"Lija de skateboard color negro marca hondar",
 sizes:["Lija"],
 colors:["Negro"],
-stock:2,
-stockBySize:{"Lija":2}
+stock:4,
+stockBySize:{"Lija":4}
 },
 {
 id:174,
@@ -7924,15 +7922,16 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
                         <p class="text-[10px] md:text-[11px] text-gray-400 mt-1 font-medium leading-none whitespace-nowrap">S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}</p>
                     </div>
 
-                    <div class="flex gap-1 shrink-0">
-                        <button onclick="navigateTo('detalle', null, null, ${p.id}); window.scrollTo(0,0);" 
-                                class="hidden md:inline-block bg-gray-100 hover:bg-black hover:text-white p-1.5 md:p-2.5 rounded-full transition-colors">
-                            <i class="fa-solid fa-eye text-[9px] md:text-xs"></i>
-                        </button>
-                        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
-                                class="bg-black hover:bg-red-700 text-white p-1.5 md:p-2.5 rounded-full shadow-lg transition-colors">
-                            <i class="fa-solid fa-cart-plus text-[10px] md:text-xs"></i>
-                        </button>
+<div class="flex gap-1 shrink-0">
+    <button onclick="navigateTo('detalle', null, null, ${p.id}); window.scrollTo(0,0);" 
+            class="hidden lg:inline-block bg-gray-100 hover:bg-black hover:text-white p-1.5 lg:p-2.5 rounded-full transition-colors">
+        <i class="fa-solid fa-eye text-[9px] lg:text-xs"></i>
+    </button>
+    
+    <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
+            class="bg-black hover:bg-red-700 text-white p-1.5 lg:p-2.5 rounded-full shadow-lg transition-colors">
+        <i class="fa-solid fa-cart-plus text-[10px] lg:text-xs"></i>
+    </button>
                     </div>
                 </div>
             </div>
@@ -11353,68 +11352,77 @@ document.getElementById("main-content").innerHTML = `
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-      <div class="group cursor-pointer" onclick="navigateTo('noticia',null,null,1)">
-        <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
-          <img src="https://i.imgur.com/qwX39vQ.png"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#001f3f]">
-            Cultura
-          </div>
-        </div>
-        <div class="px-2">
-          <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
-            El Surf crece en Perú
-          </h3>
-          <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
-            El surf sigue creciendo en Lima y nuevas generaciones llegan a las playas con una energía increíble.
-          </p>
-          <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
-            Leer artículo <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
-          </span>
-        </div>
-      </div>
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 1)">
+  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
+    <img src="https://i.imgur.com/qwX39vQ.png"
+      alt="Perú Potencia Mundial del Surf"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#1f6f78]">
+      Élite Nacional
+    </div>
+  </div>
 
-      <div class="group cursor-pointer" onclick="navigateTo('noticia',null,null,2)">
-        <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
-          <img src="https://i.imgur.com/VUoAfa7.jpeg"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#001f3f]">
-            Equipo
-          </div>
-        </div>
-        <div class="px-2">
-          <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
-            Nuevas tablas para 2026
-          </h3>
-          <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
-            Las nuevas tecnologías en surfboards prometen más velocidad y control en olas técnicas.
-          </p>
-          <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
-            Leer artículo <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
-          </span>
-        </div>
-      </div>
+  <div class="px-2">
+    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
+      Perú: La Nueva Edad de Oro del Surf
+    </h3>
+    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
+      Desde el mundial de Vania Torres hasta el éxito en Australia: analizamos por qué el 2026 es el año de la consolidación peruana.
+    </p>
+    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
+      Ver reporte especial <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
+    </span>
+  </div>
+</div>
 
-      <div class="group cursor-pointer" onclick="navigateTo('noticia',null,null,3)">
-        <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
-          <img src="https://i.imgur.com/lHR8ti4.jpeg"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#001f3f]">
-            Guía Local
-          </div>
-        </div>
-        <div class="px-2">
-          <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
-            Los mejores spots de Barranco
-          </h3>
-          <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
-            Una guía rápida de las mejores olas cerca de Makaha Surf Shop para todos los niveles.
-          </p>
-          <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
-            Leer artículo <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
-          </span>
-        </div>
-      </div>
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 2)">
+  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
+    <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775105880/Gemini_Generated_Image_nt7nvgnt7nvgnt7n_w05kmq.png" 
+      alt="Copa José Duany 2026"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#1f6f78]">
+      Competición
+    </div>
+  </div>
+
+  <div class="px-2">
+    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
+      La Élite del Surf Nacional regresa a Miraflores
+    </h3>
+    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
+      La Copa José Duany 2026 arranca en La Pampilla con la participación de Raúl Ríos y Arena Rodríguez. ¡Descubre los detalles!
+    </p>
+    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
+      Ver detalles del evento <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
+    </span>
+  </div>
+</div>
+
+     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
+  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
+    <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif"
+      alt="Surf Fest Pro League 2026"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#001f3f]">
+      Pro League
+    </div>
+  </div>
+
+  <div class="px-2">
+    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
+      Surf Fest 2026: El circuito de los US$ 80,000
+    </h3>
+    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
+      Conoce el calendario oficial del circuito impulsado por Sofía Mulanovich y el ALAS Pro Tour. Próxima parada: Lobitos.
+    </p>
+    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
+      Ver calendario y sedes <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
+    </span>
+  </div>
+</div>
 
     </div>
   </div>
@@ -11475,57 +11483,67 @@ html = `
     </div>
 
     <header class="max-w-6xl mx-auto px-6 py-16 text-center">
-        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Competencia Internacional</span>
+        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Reporte Especial 2026</span>
         <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] leading-tight tracking-tighter">
-            Sol Aguirre compite en Australia en el <span class="italic font-light">Challenger Series</span> de la WSL
+            Perú se consolida como <span class="italic font-light">Potencia Mundial</span> del Surf
         </h1>
     </header>
 
     <div class="w-full h-[500px] md:h-[750px] overflow-hidden">
-        <img src="https://i.imgur.com/qwX39vQ.png" class="w-full h-full object-cover shadow-2xl">
+        <img src="https://i.imgur.com/qwX39vQ.png" class="w-full h-full object-cover shadow-2xl" alt="Selección Peruana de Surf 2026">
     </div>
 
     <div class="w-full mx-auto px-6 py-16">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-y border-gray-100 py-10 mb-16">
             <div class="flex items-center gap-4">
-                <span class="text-3xl">📍</span>
+                <span class="text-3xl">🏆</span>
                 <div>
-                    <p class="text-[11px] uppercase tracking-widest text-gray-400 font-bold">Ubicación</p>
-                    <p class="text-base font-bold text-[#001f3f]">Newcastle, Australia</p>
+                    <p class="text-[11px] uppercase tracking-widest text-gray-400 font-bold">Logro Máximo</p>
+                    <p class="text-base font-bold text-[#001f3f]">Vania Torres: Campeona Mundial SUP</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 border-x-0 md:border-x border-gray-100 md:px-10">
-                <span class="text-3xl">🏄</span>
+                <span class="text-3xl">🥈</span>
                 <div>
-                    <p class="text-[11px] uppercase tracking-widest text-gray-400 font-bold">Evento</p>
-                    <p class="text-base font-bold text-[#001f3f]">WSL Challenger Series</p>
+                    <p class="text-[11px] uppercase tracking-widest text-gray-400 font-bold">ISA World Games</p>
+                    <p class="text-base font-bold text-[#001f3f]">Subcampeones Mundiales por Equipos</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
                 <span class="text-3xl">🇵🇪</span>
                 <div>
-                    <p class="text-[11px] uppercase tracking-widest text-gray-400 font-bold">Atleta</p>
-                    <p class="text-base font-bold text-[#001f3f]">Sol Aguirre</p>
+                    <p class="text-[11px] uppercase tracking-widest text-gray-400 font-bold">Próximo Objetivo</p>
+                    <p class="text-base font-bold text-[#001f3f]">Juegos Bolivarianos & Panamericanos</p>
                 </div>
             </div>
         </div>
 
         <div class="text-gray-800 text-xl leading-relaxed space-y-10 columns-1 md:columns-2 gap-16">
             <div class="break-inside-avoid">
-                <h2 class="text-4xl heading-font text-[#001f3f] mb-6">El ascenso de una promesa</h2>
-                <p>La surfista peruana Sol Aguirre ha dejado una marca imborrable en las aguas de Newcastle. Su participación en el Challenger Series no es solo un torneo más, sino la culminación de meses de entrenamiento intensivo en las costas del Pacífico Sur. El nivel demostrado en el Heat 3 dejó claro que la técnica de Aguirre ha evolucionado hacia una mayor fluidez y potencia en olas de recorrido largo.</p>
-                <p class="mt-6">Durante la Ronda de 32, la estrategia fue clave. Aguirre supo leer las condiciones cambiantes de la marea, aprovechando los sets de mayor tamaño para ejecutar maniobras verticales que fueron recompensadas por los jueces con un sólido 9.93 total. Este resultado la posiciona como una de las contendientes más peligrosas para el resto de la temporada.</p>
+                <h2 class="text-4xl heading-font text-[#001f3f] mb-6">La Armada Peruana en Australia</h2>
+                <p>El inicio de 2026 ha sido histórico para el surf de clubes. El **Club de Tabla San Bartolo** marcó un hito al representar al Perú en el *World Club Championship* en Australia. Con un equipo liderado por **Catalina Zariquiey** y **Bastián Arévalo**, junto a Alejandro Bernales y Brianna Barthelmess, el club demostró que el semillero nacional tiene el nivel para medirse con las potencias locales australianas en su propia casa.</p>
+                <p class="mt-6">Este desempeño se suma a la medalla de plata obtenida por el equipo nacional en el mundial ISA, reafirmando que Perú no solo produce talentos individuales, sino que posee una estructura competitiva sólida a nivel de selección.</p>
             </div>
             
             <div class="bg-gray-50 p-10 border-l-8 border-[#1f6f78] break-inside-avoid">
-                <p class="italic text-2xl text-[#001f3f] font-light">"Estar aquí compitiendo contra las mejores del mundo es un sueño que construyo día a día. El objetivo es claro: llevar la bandera de Perú al Championship Tour 2026."</p>
-                <p class="mt-4 font-bold uppercase tracking-widest text-sm text-[#1f6f78]">— Sol Aguirre</p>
+                <p class="italic text-2xl text-[#001f3f] font-light">"No solo estamos ganando medallas, estamos creando una plataforma de alto rendimiento para que las nuevas generaciones profesionalicen su pasión sin salir del país."</p>
+                <p class="mt-4 font-bold uppercase tracking-widest text-sm text-[#1f6f78]">— Sofía Mulanovich (Surf Fest Pro League)</p>
             </div>
 
             <div class="break-inside-avoid">
-                <h2 class="text-4xl heading-font text-[#001f3f] mb-6">Camino al World Tour</h2>
-                <p>El camino hacia la élite del surf mundial es extremadamente competitivo. El Challenger Series es el filtro definitivo donde solo los mejores logran la consistencia necesaria para ascender. Aguirre se encuentra actualmente en una posición privilegiada dentro del ranking, pero Newcastle es una parada crítica. Cada manga ganada significa puntos vitales para asegurar ese ansiado lugar entre las 16 mejores del mundo.</p>
-                <p class="mt-6">La Ronda de 16 presenta un desafío técnico mayor, enfrentándose a surfistas locales australianas que conocen a la perfección cada sección de la rompiente. Sin embargo, el equipo técnico de Aguirre confía en su capacidad de adaptación. El desarrollo del evento continuará el 13 de marzo, y toda la comunidad del surf peruano estará pendiente de su desempeño en el Heat 4.</p>
+                <h2 class="text-4xl heading-font text-[#001f3f] mb-6">Dominio en todas las disciplinas</h2>
+                <p>La versatilidad del surfista peruano ha quedado demostrada este año. Desde el **oro en Pipeline** (Hawái) obtenido por **Michael “Pirpo” Yancce** y Hannah Saavedra en Bodyboarding, hasta el dominio absoluto de **Mafer Reyes** y Lucas Garrido Lecca en el *ALAS Global Tour* de Longboard.</p>
+                <p class="mt-6">Mención especial merece **Vania Torres**, quien se consagró como la mejor del mundo en SUP Surf. Su título mundial en El Salvador es el reflejo de una atleta que ha sabido evolucionar y dominar una de las disciplinas más exigentes del circuito internacional.</p>
+            </div>
+
+            <div class="break-inside-avoid bg-[#001f3f] text-white p-8 rounded-sm">
+                <h2 class="text-3xl heading-font mb-6 italic text-white">El Semillero de Oro</h2>
+                <ul class="space-y-4 text-lg opacity-90">
+                    <li>• <strong>Catalina Zariquiey:</strong> Plata en Mundial Junior ISA.</li>
+                    <li>• <strong>Aissa Chuman:</strong> Liderando la categoría Sub-14.</li>
+                    <li>• <strong>Kailani Vicensini:</strong> Promesa absoluta en Sub-18.</li>
+                </ul>
+                <p class="mt-6 text-sm italic border-t border-white/20 pt-4">Makaha Surf Shop apoya activamente a la nueva generación con equipos de alta competencia.</p>
             </div>
         </div>
     </div>
@@ -11540,40 +11558,52 @@ html = `
 <article class="bg-white min-h-screen pb-20">
     <div class="max-w-[1440px] mx-auto px-6 pt-10">
         <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
-            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver
+            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver a Noticias
         </button>
     </div>
-    <header class="max-w-6xl mx-auto px-6 py-16 text-center">
-        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Innovación & Hardware</span>
-        <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] italic font-light tracking-tighter">Nuevas tablas para 2026: La Revolución del Carbono</h1>
+
+    <header class="w-full mx-auto px-6 py-16 text-center">
+        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Circuito Nacional 2026</span>
+        <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] italic font-light tracking-tighter text-balance">Copa José Duany: El Élite del Surf vuelve a La Pampilla</h1>
     </header>
-    <img src="https://i.imgur.com/VUoAfa7.jpeg" class="w-full h-[500px] md:h-[750px] object-cover">
+
+    <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775105880/Gemini_Generated_Image_nt7nvgnt7nvgnt7n_w05kmq.png" alt="Campeonato de Surf La Pampilla 2026" class="w-full h-[500px] md:h-[750px] object-cover">
     
-    <div class="w-full mx-auto px-6 py-20">
-        <div class="text-gray-800 text-xl leading-relaxed space-y-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-4xl heading-font text-[#001f3f] mb-8 text-balance">Tecnología Aeroespacial aplicada al Surf</h2>
-                    <p>La temporada 2026 marca un antes y un después en la fabricación de tablas. Makaha Surf Shop presenta una línea exclusiva que integra núcleos de resina biológica reforzados con filamentos de carbono unidireccional. Este avance permite una flexibilidad controlada (flex pattern) que devuelve la energía de forma explosiva al salir de cada giro.</p>
-                    <p class="mt-6">Lo que antes era una tabla rígida y difícil de manejar en olas pequeñas, ahora se convierte en una extensión dinámica del cuerpo del surfista. Las nuevas configuraciones de cantos (rails) han sido diseñadas mediante simulaciones de dinámica de fluidos para reducir la fricción en un 15%, garantizando una velocidad máxima en secciones planas.</p>
+    <div class="w-full mx-auto px-6 py-20 text-gray-800 text-xl leading-relaxed">
+        <div class="space-y-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
+                <div class="lg:col-span-8 space-y-8">
+                    <h2 class="text-5xl heading-font text-[#001f3f] mb-8 text-balance">El inicio de una temporada histórica</h2>
+                    <p>Del <strong>1 al 4 de abril de 2026</strong>, las emblemáticas olas de la Playa La Pampilla en Miraflores serán el escenario de la 1.ª fecha del Circuito Peruano de Surf. Organizado por la <strong>FENTA</strong> y el <strong>Club Pacífico Sur</strong>, este evento no solo marca el arranque del ranking nacional, sino que pone en disputa la legendaria Copa José Duany.</p>
+                    <p>Tras el éxito rotundo de la edición 2025, el torneo regresa con una infraestructura renovada y la participación confirmada de los mejores exponentes del país. La Pampilla, conocida por sus derechas constantes y su cercanía al malecón, promete condiciones ideales para las categorías Open, Junior, Longboard y las vibrantes modalidades de SUP.</p>
                 </div>
-                <div class="space-y-6">
+
+                <div class="lg:col-span-4 space-y-6">
                     <div class="bg-gray-100 p-8 rounded-sm shadow-sm border-t-4 border-[#1f6f78]">
-                        <h3 class="font-bold text-[#001f3f] mb-2 uppercase text-sm tracking-wider">Mayor Estabilidad</h3>
-                        <p class="text-gray-600">El diseño de cóncavo simple a doble asegura que el flujo de agua sea constante, eliminando la turbulencia bajo el pie trasero.</p>
+                        <h3 class="font-bold text-[#001f3f] mb-2 uppercase text-sm tracking-wider">Figuras Confirmadas</h3>
+                        <p class="text-gray-600 text-base leading-snug">Los actuales campeones <strong>Raúl Ríos</strong> y <strong>Arena Rodríguez</strong> defenderán su corona frente a una nueva generación de surfistas.</p>
                     </div>
                     <div class="bg-gray-100 p-8 rounded-sm shadow-sm border-t-4 border-[#1f6f78]">
-                        <h3 class="font-bold text-[#001f3f] mb-2 uppercase text-sm tracking-wider">Control Total</h3>
-                        <p class="text-gray-600">Nuevos sistemas de quillas integrados que permiten ajustar el ángulo de ataque según el tamaño de la ola del día.</p>
+                        <h3 class="font-bold text-[#001f3f] mb-2 uppercase text-sm tracking-wider">Multidisciplina en el Agua</h3>
+                        <p class="text-gray-600 text-base leading-snug">Desde la explosividad del <strong>Shortboard</strong> hasta la elegancia del <strong>Longboard</strong> y el <strong>SUP Race</strong>.</p>
                     </div>
                 </div>
             </div>
             
-            <p class="text-2xl font-light text-gray-500 border-y border-gray-100 py-12 text-center">"No estamos fabricando tablas, estamos diseñando instrumentos de precisión para conquistar el océano."</p>
+            <p class="text-3xl font-light text-gray-500 border-y border-gray-100 py-12 text-center italic">
+                "La Copa José Duany es más que un trofeo; es el termómetro que mide la salud del surf peruano en el corazón de Lima."
+            </p>
             
-            <div class="columns-1 md:columns-2 gap-16 space-y-8">
-                <p>Además de la performance, la sostenibilidad ha sido el pilar central de la colección 2026. Cada tabla utiliza un 40% menos de materiales tóxicos en comparación con los estándares de la industria actual. Los blanks de EPS reciclado ofrecen la misma flotabilidad y resistencia que los materiales vírgenes, pero con una huella de carbono significativamente menor.</p>
-                <p>Invitamos a todos los locales y visitantes a pasar por el showroom para probar los prototipos. El futuro del surfing no está en esperar la ola perfecta, sino en tener el equipo adecuado para hacer que cualquier ola sea perfecta. La estabilidad, el control y la velocidad nunca han estado tan equilibrados como en esta nueva generación.</p>
+            <div class="columns-1 md:columns-2 gap-16 space-y-8 text-lg">
+                <p>La importancia de esta fecha radica en su impacto generacional. Se espera una asistencia masiva de aficionados al Malecón de Miraflores, donde se podrá apreciar el desempeño de figuras como <strong>Benoit 'Piccolo' Clemente</strong> en Longboard y las jóvenes promesas del semillero nacional en la categoría Junior, quienes buscan asegurar sus primeros puntos para la clasificación internacional.</p>
+                <p>El evento contará con transmisión en vivo y zonas especiales para los espectadores. Para los competidores, las inscripciones ya se encuentran habilitadas a través del portal oficial de la Federación Deportiva Nacional de Tabla (FENTA). Es el momento de ver en acción el talento que ha puesto al Perú en lo más alto del podio mundial.</p>
+            </div>
+
+            <div class="flex justify-center pt-10">
+                <a href="https://www.fenta.pe" target="_blank" class="bg-[#001f3f] text-white px-10 py-4 rounded-none uppercase tracking-[0.2em] text-xs font-bold hover:bg-[#1f6f78] transition-colors">
+                    Inscripciones y Cronograma Oficial
+                </a>
             </div>
         </div>
     </div>
@@ -11591,44 +11621,81 @@ html = `
             <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver
         </button>
     </div>
+
     <header class="max-w-6xl mx-auto px-6 py-16 text-center">
-        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Destinos Makaha</span>
-        <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] italic font-light tracking-tighter">Los mejores spots de Barranco</h1>
+        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Circuito Profesional</span>
+        <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] italic font-light tracking-tighter">Surf Fest Pro League 2026: El Nuevo Estándar</h1>
     </header>
-    <img src="https://i.imgur.com/lHR8ti4.jpeg" class="w-full h-[500px] md:h-[750px] object-cover border-b-8 border-[#1f6f78]">
+
+    <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif" class="w-full h-[500px] md:h-[750px] object-cover" alt="Surf Fest Pro League Peru">
+    
+    <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 py-2">
+        <p class="text-right text-xs text-gray-400 font-light tracking-wide">Imagen: El Comercio Perú</p>
+    </div>
     
     <div class="w-full mx-auto px-6 py-20 text-gray-800 text-xl leading-relaxed">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div class="lg:col-span-8 space-y-10">
-                <h2 class="text-5xl heading-font text-[#001f3f]">Barranco: Alma de Mar</h2>
-                <p>Barranco no solo es el corazón bohemio de Lima, sino también un santuario para los surfistas que buscan consistencia y una atmósfera única. Desde la mítica bajada de Baños hasta las secciones más técnicas cerca de los espigones, este distrito ofrece condiciones para todos los niveles, siempre con la icónica vista de los acantilados de la Costa Verde como telón de fondo.</p>
+                <h2 class="text-5xl heading-font text-[#001f3f]">Profesionalizando el Talento Local</h2>
+                <p>La **Surf Fest Pro League 2026** nace con una misión clara liderada por la icónica **Sofía Mulanovich**: crear una plataforma de alto rendimiento en aguas peruanas. Bajo estándares de la WSL pero en nuestras rompientes, este circuito permite a los surfistas locales competir al más alto nivel sin los costos de viajar al extranjero, profesionalizando la escena nacional con una bolsa histórica de <strong>US$ 80,000</strong>.</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 bg-gray-50 p-12 rounded-xl">
+                <div class="overflow-x-auto bg-gray-50 p-8 rounded-xl border border-gray-100">
+                    <h3 class="text-[#001f3f] font-bold text-2xl mb-6">Calendario Oficial 2026</h3>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-gray-200 text-sm uppercase tracking-wider text-gray-500">
+                                <th class="py-4">Sede / Playa</th>
+                                <th class="py-4">Fecha</th>
+                                <th class="py-4 text-right">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-lg">
+                            <tr class="border-b border-gray-100 italic opacity-60">
+                                <td class="py-6 font-bold text-[#1f6f78]">Punta Roquitas</td>
+                                <td class="py-6">14-15 Marzo</td>
+                                <td class="py-6 text-right text-xs font-bold uppercase">Finalizado</td>
+                            </tr>
+                            <tr class="border-b border-gray-100">
+                                <td class="py-6 font-bold text-[#001f3f]">Lobitos, Piura</td>
+                                <td class="py-6">Junio (Tentativo)</td>
+                                <td class="py-6 text-right text-xs font-bold uppercase text-blue-600 tracking-widest animate-pulse">Próximamente</td>
+                            </tr>
+                            <tr>
+                                <td class="py-6 font-bold text-[#001f3f]">Señoritas, Punta Hermosa</td>
+                                <td class="py-6">Agosto (Tentativo)</td>
+                                <td class="py-6 text-right text-xs font-bold uppercase text-gray-400">Próximamente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div>
-                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">Spot #1: Los Pavos</h3>
-                        <p class="text-lg">Una ola larga y noble, ideal para perfeccionar el estilo. Es el lugar favorito de los longboarders locales durante las mañanas de poco viento. Funciona mejor con crecidas del sur-oeste.</p>
+                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">El Norte: Lobitos</h3>
+                        <p class="text-lg">En junio, el circuito se traslada a las famosas "izquierdas" infinitas de Talara. Un punto crítico para evaluar la técnica en olas de clase mundial.</p>
                     </div>
                     <div>
-                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">Spot #2: La Pampilla</h3>
-                        <p class="text-lg">Ubicada a pocos minutos de Makaha Surf Shop, esta rompiente ofrece secciones rápidas y tubulares en los días de mayor marea. Perfecta para surfers de nivel intermedio y avanzado.</p>
+                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">El Sur: Señoritas</h3>
+                        <p class="text-lg">El cierre de temporada en agosto promete potencia pura. Las marejadas de invierno en Punta Hermosa definirán a los campeones del 2026.</p>
                     </div>
                 </div>
 
-                <p>Lo que hace especial a Barranco es su comunidad. Aquí, el surf es más que un deporte; es un ritual diario. Los locales conocen cada piedra y cada corriente, y siempre hay un respeto tácito en el line-up que hace que las sesiones sean memorables. Después del surf, la cercanía con los cafés y galerías permite una transición fluida del mar a la vida urbana.</p>
-                <p>Para aquellos que están empezando, recomendamos las zonas de espumas más controladas. Es vital entender las corrientes locales que se forman cerca de los muelles, especialmente durante las marejadas de invierno. Makaha Surf Shop ofrece guías diarias y reportes de condiciones en tiempo real para que nunca pierdas la mejor ventana de olas del día.</p>
+                <p>El respaldo del **ALAS Global Tour** asegura que cada maniobra cuente. Los competidores no solo luchan por la gloria local, sino por puntos vitales para el ranking latinoamericano, abriendo puertas directas a la clasificación internacional. Con más de 150 surfistas por fecha, la competitividad está garantizada.</p>
             </div>
             
             <div class="lg:col-span-4 space-y-8">
-                <div class="bg-[#001f3f] text-white p-10 rounded-sm">
-                    <h4 class="heading-font text-3xl mb-6 italic">Recomendaciones del Pro</h4>
+                <div class="bg-[#001f3f] text-white p-10 rounded-sm shadow-xl">
+                    <h4 class="heading-font text-3xl mb-6 italic">Detalles del Circuito</h4>
                     <ul class="space-y-6 text-base opacity-90">
-                        <li class="border-b border-white/20 pb-4"><strong>Mejor hora:</strong> 6:00 AM a 8:30 AM para evitar el tráfico de la Costa Verde.</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Wetsuit:</strong> 4/3mm es obligatorio durante los meses de invierno (Junio-Setiembre).</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Cuidado:</strong> Atención a los cantos rodados en la entrada; se recomienda el uso de botas si no conoces el terreno.</li>
+                        <li class="border-b border-white/20 pb-4"><strong>Premios:</strong> US$ 80,000 en efectivo a repartir entre las tres fechas.</li>
+                        <li class="border-b border-white/20 pb-4"><strong>Aval:</strong> Certificación ALAS Pro Tour (Puntos para el ranking regional).</li>
+                        <li class="border-b border-white/20 pb-4"><strong>Categorías:</strong> Open Varones y Open Damas de alto rendimiento.</li>
+                        <li class="border-b border-white/20 pb-4"><strong>Swell Forecast:</strong> Fechas finales confirmadas 2 semanas antes según el reporte del mar.</li>
                     </ul>
                 </div>
-                <div class="p-8 border-2 border-gray-100 italic text-gray-500">
-                    "Barranco tiene una energía que no encuentras en Punta Hermosa ni en el Norte. Es místico, es urbano y es puro surf peruano."
+                <div class="p-8 border-2 border-gray-100 italic text-gray-500 bg-white">
+                    "Queremos que el surfista peruano se sienta profesional en su propia casa. El Surf Fest es el puente hacia la WSL."
+                    <span class="block mt-4 font-bold text-[#001f3f] not-italic">— Sofía Mulanovich</span>
                 </div>
             </div>
         </div>
@@ -12684,7 +12751,7 @@ function renderFormularioAuth(modo = 'login') {
                     <div class="space-y-3">
                         <input id="reg-name" type="text" placeholder="Nombre Completo" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         <input id="reg-phone" type="tel" placeholder="Teléfono / WhatsApp" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
-                        <input id="reg-dni" type="text" placeholder="DNI / RUC" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+                        <input id="reg-dni" type="text" placeholder="DNI / CE" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         <input id="reg-email" type="email" placeholder="Correo electrónico" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         <input id="reg-pass" type="password" placeholder="Contraseña (mín. 6 caracteres)" class="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-[#0F4C5C]">
                         
@@ -12769,7 +12836,7 @@ function renderPerfilUsuario(user) {
                         <div class="grid grid-cols-2 gap-3">
                             <div class="flex items-center p-4 bg-gray-50 rounded-2xl border border-gray-100">
                                 <div class="text-left">
-                                    <p class="text-[10px] text-gray-400 uppercase font-black tracking-wider">DNI / RUC</p>
+                                    <p class="text-[10px] text-gray-400 uppercase font-black tracking-wider">DNI / Doc</p>
                                     <p class="text-gray-800 font-bold">${dni}</p>
                                 </div>
                             </div>
@@ -12977,6 +13044,87 @@ document.addEventListener('DOMContentLoaded', () => {
     gestionarAvisoCookies();
     // ... aquí irán tus otras funciones como inicializarCarrito();
 });
+
+// Usamos una función para inicializar todo una sola vez
+function initWhatsAppModal() {
+    // 1. Forzamos la función al objeto window para que el onclick del HTML nunca falle
+    window.abrirConfirmacionWhatsapp = function() {
+        console.log("🚀 Makaha Force: Abriendo modal...");
+
+        // Re-obtenemos los elementos cada vez (evita errores de referencia al navegar)
+        const modal = document.getElementById('whatsapp-modal');
+        const check = document.getElementById('confirm-whatsapp');
+        const btn = document.getElementById('btn-entendido');
+
+        if (!modal) return console.error("❌ No existe el modal en el HTML");
+
+        // Validación de carrito (ajusta 'cart' según tu variable global)
+        if (typeof cart !== 'undefined' && cart.length === 0) {
+            alert("Tu carrito está vacío 🏄‍♂️");
+            return;
+        }
+
+        // --- RESET TOTAL ANTES DE MOSTRAR ---
+        if (check) check.checked = false;
+        if (btn) {
+            btn.disabled = true;
+            btn.className = "w-full py-4 bg-gray-300 text-white font-black uppercase text-xs tracking-widest rounded-xl transition-all cursor-not-allowed";
+        }
+
+        // --- EL TRUCO PARA QUE NO SE QUEDE OCULTO ---
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';       // Fuerza el display flex
+        modal.style.visibility = 'visible'; // Fuerza visibilidad
+        modal.style.opacity = '1';          // Fuerza opacidad
+        modal.style.zIndex = '999999';      // Lo pone arriba de TODO (incluyendo el checkout)
+        
+        document.body.style.overflow = 'hidden'; // Bloquea scroll
+    };
+
+    // 2. Escuchamos el Checkbox (usamos delegación para evitar que el listener se muera)
+    document.addEventListener('change', function(e) {
+        if (e.target && e.target.id === 'confirm-whatsapp') {
+            const btn = document.getElementById('btn-entendido');
+            if (!btn) return;
+
+            if (e.target.checked) {
+                btn.disabled = false;
+                btn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+                btn.classList.add('bg-green-600', 'hover:bg-green-700', 'shadow-lg');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-gray-300', 'cursor-not-allowed');
+                btn.classList.remove('bg-green-600', 'hover:bg-green-700', 'shadow-lg');
+            }
+        }
+    });
+
+    // 3. Click final en el botón "Continuar"
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'btn-entendido') {
+            const modal = document.getElementById('whatsapp-modal');
+            
+            // Cerramos todo
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+            }
+            document.body.style.overflow = 'auto';
+
+            console.log("✅ Checkpoint superado. Redirigiendo...");
+            
+            // Llamamos al checkout real
+            if (typeof goToCheckout === "function") {
+                goToCheckout();
+            } else {
+                console.error("❌ La función goToCheckout no está definida.");
+            }
+        }
+    });
+}
+
+// Inicializar de inmediato
+initWhatsAppModal();
 
 </script>
 </body>
