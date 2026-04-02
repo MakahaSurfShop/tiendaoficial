@@ -7077,16 +7077,27 @@ const subcategoryImages = {
 /* ================= NAVEGACIÓN ================= */
 
 function navigateTo(page, category = null, subcategory = null, id = null, fromPopState = false) {
-
+  
+  // --- INICIO DE LA MEJORA (PASO 3) ---
   if (!fromPopState) {
+    // Definimos el hash de la URL. 
+    // Si hay parámetros (como categoría o ID), podrías incluirlos en el hash para mayor precisión.
+    let hashPath = page;
+    
+    // Opcional: Si quieres que la URL sea específica (ej: #detalle?id=123)
+    if (id) hashPath += `?id=${id}`;
+    else if (category) hashPath += `?cat=${category}`;
+
+    // Actualizamos el historial y la URL visual con el hash (#)
     history.pushState(
       { page, category, subcategory, id },
       "",
-      "#" + page
+      "#" + hashPath
     );
   }
+  // --- FIN DE LA MEJORA ---
 
-  // 🔴 limpiar checkout si sale de la página
+  // 🔴 Limpiar checkout si sale de la página (Tu lógica actual)
   if (page !== "checkout") {
     checkoutFields.forEach(id => localStorage.removeItem(id));
   }
@@ -10272,9 +10283,22 @@ function renderDelivery(){
     window.scrollTo(0, 0);
 }
 
-window.onload = function(){
-  renderHome();
-  updateCart();
+window.onload = function() {
+    // 1. Verificar si hay un hash en la URL (ej: #productos, #detalle)
+    const hash = window.location.hash.replace('#', '');
+    
+    if (hash) {
+        // Intentar navegar a la sección del hash
+        // Si el hash es 'detalle', podrías necesitar lógica extra para el ID, 
+        // pero para secciones generales esto funcionará:
+        navigateTo(hash, null, null, null, true);
+    } else {
+        // Si no hay hash, cargamos el inicio por defecto
+        renderHome();
+    }
+    
+    updateCart();
+    console.log("✅ Navegación restaurada en: " + (hash || 'inicio'));
 };
 
 // === SLIDER CLIENTES CON FONDO DESENFOCADO ===
