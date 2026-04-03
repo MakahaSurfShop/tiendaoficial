@@ -7900,7 +7900,7 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
     const visibleProducts = filtered.slice(startIndex, endIndex);
 
 // Mantenemos tu diseño exacto de tarjeta (HTML)
-    let html = visibleProducts.map(p => {
+let html = visibleProducts.map(p => {
         const isAgotado = p.stock <= 0;
         const isUltimo = p.stock === 1 && p.condition !== "Segunda";
 
@@ -7933,25 +7933,29 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
                     ${p.name}
                 </h3>
 
-                <div class="flex flex-row justify-between items-center w-full mt-auto" style="text-align: left !important;">
-                    
-                    <div class="min-w-0">
-                        <p class="text-[12px] md:text-[17px] font-black text-black leading-none whitespace-nowrap">$${p.price.toFixed(2)}</p>
-                        <p class="text-[10px] md:text-[11px] text-gray-400 mt-1 font-medium leading-none whitespace-nowrap">S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}</p>
-                    </div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-auto gap-2" style="text-align: left !important;">
+    
+    <div class="min-w-0 flex flex-col">
+        <p class="text-[14px] md:text-[17px] font-black text-black leading-tight whitespace-nowrap">
+            $${p.price.toFixed(2)}
+        </p>
+        <p class="text-[11px] md:text-[11px] text-gray-400 font-medium leading-tight whitespace-nowrap">
+            S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}
+        </p>
+    </div>
 
-                    <div class="flex gap-1 shrink-0 ml-1">
-                        <button onclick="navigateTo('detalle', null, null, ${p.id}); window.scrollTo(0,0);" 
-                                class="hidden lg:inline-block bg-gray-100 hover:bg-black hover:text-white p-1.5 lg:p-2.5 rounded-full transition-colors">
-                            <i class="fa-solid fa-eye text-[9px] lg:text-xs"></i>
-                        </button>
-                        
-                        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
-                                class="bg-black hover:bg-red-700 text-white p-1.5 md:p-2.5 rounded-full shadow-lg transition-colors">
-                            <i class="fa-solid fa-cart-plus text-[10px] md:text-xs"></i>
-                        </button>
-                    </div>
-                </div>
+    <div class="flex gap-1.5 shrink-0 self-end md:self-center">
+        <button onclick="navigateTo('detalle', null, null, ${p.id}); window.scrollTo(0,0);" 
+                class="hidden lg:inline-block bg-gray-100 hover:bg-black hover:text-white p-2.5 rounded-full transition-colors">
+            <i class="fa-solid fa-eye text-xs"></i>
+        </button>
+        
+        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
+                class="bg-black hover:bg-red-700 text-white p-2 md:p-2.5 rounded-full shadow-lg transition-colors flex items-center justify-center">
+            <i class="fa-solid fa-cart-plus text-[12px] md:text-xs"></i>
+        </button>
+    </div>
+</div>
             </div>
         </div>
         `;
