@@ -11424,7 +11424,31 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
+  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
+    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1775231569/658379395_18418043728192900_4941570058882223936_n_wjg9rh.jpg" 
+      alt="Día 1 Copa José Duany 2026"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+      En Vivo
+    </div>
+  </div>
+
+  <div class="px-2">
+    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
+      Récord Histórico en La Pampilla: Inicia la Copa José Duany
+    </h3>
+    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
+      Con más de 350 inscritos, el primer día de competencia destaca por el nivel de Catalina Zariquiey y Thiago Passeri.
+    </p>
+    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
+      Ver reporte del Día 1 <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
+    </span>
+  </div>
+</div>
+
+     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 4)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif"
       alt="Surf Fest Pro League 2026"
@@ -11639,6 +11663,158 @@ html = `
 if(id === 3){
 
 html = `
+    <article class="bg-white min-h-screen pb-20">
+        <div class="max-w-[1440px] mx-auto px-6 pt-10">
+            <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
+                <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver a Noticias
+            </button>
+        </div>
+
+        <header class="max-w-6xl mx-auto px-6 py-16 text-center">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <span class="h-[1px] w-10 bg-[#1f6f78]"></span>
+                <span class="text-[#1f6f78] font-bold tracking-[0.3em] uppercase text-xs">Circuito Nacional FENTA 2026</span>
+                <span class="h-[1px] w-10 bg-[#1f6f78]"></span>
+            </div>
+            <h1 class="text-5xl md:text-8xl heading-font text-[#001f3f] italic font-light tracking-tighter leading-none mb-8">
+                Copa José Duany: <br> 
+                <span class="not-italic font-bold text-[#1f6f78]">350 Guerreros</span> en el Mar
+            </h1>
+            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold">Playa La Pampilla, Miraflores — 2 al 5 de Abril</p>
+        </header>
+
+        <div class="w-full h-[600px] md:h-[800px] overflow-hidden relative">
+            <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775105880/Gemini_Generated_Image_nt7nvgnt7nvgnt7n_w05kmq.png" 
+                 class="w-full h-full object-cover" alt="Competencia La Pampilla 2026">
+            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-10">
+                <p class="text-white text-sm italic opacity-80">Acción en vivo desde la primera fecha del ranking nacional.</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+                
+                <div class="lg:col-span-8 space-y-12 text-gray-800 text-xl leading-relaxed">
+                    
+                    <section>
+                        <h2 class="text-5xl heading-font text-[#001f3f] mb-6">Un inicio con Récord Histórico</h2>
+                        <p>El primer día de la <strong>Copa José Duany 2026</strong>, celebrada este jueves 2 de abril, ha marcado un hito sin precedentes en el surf peruano. Con más de <strong>350 inscritos</strong>, el evento ha superado todas las proyecciones de la Federación Deportiva Nacional de Tabla (FENTA), consolidándose como la fecha inaugural más masiva de la última década.</p>
+                        <p class="mt-4">La masividad del evento refleja la vitalidad del semillero nacional y el alto nivel de convocatoria que mantiene el Club Pacífico Sur en conjunto con las autoridades deportivas.</p>
+                    </section>
+
+                    <div class="bg-gray-50 p-10 rounded-3xl border-l-[12px] border-[#1f6f78] shadow-sm">
+                        <h3 class="text-3xl font-bold text-[#001f3f] mb-6 flex items-center gap-3">
+                            <i class="fas fa-trophy text-[#1f6f78]"></i> Actuaciones Destacadas - Día 1
+                        </h3>
+                        <p class="mb-8 text-lg text-gray-600 italic">Aunque las tablas oficiales de puntaje están en proceso de validación, los reportes de serie destacan el avance sólido de:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">01.</span> <span class="font-bold uppercase tracking-tight">Catalina Zariquiey</span>
+                            </div>
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">02.</span> <span class="font-bold uppercase tracking-tight">Thiago Passeri</span>
+                            </div>
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">03.</span> <span class="font-bold uppercase tracking-tight">Mafer Reyes</span>
+                            </div>
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">04.</span> <span class="font-bold uppercase tracking-tight">Facundo Castañeda</span>
+                            </div>
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">05.</span> <span class="font-bold uppercase tracking-tight">Nina Smiciklas</span>
+                            </div>
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">06.</span> <span class="font-bold uppercase tracking-tight">Lucas Pérez-Reyes</span>
+                            </div>
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">07.</span> <span class="font-bold uppercase tracking-tight">Emma García</span>
+                            </div>
+                            <div class="flex items-center gap-3 border-b border-gray-200 py-2">
+                                <span class="text-[#1f6f78] font-black">08.</span> <span class="font-bold uppercase tracking-tight">Sebastián Cárdenas</span>
+                            </div>
+                        </div>
+                        <p class="mt-8 text-sm font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                            <i class="fas fa-info-circle"></i> También destacó la participación técnica de Carlos Bahía.
+                        </p>
+                    </div>
+
+                    <section class="space-y-6">
+                        <h2 class="text-4xl heading-font text-[#001f3f]">Cronograma del Día 2 (Viernes 3 de Abril)</h2>
+                        <p>Para la segunda jornada, las competencias mantienen un ritmo maratónico en La Pampilla para cumplir con el volumen récord de heats:</p>
+                        <ul class="space-y-4 list-none">
+                            <li class="flex gap-4">
+                                <span class="bg-[#1f6f78] text-white font-bold px-3 py-1 h-fit text-sm">08:00 AM</span>
+                                <div>
+                                    <p class="font-bold text-[#001f3f]">Inicio de Jornada</p>
+                                    <p class="text-base text-gray-600">Llamado oficial para las primeras series de Shortboard Junior.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="bg-[#001f3f] text-white font-bold px-3 py-1 h-fit text-sm">12:00 PM</span>
+                                <div>
+                                    <p class="font-bold text-[#001f3f]">Bloque Principal</p>
+                                    <p class="text-base text-gray-600">Categorías Open Varones y Damas en condiciones de marea óptima.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="bg-gray-400 text-white font-bold px-3 py-1 h-fit text-sm">05:00 PM</span>
+                                <div>
+                                    <p class="font-bold text-[#001f3f]">Cierre de Jornada</p>
+                                    <p class="text-base text-gray-600">Finalización de heats diarios y publicación de cuadros para el sábado.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+
+                <div class="lg:col-span-4 space-y-8">
+                    
+                    <div class="bg-[#001f3f] text-white p-10 rounded-sm shadow-2xl relative overflow-hidden">
+                        <i class="fas fa-broadcast-tower absolute -right-5 -top-5 text-white/10 text-9xl"></i>
+                        <h4 class="heading-font text-3xl mb-8 italic relative z-10">Sigue el Heat a Heat</h4>
+                        <div class="space-y-8 relative z-10">
+                            <div>
+                                <p class="uppercase tracking-[0.2em] text-[#1f6f78] font-black text-xs mb-3">Resultados en Vivo</p>
+                                <a href="https://www.liveheats.com/fenta" target="_blank" 
+                                   class="inline-block bg-yellow-400 text-black px-6 py-3 font-bold uppercase text-xs tracking-tighter hover:bg-white transition-colors">
+                                   Abrir LiveHeats FENTA
+                                </a>
+                            </div>
+                            <div class="border-t border-white/10 pt-6">
+                                <p class="uppercase tracking-[0.2em] text-[#1f6f78] font-black text-xs mb-4">Categorías en el Agua</p>
+                                <ul class="space-y-2 text-sm font-bold">
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Shortboard Open / Junior</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Longboard Varones / Damas</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> SUP Surf & Race</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 p-8 border-l-4 border-amber-400">
+                        <h5 class="text-amber-800 font-bold uppercase text-xs tracking-widest mb-3 flex items-center gap-2">
+                            <i class="fas fa-exclamation-triangle"></i> Aviso Importante
+                        </h5>
+                        <p class="text-amber-900 text-sm italic leading-relaxed">
+                            "Debido a la cantidad récord de competidores (+350), el orden exacto de los heats puede sufrir modificaciones de último minuto según las condiciones del swell. Recomendamos monitorear los <strong>stories de Instagram de la FENTA</strong> para actualizaciones en tiempo real."
+                        </p>
+                    </div>
+
+                    <div class="pt-10 border-t border-gray-100 text-center">
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-gray-300 font-bold">Makaha Surf Shop — Official Newsroom</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+`; // <--- AQUÍ FALTABA CERRAR EN TU CÓDIGO
+    }
+
+if(id === 4){
+    html = `
 <article class="bg-white min-h-screen pb-20">
     <div class="max-w-[1440px] mx-auto px-6 pt-10">
         <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
@@ -11651,7 +11827,7 @@ html = `
         <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] italic font-light tracking-tighter">Surf Fest Pro League 2026: El Nuevo Estándar</h1>
     </header>
 
-    <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif" class="w-full h-[500px] md:h-[750px] object-cover" alt="Surf Fest Pro League Peru">
+    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1775231569/658379395_18418043728192900_4941570058882223936_n_wjg9rh.jpg" class="w-full h-[500px] md:h-[750px] object-cover" alt="Surf Fest Pro League Peru">
     
     <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 py-2">
         <p class="text-right text-xs text-gray-400 font-light tracking-wide">Imagen: El Comercio Perú</p>
@@ -11725,17 +11901,18 @@ html = `
         </div>
     </div>
 </article>
-`;
 
+    `;
 }
 
-document.getElementById("main-content").innerHTML = html;
+    // Inyectar el HTML y ejecutar funciones finales
+    document.getElementById("main-content").innerHTML = html;
 
-if (typeof initCheckoutAutosave === "function") initCheckoutAutosave();
+    if (typeof initCheckoutAutosave === "function") initCheckoutAutosave();
 
-window.scrollTo(0,0);
+    window.scrollTo(0,0);
 
-}
+} // ESTE ES EL ÚNICO CIERRE DE LA FUNCIÓN renderNoticia(id)
 
 function toggleUsadoMenu(){
 
