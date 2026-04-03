@@ -7781,22 +7781,20 @@ p.category === cat && p.subcategory === sub
 );
 
 return `
-<div class="mb-4">
-  <div onclick="toggleCategory('${cat}')" 
-       class="font-bold text-[11px] md:text-base cursor-pointer flex justify-between items-center border-b py-2">
+<div class="mb-2 md:mb-4"> <div onclick="toggleCategory('${cat}')" 
+       class="cursor-pointer flex justify-between items-center border-b py-2 gap-1">
     
-    ${cat === 'Wetbags/Drybags' ? `
-      <span class="md:hidden">WETBAGS</span> 
-      <span class="hidden md:inline">WETBAGS / DRYBAGS</span> 
-    ` : cat.toUpperCase()}
+    <span class="font-bold text-[9px] min-[400px]:text-[11px] md:text-base uppercase leading-tight">
+      ${cat === 'Wetbags/Drybags' ? 'WETBAGS' : cat}
+    </span>
     
-    <span class="icon-toggle">+</span> 
+    <span class="icon-toggle font-bold text-[10px] md:text-base text-gray-400 shrink-0">+</span> 
   </div>
 
-  <div id="cat-${cat}" class="hidden ml-3 mt-2 space-y-1">
+  <div id="cat-${cat}" class="hidden ml-2 mt-2 space-y-1">
     ${subs.map(sub => `
       <div onclick="navigateTo('filtrados','${cat}','${sub}'); window.scrollTo(0,0);"
-           class="cursor-pointer text-[10px] md:text-sm text-gray-600 hover:text-black py-1">
+           class="cursor-pointer text-[9px] md:text-sm text-gray-600 hover:text-black py-1 leading-tight">
         ${sub}
       </div>
     `).join("")}
@@ -7807,18 +7805,14 @@ return `
 }).join("");
 
 document.getElementById("main-content").innerHTML = `
-<div class="flex max-w-full mx-auto py-10 px-4 md:px-10">
-
-  <div class="w-1/4 pr-6 border-r md:pt-10">
+<div class="flex max-w-full mx-auto py-6 md:py-10 px-2 md:px-10"> <div class="w-[32%] md:w-1/4 pr-2 md:pr-6 border-r md:pt-10">
     ${sidebar}
   </div>
 
-  <div class="w-3/4 pl-6 pt-0 md:pt-0">
-
+  <div class="w-[68%] md:w-3/4 pl-3 md:pl-6 pt-0">
     <div id="products-area">
       <p class="text-gray-400">Cargando productos...</p>
     </div>
-
   </div>
 
 </div>
