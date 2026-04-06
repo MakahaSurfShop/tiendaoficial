@@ -7039,6 +7039,67 @@ images:[
     stock: 1,
     stockBySize: { "Quad": 1 }
 },
+{
+id:254,
+name:"Neo rez",
+price:35.02,
+category:"Accesorios",
+subcategory:"Reparacion",
+keywords:["neorez","reparacion wetsuit","pegamento","wetsuit","reparar"],
+img:"https://res.cloudinary.com/dkazbai91/image/upload/v1775514883/aa12233_stapi9.jpg",
+images:[
+"https://res.cloudinary.com/dkazbai91/image/upload/v1775514883/aa12233_stapi9.jpg",
+"https://res.cloudinary.com/dkazbai91/image/upload/v1775514883/aa123344_nigsdk.jpg"
+],
+description:"NeoRez es una gama de resinas de uretano de Covestro base agua o solvente, diseñadas para recubrimientos de alto rendimiento, ofreciendo acabados duros, resistencia a la abrasión y excelente adhesión en madera, empaques flexibles y plásticos. Destacan por su baja emisión de COV, rápido secado y resistencia al amarilleamiento.",
+sizes:["Neorez"],
+colors:["Transparente"],
+stock:1,
+stockBySize:{
+"Neorez":1
+}
+},
+{
+id:255,
+name:"Sponge rez",
+price:18.97,
+category:"Accesorios",
+subcategory:"Reparacion",
+keywords:["spongerez","reparacion bodyboard","pegamento","bodyboard","reparar","reparacion aletas"],
+img:"https://res.cloudinary.com/dkazbai91/image/upload/v1775514883/aa798566_kmz4ph.jpg",
+images:[
+"https://res.cloudinary.com/dkazbai91/image/upload/v1775514883/aa798566_kmz4ph.jpg",
+"https://res.cloudinary.com/dkazbai91/image/upload/v1775514883/aaa677_mfvj7u.jpg"
+],
+description:"Sponge-Rez de Solarez es una resina de reparación especializada diseñada para bodyboards, softboards y aletas de natación. Es conocida por ser extremadamente resistente y, al mismo tiempo, ultra flexible para adaptarse a los materiales blandos de estas tablas.",
+sizes:["Spongrez"],
+colors:["Transparente"],
+stock:1,
+stockBySize:{
+"Spongrez":1
+}
+},
+{
+id:256,
+name:"Funboard Dany Martinez 7,2",
+price:340,
+category:"Tablas",
+subcategory:"Funboards",
+condition:"Segunda",
+keywords:["tabla","surfboard","funboard","surf","tablas","funboard 7 pies"],
+img:"https://res.cloudinary.com/dkazbai91/image/upload/v1775515908/Dise%C3%B1o_sin_t%C3%ADtulo_35_bbo9gw.jpg",
+images:[
+"https://res.cloudinary.com/dkazbai91/image/upload/v1775514884/e3573d89-7978-404e-a33a-9e8a1d9f6840_1_-Photoroom_nwbofr.png",
+"https://res.cloudinary.com/dkazbai91/image/upload/v1775514884/1d155159-c65f-4e8e-9784-e9de828dd7d9_1_-Photoroom_qswg0a.png"
+],
+description:"Funboard Dany Martinez PU fivefins Future. 7,2 x 20 x 2 5/8 - 42,4 litros.",
+sizes:["7'2"],
+colors:["Blanco"],
+stock:1,
+stockBySize:{
+"7'2":1
+}
+},
 ]
 };
 
@@ -9461,33 +9522,33 @@ payWithTransfer();
 
 }
 
-function toggleStorePayment(){
+function toggleStorePayment() {
+    const checkbox = document.getElementById("pay-store");
+    const payBtn = document.getElementById("pay-btn");
+    const yapeBtn = document.getElementById("yape-btn");
+    const transferBtn = document.getElementById("transfer-btn");
+    const whatsappBtn = document.getElementById("store-whatsapp-btn");
 
-const checkbox = document.getElementById("pay-store");
+    if (checkbox.checked) {
+        // Ocultamos todos los métodos de pago online
+        if (payBtn) payBtn.style.display = "none";
+        if (yapeBtn) yapeBtn.style.display = "none";
+        if (transferBtn) transferBtn.style.display = "none";
+        
+        // Mostramos el botón de WhatsApp para tienda
+        if (whatsappBtn) whatsappBtn.style.display = "block";
+    } else {
+        // Al desmarcar, NO tocamos el payBtn (Culqi) para que siga oculto
+        // O lo forzamos a "none" por seguridad:
+        if (payBtn) payBtn.style.display = "none"; 
 
-const payBtn = document.getElementById("pay-btn");
-const yapeBtn = document.getElementById("yape-btn");
-const transferBtn = document.getElementById("transfer-btn");
-const whatsappBtn = document.getElementById("store-whatsapp-btn");
+        // Mostramos los que sí deben verse
+        if (yapeBtn) yapeBtn.style.display = "block";
+        if (transferBtn) transferBtn.style.display = "block";
 
-if(checkbox.checked){
-
-if(payBtn) payBtn.style.display="none";
-if(yapeBtn) yapeBtn.style.display="none";
-if(transferBtn) transferBtn.style.display="none";
-
-if(whatsappBtn) whatsappBtn.style.display="block";
-
-}else{
-
-if(payBtn) payBtn.style.display="block";
-if(yapeBtn) yapeBtn.style.display="block";
-if(transferBtn) transferBtn.style.display="block";
-
-if(whatsappBtn) whatsappBtn.style.display="none";
-
-}
-
+        // Ocultamos el botón de WhatsApp de tienda
+        if (whatsappBtn) whatsappBtn.style.display = "none";
+    }
 }
 
 function sendStoreOrder(){
