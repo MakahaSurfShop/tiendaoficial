@@ -896,7 +896,7 @@ button[onclick*="buyNow"]:hover {
 </h1>
   </div>
 
-  <div class="hidden min-[1220px]:flex flex-1 justify-center gap-6 xl:gap-8 h-full items-center font-semibold text-sm whitespace-nowrap [&>*]:shrink-0">
+  <div class="hidden min-[1220px]:flex flex-1 justify-center gap-3 xl:gap-6 h-full items-center font-semibold text-xs xl:text-sm whitespace-nowrap [&>*]:shrink-0">
 
     <div class="relative h-full flex items-center" onmouseenter="openMegaMenu(this)" onmouseleave="closeMegaMenu()">
       <span class="cursor-pointer hover:text-[#001f3f] flex items-center gap-1 group whitespace-nowrap">
@@ -911,7 +911,7 @@ button[onclick*="buyNow"]:hover {
         .menu-dropdown.is-active { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
       </style>
 
-      <div class="menu-dropdown absolute left-[-280px] top-[100%] w-[1250px] bg-white shadow-2xl rounded-xl border border-black grid grid-cols-7 gap-6 pl-8 pr-24 py-8">
+      <div class="menu-dropdown absolute left-[-150px] xl:left-[-340px] top-[100%] w-[95vw] max-w-[1250px] bg-white shadow-2xl rounded-xl border border-black grid grid-cols-7 gap-4 xl:gap-6 pl-4 xl:pl-8 pr-10 xl:pr-24 py-8">
         <div class="min-w-[140px]">
           <div class="font-bold mb-3">TABLAS</div>
           <a onclick="menuClick('Tablas','Shortboards')" class="block py-1 hover:text-[#001f3f] cursor-pointer">Shortboards</a>
@@ -994,14 +994,14 @@ button[onclick*="buyNow"]:hover {
 
     <div id="usados-menu" class="group relative flex items-center h-full">
       <span class="cursor-pointer hover:text-[#001f3f] flex items-center gap-1 whitespace-nowrap">
-        USADOS
+        RE-RIDE
         <svg id="arrow-usados" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
         </svg>
       </span>
       <div class="absolute left-1/2 -translate-x-1/2 top-[100%] w-54 bg-white shadow-lg rounded-lg p-4 mt-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out">
         <a onclick="navigateTo('vender');" class="block py-1 hover:text-[#001f3f] cursor-pointer">Vender</a>
-        <a onclick="renderReRideInfo();" class="block py-1 border-t border-gray-100 mt-1 pt-1 text-xs font-bold text-green-600 cursor-pointer">✨ ¿Cómo comprar usados?</a>
+        <a onclick="renderReRideInfo();" class="block py-1 border-t border-gray-100 mt-1 pt-1 text-xs font-bold text-green-600 cursor-pointer">✨ ¿Cómo comprar?</a>
       </div>
     </div>
 
@@ -1016,27 +1016,41 @@ button[onclick*="buyNow"]:hover {
 
   <div class="flex items-center gap-3 sm:gap-6 ml-auto">
     
-    <div onclick="navigateTo('cuenta')" class="cursor-pointer hover:text-[#0F4C5C] flex items-center gap-2 flex-shrink-0">
-      <i class="fa-regular fa-user text-xl"></i>
-      <span class="hidden xl:block text-sm font-bold">CUENTA</span>
+<div onclick="navigateTo('cuenta')" class="cursor-pointer hover:text-[#0F4C5C] flex items-center gap-2 flex-shrink-0">
+  <i class="fa-regular fa-user text-xl"></i>
+  <span class="hidden 2xl:block text-sm font-bold">CUENTA</span>
+</div>
+
+<div class="relative flex items-center">
+      <input type="text" 
+             id="search-input" 
+             onkeypress="handleSearch(event)"
+             placeholder="Buscar..." 
+             class="hidden 2xl:block w-full max-w-[180px] px-3 py-1.5 border border-gray-300 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-[#0F4C5C]">
+
+      <button id="desktop-search-trigger" onclick="toggleSearchDropdown()" class="hidden md:flex 2xl:hidden text-black hover:text-[#0F4C5C] p-2">
+        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+      </button>
+
+      <div id="search-dropdown" class="hidden absolute right-0 top-[55px] w-64 bg-white border border-black p-3 rounded-lg shadow-xl z-[60]">
+        <input type="text" 
+               id="search-input-dropdown" 
+               onkeypress="handleSearch(event)"
+               placeholder="¿Qué buscas?" 
+               class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#0F4C5C] outline-none text-black">
+      </div>
+
+      <button id="mobile-search-trigger" onclick="focusMobileSearch()" class="md:hidden text-black hover:text-[#0F4C5C] p-2">
+        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+      </button>
     </div>
 
-<input type="text" 
-       id="search-input" 
-       onkeypress="handleSearch(event)"
-       placeholder="Buscar..." 
-       class="hidden md:block w-full max-w-[100px] xl:max-w-[180px] px-3 py-1.5 border border-gray-300 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-[#0F4C5C]">
-
-    <button id="mobile-search-trigger" onclick="focusMobileSearch()" class="md:hidden text-black hover:text-[#0F4C5C] p-2">
-      <i class="fa-solid fa-magnifying-glass text-xl"></i>
-    </button>
-
-    <button onclick="toggleCart()" class="relative">
+    <button onclick="toggleCart()" class="relative ml-2">
       <i id="cart-icon" class="fa-solid fa-cart-shopping text-xl"></i>
       <span id="cart-count" class="absolute -top-2 -right-2 bg-[#ff4136] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
     </button>
 
-    <button class="xl:hidden text-xl" onclick="toggleMenu()">
+    <button class="xl:hidden text-xl ml-4" onclick="toggleMenu()">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
@@ -1671,16 +1685,27 @@ stockBySize:{
   "img": "https://res.cloudinary.com/dkazbai91/image/upload/v1774051038/as421113d_ulpk8f.jpg",
   "images": [
     "https://res.cloudinary.com/dkazbai91/image/upload/v1774051038/as421113d_ulpk8f.jpg",
-    "https://res.cloudinary.com/dkazbai91/image/upload/v1774051044/as422213d_aoek5g.jpg"
+    "https://res.cloudinary.com/dkazbai91/image/upload/v1774051044/as422213d_aoek5g.jpg",
+    "https://res.cloudinary.com/dkazbai91/image/upload/v1775511152/cascoiazul2_hudmyf.png",
+    "https://res.cloudinary.com/dkazbai91/image/upload/v1775511152/cascoazullsa_fklsbh.png"
   ],
   "description": "El casco GUL EVO 2.0 está diseñado para ofrecer seguridad máxima en aventuras acuáticas como vela, kayak o rafting. Con certificación CE EN 1385, combina una carcasa robusta de ABS con un diseño ligero y altamente ventilado.\n\nTecnologías de Protección:\n- Carcasa ABS de Alto Impacto: Protección robusta diseñada específicamente para deportes acuáticos exigentes.\n- Espuma de Impacto EVA: Interior amortiguador que absorbe golpes y garantiza comodidad.\n- Protección Auditiva Integrada: Cobertura lateral para zonas críticas sin comprometer la audición.\n\nSistemas de Ajuste y Confort:\n- AccuLock Fit: Sistema interno que permite un ajuste preciso y personalizado.\n- Estabilizador Occipital EVO180°: Mantiene el casco firme en su sitio, evitando deslizamientos incluso en aguas bravas.\n- Sistema AirVent: Diseño de once orificios de ventilación para mantener el flujo de aire y la frescura.\n- Correa de Liberación Rápida: Barbilla ajustable para un cierre seguro y fácil de operar.",
   "sizes": ["JNR", "S/M", "L/XL"],
-  "colors": ["Negro"],
-  "stock": 5,
+  "colors": ["Negro","Azul"],
+  "stock": 9,
   "stockBySize": {
     "JNR": 2,
-    "S/M": 1,
-    "L/XL": 2
+    "S/M": 3,
+    "L/XL": 4
+  },
+  "stockByVariant": {
+    "JNR-Negro": 2,
+    "S/M-Negro": 1,
+    "L/XL-Negro": 2,
+
+    "JNR-Azul": 0,
+    "S/M-Azul": 2,
+    "L/XL-Azul": 2
   }
 },
 {
@@ -2232,6 +2257,7 @@ name:"Hector Albitez Funboard 6'6",
 price:480,
 category:"Tablas",
 subcategory:"Funboards",
+condition:"Segunda",
 keywords:["tabla","surfboard","funboard","surf","tablas"],
 img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773896765/11244_4_q2i5cv.jpg",
 images:[
@@ -2252,6 +2278,7 @@ name:"Wayo Whilar Shortboard 6'8",
 price:440,
 category:"Tablas",
 subcategory:"Shortboards",
+condition:"Segunda",
 keywords:["tabla","surfboard","shortboard","surf","tablas"],
 img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773896785/11244_28_p2tdir.jpg",
 images:[
@@ -2272,6 +2299,7 @@ name:"MID-FUNSTER B-SHAPER 6,7",
 price:630,
 category:"Tablas",
 subcategory:"Midlength",
+condition:"Segunda",
 keywords:["tabla","surfboard","funboard","surf","tablas"],
 img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773896784/11244_25_mwvm5u.jpg",
 images:[
@@ -2610,7 +2638,7 @@ stockBySize:{"8'0":1}
   "colors": ["Negro"],
   "stock": 1,
   "stockBySize": {
-    "MS": 1,
+    "MS": 0,
     "ST": 1
   }
 },
@@ -3211,8 +3239,8 @@ images:["https://res.cloudinary.com/dkazbai91/image/upload/v1774127441/112222333
 description:"Cera para tablas de surf de 18 a 26 grados",
 sizes:["15gr"],
 colors:["Coconut"],
-stock:34,
-stockBySize:{"15gr":34}
+stock:33,
+stockBySize:{"15gr":33}
 },
 {
 id:92,
@@ -6878,6 +6906,7 @@ Solarez EPOXY (Azul): Seguro para todo tipo de tablas (Epoxy). Fórmula de alta 
     price: 480,
     category: "Tablas",
     subcategory: "Shortboards",
+    condition:"Segunda",
     keywords: ["tabla", "surfboard", "shortboard", "surf", "tablas","shortboard 6 pies","shortboards"],
     img: "https://res.cloudinary.com/dtz97n9cv/image/upload/v1774320065/49_dc6pwj.jpg",
     images: [
@@ -7914,7 +7943,7 @@ let html = visibleProducts.map(p => {
                     ${p.condition === "Segunda" ? `
                         <span onclick="event.stopPropagation(); renderReRideInfo()" 
                               class="bg-blue-600 hover:bg-blue-700 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase cursor-pointer transition-colors shadow-sm">
-                            USADO
+                            RE-RIDE
                         </span>
                     ` : ''}
                 </div>
@@ -8922,7 +8951,7 @@ class="w-4 h-4 cursor-pointer"
 <label for="secondhand-checkbox" 
 class="font-bold text-gray-700 uppercase cursor-pointer flex items-center gap-2">
 
-¿PRODUCTO DE SEGUNDA?
+¿PRODUCTO RE-RIDE?
 
 <span onclick="renderReRideInfo()" 
 class="text-[10px] text-blue-600 underline cursor-pointer normal-case">
@@ -13458,6 +13487,54 @@ function initWhatsAppModal() {
 
 // Inicializar de inmediato
 initWhatsAppModal();
+
+function toggleSearchDropdown() {
+    const dropdown = document.getElementById('search-dropdown');
+    dropdown.classList.toggle('hidden');
+    if (!dropdown.classList.contains('hidden')) {
+        document.getElementById('search-input-dropdown').focus();
+    }
+}
+
+// Cierra la cajita de búsqueda si haces clic fuera
+window.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('search-dropdown');
+    const trigger = document.getElementById('desktop-search-trigger');
+    if (dropdown && !dropdown.contains(e.target) && trigger && !trigger.contains(e.target)) {
+        dropdown.classList.add('hidden');
+    }
+});
+
+// Escuchar el ENTER corregido para el buscador de 1280px
+document.addEventListener('keypress', function (e) {
+    if (e.target.id === 'search-input-dropdown' && (e.key === 'Enter' || e.keyCode === 13)) {
+        const valor = e.target.value.trim();
+        if (valor) {
+            // --- CORRECCIÓN CRÍTICA ---
+            // Buscamos el input original que tu código ya sabe procesar
+            const mainInput = document.getElementById('search-input');
+            
+            if (mainInput) {
+                // Pasamos el texto del buscador pequeño al grande
+                mainInput.value = valor;
+                
+                // Ejecutamos tu función original de búsqueda
+                // Le pasamos un objeto que simule el evento sobre el input principal
+                handleSearch({ 
+                    key: 'Enter', 
+                    keyCode: 13, 
+                    target: mainInput,
+                    preventDefault: () => {} 
+                });
+            }
+
+            // Cerramos la ventanita
+            document.getElementById('search-dropdown').classList.add('hidden');
+            // Limpiamos el buscador desplegable para la próxima vez
+            e.target.value = "";
+        }
+    }
+});
 
 </script>
 </body>
