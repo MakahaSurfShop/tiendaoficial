@@ -13597,6 +13597,40 @@ document.addEventListener('keypress', function (e) {
     }
 });
 
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        const db = firebase.firestore();
+        
+        // Desglosamos el displayName que creaste (nombre|tel|dni)
+        let nombre = "Cliente";
+        let telefono = "";
+        let dni = "";
+
+        if (user.displayName && user.displayName.includes('|')) {
+            const datos = user.displayName.split('|');
+            nombre = datos[0];
+            telefono = datos[1];
+            dni = datos[2];
+        }
+
+        // Guardamos en Firestore
+        db.collection("usuarios").doc(user.uid).set({
+            uid: user.uid,
+            email: user.email,
+            nombre: nombre,
+            telefono: telefono,
+            dni: dni,
+            ultimaConexion: firebase.firestore.FieldValue.serverTimestamp(),
+            rol: "cliente" // Útil para futuros paneles de admin
+        }, { merge: true });
+
+        console.log("Sincronizado con Firestore para:", nombre);
+        
+    } else {
+        console.log("No hay sesión activa.");
+    }
+});
+
 </script>
 </body>
 </html>
