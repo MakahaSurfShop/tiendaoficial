@@ -10551,21 +10551,71 @@ function renderDelivery(){
 }
 
 window.onload = function() {
-    // 1. Verificar si hay un hash en la URL (ej: #productos, #detalle)
-    const hash = window.location.hash.replace('#', '');
+    // 1. Extraemos el hash completo (ejemplo: #detalle?id=GUL-01 o #categoria?cat=Wetsuits)
+    const hashFull = window.location.hash.replace('#', '');
     
-    if (hash) {
-        // Intentar navegar a la sección del hash
-        // Si el hash es 'detalle', podrías necesitar lógica extra para el ID, 
-        // pero para secciones generales esto funcionará:
-        navigateTo(hash, null, null, null, true);
+    if (hashFull) {
+        // Separamos la "página" de los "parámetros"
+        const [page, queryString] = hashFull.split('?');
+        const params = new URLSearchParams(queryString);
+
+        // --- INICIO DE DETALLE POR APARTADO ---
+
+        // A. DETALLE DE PRODUCTO (Individual)
+        if (page === 'detalle' && params.has('id')) {
+            const productId = params.get('id');
+            // Llamamos a navigateTo con el ID para que ejecute renderProductDetail
+            navigateTo('detalle', null, null, productId, true);
+        } 
+        
+        // B. CATEGORÍAS Y SUBCATEGORÍAS
+        else if (page === 'categoria' && params.has('cat')) {
+            const cat = params.get('cat');
+            const sub = params.get('sub') || null;
+            // Forzamos la carga de la categoría específica
+            navigateTo('categoria', cat, sub, null, true);
+        }
+
+        // C. SECCIONES ESTÁTICAS
+        else if (page === 'carrito') {
+            navigateTo('carrito', null, null, null, true);
+        }
+        else if (page === 'checkout') {
+            navigateTo('checkout', null, null, null, true);
+        }
+        else if (page === 'noticias' || page === 'news') {
+            // Asegúrate de que tienes una función que renderice el feed de noticias
+            if (typeof renderNews === "function") {
+                renderNews();
+            } else {
+                renderHome();
+            }
+        }
+        
+        // D. NOTICIA ESPECÍFICA (Si manejas links para eventos como Copa José Duany)
+        else if (page === 'noticia' && params.has('id')) {
+            const noticiaId = params.get('id');
+            // Supone que tienes una función para ver el detalle de la noticia
+            if (typeof renderNewsArticle === "function") {
+                renderNewsArticle(noticiaId);
+            }
+        }
+
+        // E. SI EL HASH NO COINCIDE CON NADA
+        else {
+            renderHome();
+        }
+
     } else {
-        // Si no hay hash, cargamos el inicio por defecto
+        // 2. Si no hay hash (el usuario entró a www.tuweb.com directamente)
         renderHome();
     }
+
+    // 3. Mantenimiento de estado global
+    if (typeof updateCart === "function") updateCart();
     
-    updateCart();
-    console.log("✅ Navegación restaurada en: " + (hash || 'inicio'));
+    // Opcional: Si tienes un sistema de login, verificar sesión al cargar
+    // checkAuthState(); 
 };
 
 // === SLIDER CLIENTES CON FONDO DESENFOCADO ===
@@ -11645,22 +11695,22 @@ document.getElementById("main-content").innerHTML = `
 
 <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 1)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
-    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776116838/redesovacion-12_ttw8py.jpg"
-      alt="Team Perú Surf brilla en Panamá 2026"
+    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670579942_18547845400064403_8870098867041823599_n_tscvn7.jpg"
+      alt="Perú Campeón de Surf Panamá 2026"
       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
     
     <div class="absolute top-4 left-4 bg-[#1f6f78] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
-      Resultados en Vivo
+      Resultados Finales
     </div>
   </div>
 
   <div class="px-2">
     <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight italic">
-      Panamá 2026: El Team Perú de Surf brilla en el arranque de los Juegos
+      Perú dicta cátedra en las olas: Dominio total en el Surf de Panamá 2026
     </h3>
     
     <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
-      Dominio total en Playa Venao: Catalina Zariquiey y Hannah Saavedra logran los puntajes más altos en el debut suramericano.
+      Histórica jornada en Playa Venao: El Team Perú se corona con 3 medallas de oro y una de plata, consolidándose como la máxima potencia del surf juvenil.
     </p>
     
     <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
@@ -11801,16 +11851,16 @@ if(id === 1){
 
     <header class="w-full px-6 md:px-12 py-16 text-center">
         <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">IV Juegos Suramericanos de la Juventud</span>
-        <h1 class="text-4xl md:text-8xl heading-font text-[#001f3f] italic font-light tracking-tighter leading-none">Panamá 2026: El Team Perú de Surf brilla en el arranque de los Juegos</h1>
-        <p class="mt-6 text-gray-500 font-medium italic text-xl">Ciudad de Panamá / Playa Venao – 13 de abril de 2026</p>
+        <h1 class="text-4xl md:text-8xl heading-font text-[#001f3f] italic font-light tracking-tighter leading-none">Perú dicta cátedra en las olas: Dominio total en Panamá 2026</h1>
+        <p class="mt-6 text-gray-500 font-medium italic text-xl">Playa Venao, Panamá – 16 de abril de 2026</p>
     </header>
 
     <div class="w-full h-[500px] md:h-[85vh] overflow-hidden">
-        <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1775685924/Playa-Venao-Beach-Surfers_ileiw3.webp" class="w-full h-full object-cover" alt="Selección Peruana de Surf Panamá 2026">
+        <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776379241/Gemini_Generated_Image_dlhu2idlhu2idlhu_kkpfwl.png" class="w-full h-full object-cover" alt="Team Perú Campeón de Surf Panamá 2026">
     </div>
     
     <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 md:px-12 py-3">
-        <p class="text-right text-xs text-gray-400 font-light tracking-wide uppercase">Sede Principal: Ciudad de Panamá | Sub-sede: Playa Venao, Los Santos</p>
+        <p class="text-right text-xs text-gray-400 font-light tracking-wide uppercase">Sede: Playa Venao, Los Santos | Resultados Finales Oficiales</p>
     </div>
     
     <div class="w-full px-6 md:px-12 py-20 text-gray-800">
@@ -11818,87 +11868,90 @@ if(id === 1){
             
             <section class="space-y-10 text-2xl leading-relaxed">
                 <p class="first-letter:text-7xl first-letter:font-bold first-letter:text-[#001f3f] first-letter:mr-3 first-letter:float-left">
-                    El continente ha puesto sus ojos en Panamá. Con una mezcla de tradición, modernidad y un despliegue deportivo sin precedentes, se han inaugurado oficialmente los **IV Juegos Suramericanos de la Juventud**, donde más de **2,000 atletas de 15 naciones** compiten por la gloria. Para la delegación peruana, el inicio no podría haber sido más prometedor.
+                    En una jornada marcada por condiciones épicas en el Pacífico panameño, la delegación peruana de surf ratificó su estatus de potencia continental. Los **IV Juegos Suramericanos de la Juventud Panamá 2026** fueron el escenario donde el "Team Perú" no solo compitió, sino que dominó las aguas de Playa Venao, llevándose la mayoría de las preseas doradas en disputa este 16 de abril.
                 </p>
 
-                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776115871/670757681_18578565355047925_6894472893085039234_n_gh6ilx.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Inauguración Rommel Fernández">
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776378596/673139020_18547860835064403_4790871634537114984_n_gwfuik.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Ceremonia de Premiación Surf">
 
-                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">El Inicio Oficial: Una Gala en el Rommel Fernández</h2>
-                <p>El domingo 12 de abril, la Ciudad de Panamá se vistió de fiesta para la Ceremonia de Apertura en el histórico **Estadio Rommel Fernández Gutiérrez**. El encendido del pebetero simbolizó el inicio formal con la rana dorada **"Antón"** como protagonista, mientras el **Team Perú** desfiló con 141 rostros llenos de ilusión.</p>
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">La Reina del Shortboard: Catalina Zariquiey</h2>
+                <p>La figura indiscutible del evento fue **Catalina Zariquiey**. Con una lectura perfecta de las olas y maniobras de alto impacto, la joven surfista peruana se colgó la medalla de **oro** en la categoría Shortboard Femenino. Zariquiey superó en una final de infarto a las representantes de Chile y Argentina, demostrando por qué es considerada una de las mayores promesas del surf mundial.</p>
 
-                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776115164/672335262_18578565421047925_7854195715204018565_n_ga34f6.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Desfile Team Perú">
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670605740_18547845409064403_3975565345121345556_n_x9cakv.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Lucciano Campos y Hannah Saavedra">
 
-                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">Lunes 13 de Abril: Dominio Peruano en el Mar</h2>
-                <p>Mientras en la capital el Judo y el Fútbol captaban la atención, a cientos de kilómetros en Los Santos, el surf peruano dictaba cátedra en Playa Venao con condiciones de olas perfectas de 3 a 5 pies.</p>
-
-                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776117449/IMG_7420venao-foto-philippe-demarsan-uai-1539x1026_b49uwl.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Competencias Panamá">
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">Bodyboard: Oro por partida doble</h2>
+                <p>El éxito peruano se extendió al Bodyboard, donde el dominio fue absoluto. Lucciano Campos y Hannah Saavedra demostraron una solidez técnica impecable, dejando sin opciones a sus rivales de Brasil y Argentina en las mangas finales.</p>
             </section>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gray-50 p-8 md:p-20 rounded-[3rem] border border-gray-100 shadow-inner">
     <div class="space-y-8">
         <h4 class="text-[#1f6f78] font-bold text-4xl flex items-center">
             <span class="w-12 h-1 bg-[#1f6f78] mr-4"></span>
-            Dominio Técnico del Team Perú
+            Hazañas del Medallero
         </h4>
         <div class="space-y-10 text-xl text-gray-700 leading-relaxed">
             <div class="pl-6 border-l-4 border-[#1f6f78]">
-                <strong class="text-[#001f3f] text-2xl block mb-2">Catalina Zariquiey (Shortboard)</strong>
-                <p>Protagonista absoluta del Heat 1. Logró combinar dos olas sólidas mediante un <b>backside surfing</b> muy vertical y potente. Avanzó como líder absoluta directamente a la siguiente fase, evitando el repechaje con la puntuación más alta de la mañana.</p>
+                <strong class="text-[#001f3f] text-2xl block mb-2">Catalina Zariquiey (Shortboard Fem.) – ORO</strong>
+                <p>Figura indiscutible del evento. Con una lectura de olas perfecta y maniobras de alto impacto, superó en una final de infarto a las representantes de Chile y Argentina, ratificando su estatus como promesa mundial.</p>
+            </div>
+
+            <div class="pl-6 border-l-4 border-[#1f6f78]">
+                <strong class="text-[#001f3f] text-2xl block mb-2">Lucciano Campos (Bodyboard Masc.) – ORO</strong>
+                <p>Se impuso con autoridad tras una serie de maniobras aéreas técnicas. Campos dejó sin opciones al brasileño Andre Barros, asegurando el metal más precioso para el equipo incaico.</p>
             </div>
             
             <div class="pl-6 border-l-4 border-[#1f6f78]">
-                <strong class="text-[#001f3f] text-2xl block mb-2">Hannah Saavedra (Bodyboard)</strong>
-                <p>Tras su éxito en Hawái, demostró una adaptación impecable al Beach Break panameño. Ejecutó con precisión maniobras de alto grado de dificultad como el <b>Roll</b> y el <b>ARS (Air Roll Spin)</b>, asegurando la primera posición ante Brasil y Chile.</p>
+                <strong class="text-[#001f3f] text-2xl block mb-2">Hannah Saavedra (Bodyboard Fem.) – ORO</strong>
+                <p>Completó la gesta al vencer a la argentina Isabella Assmann. Saavedra mostró una solidez mental clave en los últimos cinco minutos, aprovechando la mejor serie de olas del set.</p>
             </div>
             
             <div class="pl-6 border-l-4 border-[#1f6f78]">
-                <strong class="text-[#001f3f] text-2xl block mb-2">Lucciano Campos (Bodyboard)</strong>
-                <p>Debut estratégico en condiciones de mar "picado". Su lectura de ola le permitió conectar maniobras fluidas en las secciones críticas, superando con solvencia a sus rivales directos de Argentina y Venezuela.</p>
+                <strong class="text-[#001f3f] text-2xl block mb-2">María Paula Conterno (SUP Surf) – PLATA</strong>
+                <p>Sumó una valiosa medalla de plata tras un duelo punto a punto con la chilena Antonia Gutiérrez en la modalidad de Stand Up Paddle.</p>
             </div>
         </div>
     </div>
 
     <div class="flex flex-col bg-[#001f3f] text-white p-12 rounded-[2rem] justify-center shadow-2xl self-start lg:sticky lg:top-10">
-        <h4 class="font-bold text-3xl mb-6 italic tracking-tight uppercase text-[#1f6f78]">Rigor Técnico & Reporte</h4>
+        <h4 class="font-bold text-3xl mb-6 italic tracking-tight uppercase text-[#1f6f78]">Resumen del Medallero</h4>
         <p class="text-xl opacity-90 mb-8 leading-relaxed">
-            El sistema de <strong>Live Scoring</strong> de la ISA ha confirmado la superioridad peruana. Los jueces están premiando la <b>innovación</b>, el <b>compromiso</b> en las secciones más pesadas de la ola y la variedad de maniobras. Perú se consolida como la potencia a batir en estas olimpiadas juveniles.
+            El balance final de la <strong>ODESUR</strong> en la disciplina de Surf confirma a Perú como líder absoluto con 4 medallas totales.
         </p>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Condición del Mar</span>
-                <p class="font-bold text-lg italic">Olas 3-5 Pies / Offshore</p>
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Perú</span>
+                <p class="font-bold text-lg italic">3 Oros, 1 Plata</p>
             </div>
             <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Estado de Serie</span>
-                <p class="font-bold text-lg italic">Líderes de Grupo</p>
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Chile</span>
+                <p class="font-bold text-lg italic">1 Oro, 1 Plata</p>
             </div>
             <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Ubicación</span>
-                <p class="font-bold text-lg italic">Playa Venao, Los Santos</p>
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Argentina</span>
+                <p class="font-bold text-lg italic">2 Platas</p>
             </div>
             <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Próxima Meta</span>
-                <p class="font-bold text-lg italic">Finales: 16 de Abril</p>
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Brasil / Panamá</span>
+                <p class="font-bold text-lg italic">Bronces Destacados</p>
             </div>
         </div>
 
         <div class="mt-10 pt-6 border-t border-white/10 text-center">
-            <span class="text-xs font-bold tracking-widest text-gray-400 uppercase">Actualizado en tiempo real</span>
+            <span class="text-xs font-bold tracking-widest text-gray-400 uppercase">Cierre de Competencia: 16 de Abril</span>
         </div>
     </div>
 </div>
 
-            <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776117342/Gemini_Generated_Image_gidb3vgidb3vgidb_pnoqne.png" class="w-full h-auto max-h-[800px] object-cover rounded-3xl shadow-2xl" alt="Surf Pro">
+            <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670579942_18547845400064403_8870098867041823599_n_tscvn7.jpg" class="w-full h-auto max-h-[800px] object-cover rounded-3xl shadow-2xl" alt="Podio Surf Perú">
 
             <div class="max-w-4xl mx-auto text-center space-y-12 py-10">
-                <h3 class="text-5xl font-bold text-[#001f3f] italic">Lo que viene en el Calendario</h3>
+                <h3 class="text-5xl font-bold text-[#001f3f] italic">Un escenario de clase mundial</h3>
                 <p class="text-2xl text-gray-600 leading-relaxed">
-                    Las finales de surf están programadas para el <strong>16 de abril</strong>. Se espera que el Team Perú sume sus primeras medallas oficiales, previo a los Panamericanos de Surf el 24 de abril.
+                    Playa Venao se consolidó como una sede de primer nivel. Las olas, constantes y con buena forma, permitieron que el formato de competencia luciera su mejor cara, enfocada en el desarrollo de atletas de entre 14 y 17 años.
                 </p>
                 <div class="bg-amber-50 border-t-4 border-amber-400 p-10 rounded-3xl">
                     <p class="text-amber-900 font-bold text-2xl">Dato de interés:</p>
-                    <p class="text-amber-800 text-xl italic">Playa Venao recibirá inmediatamente después los Juegos Panamericanos de Surf 2026, clasificatorios para Lima 2027.</p>
+                    <p class="text-amber-800 text-xl italic">Panamá celebró un crecimiento notable en su nivel competitivo, logrando meterse en fases finales y sumando bronces que entusiasmaron a la afición local en la provincia de Los Santos.</p>
                 </div>
             </div>
         </div>
