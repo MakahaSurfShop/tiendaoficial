@@ -10550,73 +10550,46 @@ function renderDelivery(){
     window.scrollTo(0, 0);
 }
 
-window.onload = function() {
-    // 1. Extraemos el hash completo (ejemplo: #detalle?id=GUL-01 o #categoria?cat=Wetsuits)
-    const hashFull = window.location.hash.replace('#', '');
+// Creamos una función reutilizable para manejar la ruta actual
+function handleRouting() {
+    const hashFull = window.location.hash.replace('#', '').trim();
     
     if (hashFull) {
-        // Separamos la "página" de los "parámetros"
         const [page, queryString] = hashFull.split('?');
-        const params = new URLSearchParams(queryString);
-
-        // --- INICIO DE DETALLE POR APARTADO ---
-
-        // A. DETALLE DE PRODUCTO (Individual)
-        if (page === 'detalle' && params.has('id')) {
-            const productId = params.get('id');
-            // Llamamos a navigateTo con el ID para que ejecute renderProductDetail
-            navigateTo('detalle', null, null, productId, true);
-        } 
+        const urlParams = new URLSearchParams(queryString || '');
         
-        // B. CATEGORÍAS Y SUBCATEGORÍAS
-        else if (page === 'categoria' && params.has('cat')) {
-            const cat = params.get('cat');
-            const sub = params.get('sub') || null;
-            // Forzamos la carga de la categoría específica
-            navigateTo('categoria', cat, sub, null, true);
-        }
+        const id = urlParams.get('id');
+        const cat = urlParams.get('cat');
+        const sub = urlParams.get('sub');
 
-        // C. SECCIONES ESTÁTICAS
-        else if (page === 'carrito') {
-            navigateTo('carrito', null, null, null, true);
+        // IMPORTANTE: Validamos que la página exista para evitar bucles
+        if (typeof navigateTo === 'function') {
+            // Pasamos 'true' al final para indicar que es una navegación de sistema/historial
+            navigateTo(page, cat, sub, id, true);
         }
-        else if (page === 'checkout') {
-            navigateTo('checkout', null, null, null, true);
-        }
-        else if (page === 'noticias' || page === 'news') {
-            // Asegúrate de que tienes una función que renderice el feed de noticias
-            if (typeof renderNews === "function") {
-                renderNews();
-            } else {
-                renderHome();
-            }
-        }
-        
-        // D. NOTICIA ESPECÍFICA (Si manejas links para eventos como Copa José Duany)
-        else if (page === 'noticia' && params.has('id')) {
-            const noticiaId = params.get('id');
-            // Supone que tienes una función para ver el detalle de la noticia
-            if (typeof renderNewsArticle === "function") {
-                renderNewsArticle(noticiaId);
-            }
-        }
-
-        // E. SI EL HASH NO COINCIDE CON NADA
-        else {
-            renderHome();
-        }
-
     } else {
-        // 2. Si no hay hash (el usuario entró a www.tuweb.com directamente)
-        renderHome();
+        if (typeof renderHome === 'function') renderHome();
     }
-
-    // 3. Mantenimiento de estado global
-    if (typeof updateCart === "function") updateCart();
     
-    // Opcional: Si tienes un sistema de login, verificar sesión al cargar
-    // checkAuthState(); 
+    if (typeof updateCart === 'function') updateCart();
+}
+
+// 1. Ejecutar al cargar la página por primera vez
+window.onload = function() {
+    // Si usas Firebase, es mejor esperar un momento o verificar que la data esté lista
+    // Aquí ejecutamos la ruta inicial
+    handleRouting();
 };
+
+// 2. ESCENCIAL: Detectar cambios en el link sin recargar la página
+// Esto arregla que "no actualice donde quieres" cuando navegas atrás/adelante
+window.onhashchange = function() {
+    handleRouting();
+};
+
+// 3. Mejora para tu función navigateTo (Asegúrate de tener esto en tu lógica)
+// Cuando generas el link, asegúrate de que el hash se guarde correctamente:
+// Ejemplo: history.pushState(null, "", `#detalle?id=${productId}`);
 
 // === SLIDER CLIENTES CON FONDO DESENFOCADO ===
 const clientesImagenes = [
