@@ -11688,6 +11688,32 @@ document.getElementById("main-content").innerHTML = `
 
 <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 1)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
+    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776722135/FOTO-PANAMERICANO_jh5hcs.jpg"
+      alt="XIX Juegos Panamericanos de Surf Panamá 2026"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <div class="absolute top-4 left-4 bg-[#1f6f78] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+      Evento Oficial
+    </div>
+  </div>
+
+  <div class="px-2">
+    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight italic">
+      Panamá 2026: Playa Venao recibe los XIX Juegos Panamericanos de Surf
+    </h3>
+    
+    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
+      La élite del surf continental se cita del 24 de abril al 3 de mayo en Los Santos para definir los cupos hacia Santo Domingo 2026 y Lima 2027.
+    </p>
+    
+    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
+      Leer nota completa <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
+    </span>
+  </div>
+</div>
+
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 2)">
+  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670579942_18547845400064403_8870098867041823599_n_tscvn7.jpg"
       alt="Perú Campeón de Surf Panamá 2026"
       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
@@ -11712,7 +11738,8 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 2)">
+
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1775685788/Copa-Duany-2026-P_qnft2n.jpg"
       alt="Copa José Duany 2026"
@@ -11736,7 +11763,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
+     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 4)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif"
       alt="Surf Fest Pro League 2026"
@@ -11760,7 +11787,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 4)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 5)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://i.imgur.com/qwX39vQ.png"
       alt="Perú Potencia Mundial del Surf"
@@ -11834,6 +11861,122 @@ if (main) {
 }
 
 if(id === 1){
+    html = `
+<article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
+    <div class="w-full px-6 md:px-12 pt-10">
+        <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
+            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver
+        </button>
+    </div>
+
+    <header class="w-full px-6 md:px-12 py-16 text-center">
+        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">XIX Juegos Panamericanos de Surf</span>
+        <h1 class="text-4xl md:text-8xl heading-font text-[#001f3f] italic font-light tracking-tighter leading-none">Panamá 2026: El epicentro del surf continental</h1>
+        <p class="mt-6 text-gray-500 font-medium italic text-xl">Playa Venao, Los Santos – 24 de abril al 3 de mayo de 2026</p>
+    </header>
+
+    <div class="w-full h-[500px] md:h-[85vh] overflow-hidden">
+        <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776722135/aaaIMG_6874-uai-1414x1061_dhdhap.jpg" class="w-full h-full object-cover" alt="Pan American Surfing Games Panamá 2026">
+    </div>
+    
+    <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 md:px-12 py-3">
+        <p class="text-right text-xs text-gray-400 font-light tracking-wide uppercase">Sede: Playa Venao, Panamá | Rumbo a Lima 2027</p>
+    </div>
+    
+    <div class="w-full px-6 md:px-12 py-20 text-gray-800">
+        <div class="max-w-[1400px] mx-auto space-y-16">
+            
+            <section class="space-y-10 text-2xl leading-relaxed">
+                <p class="first-letter:text-7xl first-letter:font-bold first-letter:text-[#001f3f] first-letter:mr-3 first-letter:float-left">
+                    La Asociación Panamericana de Surf (PASA) ha confirmado que las costas panameñas recibirán a la élite del surf continental. Los **XIX Juegos Panamericanos de Surf 2026** se perfilan como el evento más crucial del año, funcionando como el principal clasificatorio para los Juegos Centroamericanos y del Caribe Santo Domingo 2026 y una parada clave en la ruta hacia los Juegos Panamericanos Lima 2027.
+                </p>
+
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776722135/FOTO-COMPETIDORES-1024x532_b9szo6.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Playa Venao Surf Panamá">
+
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">Playa Venao: El escenario perfecto</h2>
+                <p>Conocida por su consistencia y potencia, Playa Venao en la provincia de Los Santos será el campo de batalla donde más de **400 atletas** de 20 naciones buscarán la gloria. El evento contará con un despliegue técnico de primer nivel para evaluar disciplinas que van desde el explosivo Shortboard hasta la resistencia de las carreras técnicas de SUP.</p>
+
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776722135/AS9A1237_inauguracion-foto_Michael_Tweddle-1024x683_ewpwhh.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Disciplinas Surf Panamericanos">
+
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">Camino al Sueño Olímpico</h2>
+                <p>La importancia de esta edición radica en su peso dentro del ciclo olímpico. Los resultados obtenidos en las aguas panameñas definirán las plazas para los próximos compromisos regionales, lo que asegura que cada delegación, desde Canadá hasta Argentina, envíe a sus mejores exponentes en categorías masculinas y femeninas.</p>
+            </section>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gray-50 p-8 md:p-20 rounded-[3rem] border border-gray-100 shadow-inner">
+    <div class="space-y-8">
+        <h4 class="text-[#1f6f78] font-bold text-4xl flex items-center">
+            <span class="w-12 h-1 bg-[#1f6f78] mr-4"></span>
+            Calendario por Disciplinas
+        </h4>
+        <div class="space-y-10 text-xl text-gray-700 leading-relaxed">
+            <div class="pl-6 border-l-4 border-[#1f6f78]">
+                <strong class="text-[#001f3f] text-2xl block mb-2">Bodyboard & SUP Surf</strong>
+                <p>Las competencias iniciarán del **24 al 28 de abril**, abriendo el festival panamericano con las maniobras más radicales y el control absoluto del remo en olas.</p>
+            </div>
+
+            <div class="pl-6 border-l-4 border-[#1f6f78]">
+                <strong class="text-[#001f3f] text-2xl block mb-2">Longboard y Shortboard</strong>
+                <p>Las categorías estelares entrarán en acción del **27 de abril al 2 de mayo**. Se espera una demostración de estilo clásico y surfing progresivo de alta velocidad.</p>
+            </div>
+            
+            <div class="pl-6 border-l-4 border-[#1f6f78]">
+                <strong class="text-[#001f3f] text-2xl block mb-2">Carrera Técnica SUP</strong>
+                <p>La prueba de fuego para los atletas de Stand Up Paddle tendrá lugar entre el **29 de abril y el 3 de mayo**, cerrando el evento con una exhibición de resistencia física.</p>
+            </div>
+            
+            <div class="pl-6 border-l-4 border-[#1f6f78]">
+                <strong class="text-[#001f3f] text-2xl block mb-2">Clasificatorios en Juego</strong>
+                <p>Los atletas compiten por cupos directos a los Juegos Centroamericanos y del Caribe Santo Domingo 2026 y puntos críticos para los Juegos Panamericanos Lima 2027.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col bg-[#001f3f] text-white p-12 rounded-[2rem] justify-center shadow-2xl self-start lg:sticky lg:top-10">
+        <h4 class="font-bold text-3xl mb-6 italic tracking-tight uppercase text-[#1f6f78]">Datos del Evento</h4>
+        <p class="text-xl opacity-90 mb-8 leading-relaxed">
+            La <strong>Asociación Panamericana de Surf (PASA)</strong> organiza este encuentro masivo que reafirma a Panamá como potencia turística y deportiva.
+        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Participación</span>
+                <p class="font-bold text-lg italic">20+ Naciones</p>
+            </div>
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Atletas</span>
+                <p class="font-bold text-lg italic">~400 Competidores</p>
+            </div>
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Formato Equipo</span>
+                <p class="font-bold text-lg italic">22 Atletas por País</p>
+            </div>
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Objetivo</span>
+                <p class="font-bold text-lg italic">Ciclo Olímpico 2027</p>
+            </div>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-white/10 text-center">
+            <span class="text-xs font-bold tracking-widest text-gray-400 uppercase">Clausura: 3 de mayo de 2026</span>
+        </div>
+    </div>
+</div>
+
+            <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776722135/imagen_pASA-1024x512_pb7dbz.jpg" class="w-full h-auto max-h-[800px] object-cover rounded-3xl shadow-2xl" alt="Atletas Panamericanos Panamá">
+
+            <div class="max-w-4xl mx-auto text-center space-y-12 py-10">
+                <h3 class="text-5xl font-bold text-[#001f3f] italic">Una cita histórica para el surf</h3>
+                <p class="text-2xl text-gray-600 leading-relaxed">
+                    Con el respaldo del Gobierno Nacional y la autoridad deportiva de la región, los Panamericanos de Surf 2026 prometen ser una vitrina inigualable para el talento emergente y los surfistas consagrados que buscan su lugar en la historia.
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+    `;
+}
+
+if(id === 2){
     html = `
 <article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
     <div class="w-full px-6 md:px-12 pt-10">
@@ -11953,7 +12096,7 @@ if(id === 1){
     `;
 }
 
-if(id === 2){
+if(id === 3){
     html = `
 <article class="bg-white min-h-screen pb-20">
     <div class="max-w-[1440px] mx-auto px-6 pt-10">
@@ -12047,7 +12190,7 @@ if(id === 2){
     `;
 }
 
-if(id === 3){
+if(id === 4){
     html = `
 <article class="bg-white min-h-screen pb-20">
     <div class="max-w-[1440px] mx-auto px-6 pt-10">
@@ -12139,7 +12282,7 @@ if(id === 3){
     `;
 }
 
-if(id === 4){
+if(id === 5){
 
 html = `
 <article class="bg-white min-h-screen pb-20">
