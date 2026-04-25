@@ -11688,6 +11688,32 @@ document.getElementById("main-content").innerHTML = `
 
 <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 1)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
+    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777135093/Las_emociones_del_surf_ya_se_viven_en_Playa_Venao_La_imponente_Playa_Venao_sede_del_surf_5_qlmvhz.jpg"
+      alt="XIX Juegos Panamericanos de Surf Panamá 2026"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <div class="absolute top-4 left-4 bg-[#1f6f78] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+      PASA Games 2026
+    </div>
+  </div>
+
+  <div class="px-2">
+    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight italic">
+      Marea Roja en Panamá: Perú arrasa en el inicio de los Panamericanos
+    </h3>
+    
+    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
+      Christopher Bayona, Hannah Saavedra y el equipo de SUP Surf imponen condiciones en Playa Venao. Conoce los primeros resultados del Team Perú.
+    </p>
+    
+    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
+      Ver reporte de resultados <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
+    </span>
+  </div>
+</div>
+
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 2)">
+  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776722135/FOTO-PANAMERICANO_jh5hcs.jpg"
       alt="XIX Juegos Panamericanos de Surf Panamá 2026"
       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
@@ -11712,7 +11738,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 2)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670579942_18547845400064403_8870098867041823599_n_tscvn7.jpg"
       alt="Perú Campeón de Surf Panamá 2026"
@@ -11739,7 +11765,7 @@ document.getElementById("main-content").innerHTML = `
 </div>
 
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 4)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1775685788/Copa-Duany-2026-P_qnft2n.jpg"
       alt="Copa José Duany 2026"
@@ -11763,7 +11789,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 4)">
+     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 5)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif"
       alt="Surf Fest Pro League 2026"
@@ -11787,7 +11813,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 5)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 6)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://i.imgur.com/qwX39vQ.png"
       alt="Perú Potencia Mundial del Surf"
@@ -11861,6 +11887,139 @@ if (main) {
 }
 
 if(id === 1){
+    html = `
+<article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
+    <div class="w-full px-6 md:px-12 pt-10">
+        <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
+            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver
+        </button>
+    </div>
+
+    <header class="w-full px-6 md:px-12 py-16 text-center">
+        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">XIX Juegos Panamericanos de Surf (PASA Games)</span>
+        <h1 class="text-4xl md:text-8xl heading-font text-[#001f3f] italic font-light tracking-tighter leading-none">Marea Roja en Playa Venao: Perú impone condiciones</h1>
+        <p class="mt-6 text-gray-500 font-medium italic text-xl">Por: Redacción Deportes | Playa Venao, Panamá – 24 de abril de 2026</p>
+    </header>
+
+    <div class="w-full h-[500px] md:h-[85vh] overflow-hidden">
+        <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777135093/Las_emociones_del_surf_ya_se_viven_en_Playa_Venao_La_imponente_Playa_Venao_sede_del_surf_5_qlmvhz.jpg" class="w-full h-full object-cover" alt="Pan American Surfing Games Panamá 2026">
+    </div>
+    
+    <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 md:px-12 py-3">
+        <p class="text-right text-xs text-gray-400 font-light tracking-wide uppercase">Cobertura Especial | Rumbo a Lima 2027</p>
+    </div>
+    
+    <div class="w-full px-6 md:px-12 py-20 text-gray-800">
+        <div class="max-w-[1400px] mx-auto space-y-16">
+            
+            <section class="space-y-10 text-2xl leading-relaxed">
+                <p class="first-letter:text-7xl first-letter:font-bold first-letter:text-[#001f3f] first-letter:mr-3 first-letter:float-left">
+                    El rugido del Pacífico en Playa Venao marcó hoy el inicio oficial de los **XIX Juegos Panamericanos de Surf (PASA Games)**, y el "Team Perú" no perdió tiempo para confirmar por qué es la potencia dominante de la región. En una jornada inaugural marcada por olas consistentes de 4 a 6 pies y un calor tropical intenso, los surfistas nacionales superaron sus series con autoridad, posicionándose estratégicamente en el cuadro principal.
+                </p>
+
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777135093/inauguracion_xeufmf.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Playa Venao Surf Panamá">
+
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">Dominio en el agua: Nombres propios de la victoria</h2>
+                <p>La jornada del 24 de abril arrancó con resultados sobresalientes en las categorías de Bodyboard Prone y SUP Surf, donde la jerarquía peruana se hizo sentir desde el primer "heat".</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
+                    <div class="bg-gray-50 p-10 rounded-[2rem] border border-gray-100">
+                        <h3 class="text-[#1f6f78] font-bold text-3xl mb-6">Bodyboard (Masculino y Femenino)</h3>
+                        <p class="text-xl mb-4">En la modalidad de prone, el equipo peruano impuso condiciones gracias a la lectura impecable del beach break.</p>
+                        <ul class="space-y-4 text-xl italic">
+                            <li>• <strong>Christopher Bayona y Fabio Saavedra:</strong> Ejecución técnica superior en maniobras aéreas, avanzando con autoridad a la segunda ronda.</li>
+                            <li>• <strong>Hannah Saavedra:</strong> La referente indiscutible dominó su serie con inteligencia, asegurando el pase directo con puntajes de dos dígitos.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-[#001f3f] text-white p-10 rounded-[2rem] shadow-xl">
+                        <h3 class="text-[#1f6f78] font-bold text-3xl mb-6">SUP Surf (Stand Up Paddle)</h3>
+                        <p class="text-xl mb-4 text-gray-300">Perú exhibió un nivel superlativo, logrando que todos sus representantes avanzaran sin pasar por el repechaje.</p>
+                        <ul class="space-y-4 text-xl italic">
+                            <li>• <strong>Sebastian Gomez y Tamil Martino:</strong> Giros radicales y potencia en el "bottom turn" que dejaron sin opciones a sus rivales.</li>
+                            <li>• <strong>Vania Torres y Giannisa Vecco:</strong> La experiencia y la promesa se unieron para controlar el ritmo y ejecutar maniobras de alto impacto.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">La Ceremonia de las Arenas: Identidad y Hermandad</h2>
+                <p>Más allá del agua, la tarde se vistió de gala con la Ceremonia de Apertura. El momento más emotivo fue la **"Ceremonia de las Arenas"**, donde los abanderados peruanos vertieron arena de nuestro litoral en un contenedor transparente junto a otras 18 naciones. La delegación peruana, la más numerosa y ovacionada, desfiló liderada por sus campeones mundiales con un objetivo claro: retener el título por equipos.</p>
+
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777135093/DSC8808-1024x683_xxahet.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Ceremonia de las Arenas">
+
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">El Factor Estratégico: Camino a Lima 2027</h2>
+                <p>Este evento es el primer gran peldaño del ciclo olímpico regional. Los logros obtenidos hoy son vitales para el **Ranking Regional**, asegurando la hegemonía en el medallero, y para la **Clasificación** a los Juegos Centroamericanos y del Caribe Santo Domingo 2026, sentando las bases para Lima 2027.</p>
+            </section>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gray-50 p-8 md:p-20 rounded-[3rem] border border-gray-100 shadow-inner">
+                <div class="space-y-8">
+                    <h4 class="text-[#1f6f78] font-bold text-4xl flex items-center">
+                        <span class="w-12 h-1 bg-[#1f6f78] mr-4"></span>
+                        Calendario y Proyecciones
+                    </h4>
+                    <div class="space-y-10 text-xl text-gray-700 leading-relaxed">
+                        <div class="pl-6 border-l-4 border-[#1f6f78]">
+                            <strong class="text-[#001f3f] text-2xl block mb-2">Shortboard: Lo que viene</strong>
+                            <p>Tras el éxito inicial, el equipo nacional se prepara para el debut de la categoría **Shortboard (Tabla Corta)**. El comando técnico destaca la rápida adaptación al clima panameño.</p>
+                        </div>
+
+                        <div class="pl-6 border-l-4 border-[#1f6f78]">
+                            <strong class="text-[#001f3f] text-2xl block mb-2">Longboard y Shortboard</strong>
+                            <p>Las categorías estelares entrarán en acción del **27 de abril al 2 de mayo**. Se espera estilo clásico y surfing progresivo.</p>
+                        </div>
+                        
+                        <div class="pl-6 border-l-4 border-[#1f6f78]">
+                            <strong class="text-[#001f3f] text-2xl block mb-2">Carrera Técnica SUP</strong>
+                            <p>La prueba de fuego para los atletas de Stand Up Paddle tendrá lugar entre el **29 de abril y el 3 de mayo**.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-[#001f3f] text-white p-12 rounded-[2rem] justify-center shadow-2xl self-start lg:sticky lg:top-10">
+                    <h4 class="font-bold text-3xl mb-6 italic tracking-tight uppercase text-[#1f6f78]">Resumen de Delegación</h4>
+                    <p class="text-xl opacity-90 mb-8 leading-relaxed">
+                        El <strong>"Team Perú"</strong> busca defender su posición como potencia continental con una de las plantillas más sólidas de la historia.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                            <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Naciones</span>
+                            <p class="font-bold text-lg italic">19 Participantes</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                            <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Sede</span>
+                            <p class="font-bold text-lg italic">Playa Venao</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                            <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Impacto</span>
+                            <p class="font-bold text-lg italic">Marea Roja</p>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
+                            <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Objetivo</span>
+                            <p class="font-bold text-lg italic">Título por Equipos</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 pt-6 border-t border-white/10 text-center">
+                        <span class="text-xs font-bold tracking-widest text-gray-400 uppercase">Clausura: 3 de mayo de 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777135239/DSC8167_ojlxey.jpg" class="w-full h-auto max-h-[800px] object-cover rounded-3xl shadow-2xl" alt="Atletas Panamericanos Panamá">
+
+            <div class="max-w-4xl mx-auto text-center space-y-12 py-10">
+                <h3 class="text-5xl font-bold text-[#001f3f] italic">Perú ha dado el primer golpe</h3>
+                <p class="text-2xl text-gray-600 leading-relaxed">
+                    La "Marea Roja" ya se siente en Panamá. Con el respaldo técnico y el hambre de gloria, el equipo nacional inicia este ciclo panamericano demostrando que el camino a Lima 2027 tiene un color predominante: el rojo y blanco.
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+    `;
+}
+
+if(id === 2){
     html = `
 <article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
     <div class="w-full px-6 md:px-12 pt-10">
@@ -11976,7 +12135,7 @@ if(id === 1){
     `;
 }
 
-if(id === 2){
+if(id === 3){
     html = `
 <article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
     <div class="w-full px-6 md:px-12 pt-10">
@@ -12096,7 +12255,7 @@ if(id === 2){
     `;
 }
 
-if(id === 3){
+if(id === 4){
     html = `
 <article class="bg-white min-h-screen pb-20">
     <div class="max-w-[1440px] mx-auto px-6 pt-10">
@@ -12190,7 +12349,7 @@ if(id === 3){
     `;
 }
 
-if(id === 4){
+if(id === 5){
     html = `
 <article class="bg-white min-h-screen pb-20">
     <div class="max-w-[1440px] mx-auto px-6 pt-10">
@@ -12282,7 +12441,7 @@ if(id === 4){
     `;
 }
 
-if(id === 5){
+if(id === 6){
 
 html = `
 <article class="bg-white min-h-screen pb-20">
