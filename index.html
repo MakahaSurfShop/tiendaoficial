@@ -8188,17 +8188,21 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
 
     const visibleProducts = filtered.slice(startIndex, endIndex);
 
-// Mantenemos tu diseño exacto de tarjeta (HTML)
-let html = visibleProducts.map(p => {
+    // Mantenemos tu diseño exacto de tarjeta (HTML) con la nueva lógica de navegación
+    let html = visibleProducts.map(p => {
         const isAgotado = p.stock <= 0;
         const isUltimo = p.stock === 1 && p.condition !== "Segunda";
+
+        // --- NUEVA LÓGICA DE URL AMIGABLE ---
+        const productSlug = getProductSlug(p.name);
+        const navAction = `window.location.hash='detalle?id=${p.id}&${productSlug}'; renderProductDetail(${p.id}); window.scrollTo(0,0);`;
 
         return `
         <div class="group bg-white relative transition-all duration-500 hover:shadow-2xl border border-gray-100 flex flex-col ${isAgotado ? 'opacity-60 grayscale' : ''}" style="text-align: left !important; width: 100% !important;">
             <div class="relative w-full aspect-[1/1.1] bg-[#f9f9f9] cursor-pointer flex items-center justify-center p-2 md:p-4 overflow-hidden"
-                 onclick="navigateTo('detalle',null,null,${p.id}); window.scrollTo(0,0);">
+                 onclick="${navAction}">
                 <img src="${p.img}" 
-                     class="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-1000 ease-in-out group-hover:scale-110 group-hover:rotate-2">
+                     class="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-1000 ease-in-out group-hover:rotate-2">
                 
                 <div class="absolute top-1.5 md:top-3 left-1.5 md:left-3 z-30 flex flex-col gap-0.5 md:gap-1">
                     ${isAgotado ? `<span class="bg-gray-800 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase">AGOTADO</span>` : ''}
@@ -8216,35 +8220,34 @@ let html = visibleProducts.map(p => {
             </div>
 
             <div class="p-3 md:p-5 flex flex-col items-start min-w-0" style="text-align: left !important;">
-                <h3 onclick="navigateTo('detalle',null,null,${p.id}); window.scrollTo(0,0);"
+                <h3 onclick="${navAction}"
                     class="font-bold text-[10px] md:text-[13px] uppercase text-gray-800 cursor-pointer hover:text-red-700 mb-2 md:mb-3 w-full block break-words leading-tight"
                     style="text-align: left !important; margin-left: 0 !important;">
                     ${p.name}
                 </h3>
 
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-auto gap-2" style="text-align: left !important;">
-    
-    <div class="min-w-0 flex flex-col">
-        <p class="text-[14px] md:text-[17px] font-black text-black leading-tight whitespace-nowrap">
-            $${p.price.toFixed(2)}
-        </p>
-        <p class="text-[11px] md:text-[11px] text-gray-400 font-medium leading-tight whitespace-nowrap">
-            S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}
-        </p>
-    </div>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-auto gap-2" style="text-align: left !important;">
+                    <div class="min-w-0 flex flex-col">
+                        <p class="text-[14px] md:text-[17px] font-black text-black leading-tight whitespace-nowrap">
+                            $${p.price.toFixed(2)}
+                        </p>
+                        <p class="text-[11px] md:text-[11px] text-gray-400 font-medium leading-tight whitespace-nowrap">
+                            S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}
+                        </p>
+                    </div>
 
-    <div class="flex gap-1.5 shrink-0 self-end md:self-center">
-        <button onclick="navigateTo('detalle', null, null, ${p.id}); window.scrollTo(0,0);" 
-                class="hidden lg:inline-block bg-gray-100 hover:bg-black hover:text-white p-2.5 rounded-full transition-colors">
-            <i class="fa-solid fa-eye text-xs"></i>
-        </button>
-        
-        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
-                class="bg-black hover:bg-red-700 text-white p-2 md:p-2.5 rounded-full shadow-lg transition-colors flex items-center justify-center">
-            <i class="fa-solid fa-cart-plus text-[12px] md:text-xs"></i>
-        </button>
-    </div>
-</div>
+                    <div class="flex gap-1.5 shrink-0 self-end md:self-center">
+                        <button onclick="${navAction}" 
+                                class="hidden lg:inline-block bg-gray-100 hover:bg-black hover:text-white p-2.5 rounded-full transition-colors">
+                            <i class="fa-solid fa-eye text-xs"></i>
+                        </button>
+                        
+                        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
+                                class="bg-black hover:bg-red-700 text-white p-2 md:p-2.5 rounded-full shadow-lg transition-colors flex items-center justify-center">
+                            <i class="fa-solid fa-cart-plus text-[12px] md:text-xs"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         `;
@@ -8257,7 +8260,7 @@ let html = visibleProducts.map(p => {
         productsArea = document.getElementById("products-area");
     }
 
-// --- CIERRE Y RENDERIZADO FINAL ---
+    // --- CIERRE Y RENDERIZADO FINAL ---
     if (productsArea) {
         // Título dinámico
         const displayTitle = searchQuery ? `Resultados: ${searchQuery}` : (subcategory ? subcategory : "Catálogo General");
@@ -8306,7 +8309,7 @@ let html = visibleProducts.map(p => {
         // 2. Ejecutar guardado automático si es necesario
         if (typeof initCheckoutAutosave === "function") initCheckoutAutosave();
 
-        // 3. Asegurar que el usuario inicie desde arriba al cambiar de página o filtro[cite: 1]
+        // 3. Asegurar que el usuario inicie desde arriba al cambiar de página o filtro
         window.scrollTo(0, 0);
     }
 }
@@ -8453,12 +8456,6 @@ let relatedHTML = relatedProducts.map(p => `
   // ESTRUCTURA FINAL: Sin límites de ancho (Full Width)
   document.getElementById("main-content").innerHTML = `
   <section class="w-full py-12">
-
-<div class="px-1 mb-8">
-  <button onclick="goBack()" class="text-sm uppercase font-bold text-gray-500 hover:text-black">
-    ← Volver
-  </button>
-</div>
 
     <div class="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-0 items-start">
       <div class="flex flex-col w-full">
@@ -14382,17 +14379,19 @@ window.addEventListener('load', () => {
         const cat = params.get('cat');
         const sub = params.get('sub');
 
-        // Lógica para Productos Detallados
+        // Lógica para Productos Detallados (Soporta id=54&nombre-del-producto)
         if (page === 'detalle' && id) {
-            // Asegúrate de llamar a la función que dibuja el producto individual
-            renderProducto(Number(id)); 
+            // Usamos la función oficial para renderizar el detalle
+            renderProductDetail(Number(id)); 
+            
+            // Mantenemos el hash completo en el historial para no perder el nombre en la URL
             history.replaceState({ page: 'detalle', id: Number(id) }, "", hash);
         } 
         // Lógica para Noticias
         else if (page === 'noticia' && id) {
             renderNoticia(Number(id));
         } 
-        // Lógica para Categorías y Subcategorías (Shortboard, etc.)
+        // Lógica para Categorías y Subcategorías
         else if (page === 'filtrados' || sub) {
             navigateTo('filtrados', cat, sub, null, true);
         } 
@@ -14403,14 +14402,23 @@ window.addEventListener('load', () => {
 });
 
 function updateProductView(newId) {
-    // Actualizamos la URL (hash) para que coincida con el nuevo producto
-    window.location.hash = `detalle?id=${newId}`;
+    const product = products_db.tablas.find(p => p.id === Number(newId));
+    const slug = product ? getProductSlug(product.name) : 'producto';
     
-    // Subimos al inicio de la página instantáneamente
+    // Actualiza la URL con ID + Nombre
+    window.location.hash = `detalle?id=${newId}&${slug}`;
+    
+    // Sube el scroll y carga el nuevo producto
     window.scrollTo({top: 0, behavior: 'instant'});
-    
-    // Renderizamos el detalle del nuevo producto
     renderProductDetail(newId);
+}
+
+function getProductSlug(name) {
+    return name.toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '') // Elimina caracteres especiales
+        .replace(/[\s_-]+/g, '-')  // Cambia espacios por guiones
+        .replace(/^-+|-+$/g, '');  // Limpia extremos
 }
 
 </script>
