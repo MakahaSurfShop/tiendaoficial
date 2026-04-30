@@ -7370,26 +7370,26 @@ const subcategoryImages = {
 
 function navigateTo(page, category = null, subcategory = null, id = null, fromPopState = false) {
   
-  // --- INICIO DE LA MEJORA (PASO 3) ---
-  if (!fromPopState) {
-    // Definimos el hash de la URL. 
-    // Si hay parámetros (como categoría o ID), podrías incluirlos en el hash para mayor precisión.
+  // --- INICIO DE LA MEJORA DE URL ---
+if (!fromPopState) {
     let hashPath = page;
     
-    // Opcional: Si quieres que la URL sea específica (ej: #detalle?id=123)
-    if (id) hashPath += `?id=${id}`;
-    else if (category) hashPath += `?cat=${category}`;
+    if (page === 'noticia') {
+        hashPath += `?id=${id}`;
+    } else if (page === 'detalle') {
+        // Aquí puedes agregar el nombre para que el link sea más descriptivo
+        hashPath += `?id=${id}`; 
+    } else if (category && subcategory) {
+        hashPath += `?cat=${category}&sub=${subcategory}`;
+    } else if (category) {
+        hashPath += `?cat=${category}`;
+    }
 
-    // Actualizamos el historial y la URL visual con el hash (#)
-    history.pushState(
-      { page, category, subcategory, id },
-      "",
-      "#" + hashPath
-    );
-  }
+    history.pushState({ page, category, subcategory, id }, "", "#" + hashPath);
+}
   // --- FIN DE LA MEJORA ---
 
-  // 🔴 Limpiar checkout si sale de la página (Tu lógica actual)
+  // 🔴 Limpiar checkout si sale de la página
   if (page !== "checkout") {
     checkoutFields.forEach(id => localStorage.removeItem(id));
   }
@@ -7402,25 +7402,28 @@ function navigateTo(page, category = null, subcategory = null, id = null, fromPo
   // ✅ Cerrar carrito siempre al cambiar de página
   if (cartSidebar) {
     cartSidebar.classList.add("translate-x-full");
-    main.style.marginRight = "0px"; // 🔥 asegurar que nunca quede empujado
+    if (main) main.style.marginRight = "0px"; 
   }
 
-  // ✅ Resetear margen para que el checkout se centre
+  // ✅ Asegurar que el contenido esté centrado
   if (main) {
     main.style.marginRight = "0px";
   }
 
-  // Guardamos el estado actual en el historial
+  // Guardamos el estado actual en el historial interno
   pageHistory.push({ page, category, subcategory, id });
 
-  if (page === 'inicio') { renderHome(); }
-  else if (page === 'productos') { renderCatalogo(); }
-  else if (page === "nosotros") { renderNosotros(); }
-  else if (page === 'subcategorias') { renderCatalogo(); }
-  else if (page === 'filtrados') {
-
+  // --- LÓGICA DE RENDERIZADO ---
+  if (page === 'inicio') { 
+    renderHome(); 
+  } else if (page === 'productos') { 
+    renderCatalogo(); 
+  } else if (page === "nosotros") { 
+    renderNosotros(); 
+  } else if (page === 'subcategorias') { 
+    renderCatalogo(); 
+  } else if (page === 'filtrados') {
     const ultimaEntrada = pageHistory.length > 1 ? pageHistory[pageHistory.length - 2] : null;
-
     const esNuevaBusqueda = !ultimaEntrada ||
       ultimaEntrada.category !== category ||
       ultimaEntrada.subcategory !== subcategory;
@@ -7428,28 +7431,34 @@ function navigateTo(page, category = null, subcategory = null, id = null, fromPo
     if (esNuevaBusqueda) {
       currentPageCatalog = 1;
     }
-
     renderFilteredProducts(category, subcategory);
-  }
-  else if (page === 'detalle') { renderProductDetail(id); }
-  else if (page === 'checkout') { renderCheckout(); }
-  else if (page === 'vender') { renderVender(); }
-  else if (page === 'reride') { renderReRideInfo(); }
-  else if (page === 'cambios') { renderCambios(); }
-  else if (page === 'garantia') { renderGarantia(); }
-  else if (page === 'privacy') { renderPrivacy(); }
-  else if (page === 'terms') { renderTerms(); }
-  else if (page === "contacto") renderContacto();
-  else if (page === 'noticias') { renderNoticias(); }
-  else if (page === 'noticia') { renderNoticia(id); }
-  else if (page === "reclamaciones") renderReclamaciones();
-  if (page === "delivery") renderDelivery();
-
-else if (page === "reclamaciones") renderReclamaciones();
-  else if (page === "delivery") renderDelivery();
-  
-  // AQUÍ AGREGAS EL BLOQUE PARA LA CUENTA
-  else if (page === 'cuenta') {
+  } else if (page === 'detalle') { 
+    renderProductDetail(id); 
+  } else if (page === 'checkout') { 
+    renderCheckout(); 
+  } else if (page === 'vender') { 
+    renderVender(); 
+  } else if (page === 'reride') { 
+    renderReRideInfo(); 
+  } else if (page === 'cambios') { 
+    renderCambios(); 
+  } else if (page === 'garantia') { 
+    renderGarantia(); 
+  } else if (page === 'privacy') { 
+    renderPrivacy(); 
+  } else if (page === 'terms') { 
+    renderTerms(); 
+  } else if (page === "contacto") {
+    renderContacto();
+  } else if (page === 'noticias') { 
+    renderNoticias(); 
+  } else if (page === 'noticia') { 
+    renderNoticia(id); 
+  } else if (page === "reclamaciones") {
+    renderReclamaciones();
+  } else if (page === "delivery") {
+    renderDelivery();
+  } else if (page === 'cuenta') {
     const user = firebase.auth().currentUser;
     if (user) {
       renderPerfilUsuario(user);
@@ -7458,6 +7467,7 @@ else if (page === "reclamaciones") renderReclamaciones();
     }
   }
 
+  // Siempre volver arriba al cambiar de sección
   window.scrollTo(0, 0);
 }
 
@@ -8247,6 +8257,7 @@ let html = visibleProducts.map(p => {
         productsArea = document.getElementById("products-area");
     }
 
+// --- CIERRE Y RENDERIZADO FINAL ---
     if (productsArea) {
         // Título dinámico
         const displayTitle = searchQuery ? `Resultados: ${searchQuery}` : (subcategory ? subcategory : "Catálogo General");
@@ -8262,6 +8273,8 @@ let html = visibleProducts.map(p => {
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
                 ${html || `<p class="col-span-full text-center py-10 text-gray-500">No se encontraron productos.</p>`}
             </div>
+            
+            <!-- Paginación -->
             <div class="flex justify-center items-center gap-4 mt-10">
                 <button 
                     onclick="changePage(-1, ${category ? `'${category}'` : 'null'}, ${subcategory ? `'${subcategory}'` : 'null'}, ${searchQuery ? `'${searchQuery}'` : 'null'}); window.scrollTo(0,0);"
@@ -8280,7 +8293,21 @@ let html = visibleProducts.map(p => {
                 </button>
             </div>
         </section>
-`;
+        `;
+
+        // 1. Resetear el estilo del contenedor principal por si venimos de una "Noticia" o "Detalle"
+        const main = document.getElementById("main-content");
+        if (main) {
+            main.style.width = ""; 
+            main.style.maxWidth = "";
+            main.style.margin = "";
+        }
+
+        // 2. Ejecutar guardado automático si es necesario
+        if (typeof initCheckoutAutosave === "function") initCheckoutAutosave();
+
+        // 3. Asegurar que el usuario inicie desde arriba al cambiar de página o filtro[cite: 1]
+        window.scrollTo(0, 0);
     }
 }
 
@@ -8316,11 +8343,33 @@ function changePage(direction, category, subcategory, searchQuery = null) {
 /* ================= DETALLE PRODUCTO ================= */
 
 function renderProductDetail(id){
+  // 1. Convertimos el id a número inmediatamente para que el .find() funcione
+  id = Number(id); 
+  
   currentProductId = id;
-  const product = products_db.tablas.find(p => p.id === id);
-  if(!product) return;
 
+  // 2. Buscamos el producto en tu base de datos (asegúrate de buscar en la categoría correcta o en todo el array)
+  const product = products_db.tablas.find(p => p.id === id);
+
+  // Si no lo encuentra en 'tablas', podrías buscar en otras categorías si fuera necesario
+  if(!product) {
+      console.error("Producto no encontrado con ID:", id);
+      return;
+  }
+
+  // 3. Configuramos la galería y el contenedor
   window.currentProductGallery = product.images;
+
+  const main = document.getElementById("main-content");
+  if (main) {
+    main.style.width = "100%";
+    main.style.maxWidth = "none";
+    main.style.margin = "0";
+    // Limpiamos contenido previo para asegurar una carga limpia
+    main.innerHTML = ""; 
+  }
+
+  // ... Aquí sigue tu lógica de generar el HTML del producto ...
 
   // Galería de borde a borde
   let imagesHTML = `
@@ -8384,9 +8433,9 @@ function renderProductDetail(id){
     })
     .slice(0, 4);
 
-  let relatedHTML = relatedProducts.map(p => `
+let relatedHTML = relatedProducts.map(p => `
     <div class="bg-gray-50 p-4 shadow rounded-xl hover:shadow-2xl transition cursor-pointer ${p.stock === 0 ? 'sin-stock' : ''}"
-         onclick="${p.stock === 0 ? '' : `window.scrollTo({top: 0, behavior: 'instant'}); renderProductDetail(${p.id});`}">
+         onclick="${p.stock === 0 ? '' : `updateProductView(${p.id})`}"> 
       <div class="aspect-[4/5] bg-gray-100 rounded mb-4 flex items-center justify-center relative">
         <img src="${p.img}" class="max-h-full object-contain">
         ${p.stock === 0 ? `<div class="absolute inset-0 flex items-center justify-center"><span class="bg-red-600 text-white px-3 py-1 text-sm font-bold rounded">SIN STOCK</span></div>` : ""}
@@ -11897,16 +11946,22 @@ document.getElementById("main-content").innerHTML = `
 }
 
 function renderNoticia(id){
+    // Convertimos el id a número para que las comparaciones estrictas (===) funcionen
+    id = Number(id);
 
-let html = "";
+    let html = "";
 
-// Forzamos el contenedor al 100% de ancho para el diseño editorial
-const main = document.getElementById("main-content");
-if (main) {
-  main.style.width = "100%";
-  main.style.maxWidth = "none";
-  main.style.margin = "0";
-}
+    // Forzamos el contenedor al 100% de ancho para el diseño editorial
+    const main = document.getElementById("main-content");
+    if (main) {
+        main.style.width = "100%";
+        main.style.maxWidth = "none";
+        main.style.margin = "0";
+        // Limpiamos el contenido previo para evitar que se duplique o se mezcle
+        main.innerHTML = ""; 
+    }
+
+    // A partir de aquí siguen tus bloques if(id === 7), etc.
 
 if(id === 7){
     html = `
@@ -12792,13 +12847,17 @@ if(id === 6){
     `;
 }
 
-    // Inyectar el HTML y ejecutar funciones finales
-    document.getElementById("main-content").innerHTML = html;
+if (main) {
+        main.innerHTML = html;
+    }
 
-    if (typeof initCheckoutAutosave === "function") initCheckoutAutosave();
+    // Ejecutar funciones de utilidad
+    if (typeof initCheckoutAutosave === "function") {
+        initCheckoutAutosave();
+    }
 
-    window.scrollTo(0,0);
-
+    // Volver al inicio de la página para que el usuario vea el título[cite: 1]
+    window.scrollTo(0, 0);
 } // ESTE ES EL ÚNICO CIERRE DE LA FUNCIÓN renderNoticia(id)
 
 function toggleUsadoMenu(){
@@ -14295,6 +14354,64 @@ firebase.auth().onAuthStateChanged((user) => {
         console.log("No hay sesión activa.");
     }
 });
+
+window.onpopstate = function(event) {
+  if (event.state) {
+    const { page, category, subcategory, id } = event.state;
+    // Llamamos a tu función actual con el flag fromPopState en true
+    navigateTo(page, category, subcategory, id, true);
+  } else {
+    // Si no hay estado (inicio), vuelve a home
+    navigateTo('inicio', null, null, null, true);
+  }
+};
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const hash = window.location.hash;
+        if (!hash) {
+            navigateTo('inicio', null, null, null, true);
+            return;
+        }
+
+        const cleanHash = hash.replace('#', '');
+        const [page, queryString] = cleanHash.split('?');
+        const params = new URLSearchParams(queryString);
+        
+        const id = params.get('id');
+        const cat = params.get('cat');
+        const sub = params.get('sub');
+
+        // Lógica para Productos Detallados
+        if (page === 'detalle' && id) {
+            // Asegúrate de llamar a la función que dibuja el producto individual
+            renderProducto(Number(id)); 
+            history.replaceState({ page: 'detalle', id: Number(id) }, "", hash);
+        } 
+        // Lógica para Noticias
+        else if (page === 'noticia' && id) {
+            renderNoticia(Number(id));
+        } 
+        // Lógica para Categorías y Subcategorías (Shortboard, etc.)
+        else if (page === 'filtrados' || sub) {
+            navigateTo('filtrados', cat, sub, null, true);
+        } 
+        else {
+            navigateTo(page, cat, sub, id, true);
+        }
+    }, 150); 
+});
+
+function updateProductView(newId) {
+    // Actualizamos la URL (hash) para que coincida con el nuevo producto
+    window.location.hash = `detalle?id=${newId}`;
+    
+    // Subimos al inicio de la página instantáneamente
+    window.scrollTo({top: 0, behavior: 'instant'});
+    
+    // Renderizamos el detalle del nuevo producto
+    renderProductDetail(newId);
+}
 
 </script>
 </body>
