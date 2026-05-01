@@ -2102,7 +2102,7 @@ category:"Tablas",
 subcategory:"Shortboards",
 condition:"Segunda",
 keywords:["tabla","surfboard","shortboard","surf","tablas"],
-img:"https://res.cloudinary.com/dfdwxgvdg/image/upload/v1773942282/dsd1_fn4gcl.jpg",
+img:"https://res.cloudinary.com/dkazbai91/image/upload/v1777594550/Dise%C3%B1o_sin_t%C3%ADtulo_77_n634ye.jpg",
 images:[
 "https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891746/24_fc63bt.jpg",
 "https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891748/25_x3ujwx.jpg"
@@ -7369,131 +7369,119 @@ const subcategoryImages = {
 /* ================= NAVEGACIÓN ================= */
 
 function navigateTo(page, category = null, subcategory = null, id = null, fromPopState = false) {
-  
-  // --- INICIO DE LA MEJORA DE URL ---
-if (!fromPopState) {
+  if (!fromPopState) {
     let hashPath = page;
-    
     if (page === 'noticia') {
-        hashPath += `?id=${id}`;
+      hashPath += `?id=${id}`;
     } else if (page === 'detalle') {
-        // Aquí puedes agregar el nombre para que el link sea más descriptivo
-        hashPath += `?id=${id}`; 
+      hashPath += `?id=${id}`;
     } else if (category && subcategory) {
-        hashPath += `?cat=${category}&sub=${subcategory}`;
+      hashPath += `?cat=${category}&sub=${subcategory}`;
     } else if (category) {
-        hashPath += `?cat=${category}`;
+      hashPath += `?cat=${category}`;
     }
-
     history.pushState({ page, category, subcategory, id }, "", "#" + hashPath);
-}
-  // --- FIN DE LA MEJORA ---
+  }
 
-  // 🔴 Limpiar checkout si sale de la página
   if (page !== "checkout") {
     checkoutFields.forEach(id => localStorage.removeItem(id));
   }
 
   currentPage = page;
-
   const cartSidebar = document.getElementById("cart-sidebar");
   const main = document.getElementById("main-content");
 
-  // ✅ Cerrar carrito siempre al cambiar de página
   if (cartSidebar) {
     cartSidebar.classList.add("translate-x-full");
-    if (main) main.style.marginRight = "0px"; 
+    if (main) main.style.marginRight = "0px";
   }
 
-  // ✅ Asegurar que el contenido esté centrado
   if (main) {
     main.style.marginRight = "0px";
   }
 
-  // Guardamos el estado actual en el historial interno
   pageHistory.push({ page, category, subcategory, id });
 
   // --- LÓGICA DE RENDERIZADO ---
-  if (page === 'inicio') { 
-    renderHome(); 
-  } else if (page === 'productos') { 
-    renderCatalogo(); 
-  } else if (page === "nosotros") { 
-    renderNosotros(); 
-  } else if (page === 'subcategorias') { 
-    renderCatalogo(); 
+  if (page === 'inicio') {
+    renderHome();
+  } else if (page === 'productos') {
+    renderCatalogo();
   } else if (page === 'filtrados') {
-    const ultimaEntrada = pageHistory.length > 1 ? pageHistory[pageHistory.length - 2] : null;
-    const esNuevaBusqueda = !ultimaEntrada ||
-      ultimaEntrada.category !== category ||
-      ultimaEntrada.subcategory !== subcategory;
+    // LEER PÁGINA DE LA URL ANTES DE RENDERIZAR
+    const params = new URLSearchParams(window.location.hash.split('?')[1]);
+    const pFromUrl = params.get('p');
 
-    if (esNuevaBusqueda) {
-      currentPageCatalog = 1;
+    if (pFromUrl) {
+      currentPageCatalog = parseInt(pFromUrl);
+    } else {
+      const ultimaEntrada = pageHistory.length > 1 ? pageHistory[pageHistory.length - 2] : null;
+      const esNuevaBusqueda = !ultimaEntrada ||
+        ultimaEntrada.category !== category ||
+        ultimaEntrada.subcategory !== subcategory;
+
+      if (esNuevaBusqueda) {
+        currentPageCatalog = 1;
+      }
     }
     renderFilteredProducts(category, subcategory);
-  } else if (page === 'detalle') { 
-    renderProductDetail(id); 
-  } else if (page === 'checkout') { 
-    renderCheckout(); 
-  } else if (page === 'vender') { 
-    renderVender(); 
-  } else if (page === 'reride') { 
-    renderReRideInfo(); 
-  } else if (page === 'cambios') { 
-    renderCambios(); 
-  } else if (page === 'garantia') { 
-    renderGarantia(); 
-  } else if (page === 'privacy') { 
-    renderPrivacy(); 
-  } else if (page === 'terms') { 
-    renderTerms(); 
+  } else if (page === 'detalle') {
+    renderProductDetail(id);
+  } else if (page === 'noticia') {
+    renderNoticia(id);
+  } else if (page === 'noticias') {
+    renderNoticias();
+  } else if (page === 'productos' || page === 'subcategorias') {
+    renderCatalogo();
+  } else if (page === "nosotros") {
+    renderNosotros();
+  } else if (page === 'checkout') {
+    renderCheckout();
+  } else if (page === 'vender') {
+    renderVender();
+  } else if (page === 'reride') {
+    renderReRideInfo();
+  } else if (page === 'cambios') {
+    renderCambios();
+  } else if (page === 'garantia') {
+    renderGarantia();
+  } else if (page === 'privacy') {
+    renderPrivacy();
+  } else if (page === 'terms') {
+    renderTerms();
   } else if (page === "contacto") {
     renderContacto();
-  } else if (page === 'noticias') { 
-    renderNoticias(); 
-  } else if (page === 'noticia') { 
-    renderNoticia(id); 
   } else if (page === "reclamaciones") {
     renderReclamaciones();
   } else if (page === "delivery") {
     renderDelivery();
   } else if (page === 'cuenta') {
     const user = firebase.auth().currentUser;
-    if (user) {
-      renderPerfilUsuario(user);
-    } else {
-      renderFormularioAuth();
-    }
+    if (user) { renderPerfilUsuario(user); } else { renderFormularioAuth(); }
   }
 
-  // Siempre volver arriba al cambiar de sección
   window.scrollTo(0, 0);
 }
 
-function goBack(){
-
+function goBack() {
   const cartSidebar = document.getElementById("cart-sidebar");
   const main = document.getElementById("main-content");
 
-  if(cartSidebar){
-    cartSidebar.classList.add("translate-x-full");
-  }
+  if (cartSidebar) cartSidebar.classList.add("translate-x-full");
+  if (main) main.style.marginRight = "0px";
 
-  if(main){
-    main.style.marginRight = "0px";
-  }
+  // 1. Extraer página de la URL antes de retroceder
+  const params = new URLSearchParams(window.location.hash.split('?')[1]);
+  const pageNum = params.get('p');
+  if (pageNum) currentPageCatalog = parseInt(pageNum);
 
-  // 🔥 SI SOLO HAY 1, vuelve a inicio directamente
-  if(pageHistory.length <= 1){
+  if (pageHistory.length <= 1) {
     navigateTo('inicio');
     return;
   }
 
-  // eliminar actual
-  pageHistory.pop();
-
-  const prev = pageHistory[pageHistory.length - 1];
+  pageHistory.pop(); // quitar actual
+  const prev = pageHistory.pop(); // obtener previa y quitarla para que navigateTo no la duplique
 
   navigateTo(prev.page, prev.category, prev.subcategory, prev.id);
 }
@@ -8148,15 +8136,30 @@ function toggleCategory(cat) {
 
 /* ================= PRODUCTOS ================= */
 function renderFilteredProducts(category, subcategory, searchQuery = null) {
-    // Definimos la cantidad según el dispositivo
+    // 1. SINCRONIZACIÓN Y RESET DE PÁGINA
+    const params = new URLSearchParams(window.location.hash.split('?')[1]);
+    
+    // Rescatamos valores de la URL si los argumentos vienen vacíos
+    const finalCategory = category || params.get('cat');
+    const finalSubcategory = subcategory || params.get('sub');
+    const finalSearchQuery = searchQuery || params.get('search');
+
+    // LÓGICA DE RESET: Si entramos desde un botón de "Explorar" (sin parámetro 'p' en la URL),
+    // forzamos que la página sea la 1, ignorando el valor previo de la variable global.
+    const pFromUrl = params.get('p');
+    if (pFromUrl) {
+        currentPageCatalog = parseInt(pFromUrl) || 1;
+    } else {
+        currentPageCatalog = 1; // Si no hay 'p' en la URL, es una entrada nueva: empezamos en 1
+    }
+
     const PRODUCTS_PER_PAGE_DYNAMIC = window.innerWidth < 768 ? 4 : 12;
 
-    // --- LÓGICA DE FILTRADO INTEGRADA ---
+    // --- LÓGICA DE FILTRADO ---
     let filtered = products_db.tablas;
 
-    if (searchQuery) {
-        // Si hay una búsqueda, filtramos por texto
-        const words = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    if (finalSearchQuery) {
+        const words = finalSearchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
         filtered = filtered.filter(p => {
             const text = (
                 p.name + " " +
@@ -8167,161 +8170,110 @@ function renderFilteredProducts(category, subcategory, searchQuery = null) {
             const matches = words.filter(word => text.includes(word)).length;
             return matches >= Math.ceil(words.length / 2);
         });
-    } else if (category && subcategory) {
-        // Si no hay búsqueda, filtramos por categoría/subcategoría como antes
-        filtered = filtered.filter(p => p.category === category && p.subcategory === subcategory);
+    } else if (finalCategory && finalSubcategory) {
+        filtered = filtered.filter(p => 
+            p.category === finalCategory && 
+            p.subcategory === finalSubcategory
+        );
     }
 
     const ocultos = [];
-    // Aplicamos el filtro de productos ocultos a la lista filtrada
     filtered = filtered.filter(p => !ocultos.includes(p.id));
 
     const totalProducts = filtered.length;
     const totalPages = Math.ceil(totalProducts / PRODUCTS_PER_PAGE_DYNAMIC) || 1;
 
-    if (currentPageCatalog > totalPages) {
-        currentPageCatalog = 1;
+    // Validar que la página actual no exceda el total
+    if (currentPageCatalog > totalPages) currentPageCatalog = 1;
+
+    // --- ACTUALIZACIÓN DE HASH (Sincronización de URL) ---
+    let currentHashBase = window.location.hash.split('?')[0] || '#filtrados';
+    let newUrlParams = new URLSearchParams();
+    if (finalCategory) newUrlParams.set('cat', finalCategory);
+    if (finalSubcategory) newUrlParams.set('sub', finalSubcategory);
+    if (finalSearchQuery) newUrlParams.set('search', finalSearchQuery);
+    newUrlParams.set('p', currentPageCatalog);
+    
+    const newHash = `${currentHashBase}?${newUrlParams.toString()}`;
+    
+    // Importante: No disparamos scroll ni cambios si ya estamos en ese hash
+    if (window.location.hash !== newHash && !window.location.hash.includes('detalle')) {
+        history.replaceState(null, "", newHash);
     }
 
     const startIndex = (currentPageCatalog - 1) * PRODUCTS_PER_PAGE_DYNAMIC;
-    const endIndex = startIndex + PRODUCTS_PER_PAGE_DYNAMIC;
+    const visibleProducts = filtered.slice(startIndex, startIndex + PRODUCTS_PER_PAGE_DYNAMIC);
 
-    const visibleProducts = filtered.slice(startIndex, endIndex);
-
-    // Mantenemos tu diseño exacto de tarjeta (HTML) con la nueva lógica de navegación
+    // --- RENDERIZADO DE PRODUCTOS (Diseño Makaha) ---
     let html = visibleProducts.map(p => {
         const isAgotado = p.stock <= 0;
         const isUltimo = p.stock === 1 && p.condition !== "Segunda";
-
-        // --- NUEVA LÓGICA DE URL AMIGABLE ---
         const productSlug = getProductSlug(p.name);
-        const navAction = `window.location.hash='detalle?id=${p.id}&${productSlug}'; renderProductDetail(${p.id}); window.scrollTo(0,0);`;
+        const navAction = `window.location.hash='detalle?id=${p.id}&p=${currentPageCatalog}&${productSlug}'; renderProductDetail(${p.id}); window.scrollTo(0,0);`;
 
         return `
-        <div class="group bg-white relative transition-all duration-500 hover:shadow-2xl border border-gray-100 flex flex-col ${isAgotado ? 'opacity-60 grayscale' : ''}" style="text-align: left !important; width: 100% !important;">
-            <div class="relative w-full aspect-[1/1.1] bg-[#f9f9f9] cursor-pointer flex items-center justify-center p-2 md:p-4 overflow-hidden"
-                 onclick="${navAction}">
-                <img src="${p.img}" 
-                     class="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-1000 ease-in-out group-hover:rotate-2">
-                
+        <div class="group bg-white relative transition-all duration-500 hover:shadow-2xl border border-gray-100 flex flex-col ${isAgotado ? 'opacity-60 grayscale' : ''}" style="width: 100%;">
+            <div class="relative w-full aspect-[1/1.1] bg-[#f9f9f9] cursor-pointer flex items-center justify-center p-2 md:p-4 overflow-hidden" onclick="${navAction}">
+                <img src="${p.img}" class="w-full h-full object-contain scale-110 group-hover:scale-125 transition-all duration-1000 ease-in-out group-hover:rotate-2">
                 <div class="absolute top-1.5 md:top-3 left-1.5 md:left-3 z-30 flex flex-col gap-0.5 md:gap-1">
                     ${isAgotado ? `<span class="bg-gray-800 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase">AGOTADO</span>` : ''}
                     ${isUltimo ? `<span class="bg-yellow-400 text-black text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase shadow-sm">¡ÚLTIMO!</span>` : ''}
-                    
                     ${p.condition === "Oferta" ? `<span class="bg-red-600 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase shadow-sm">OFERTA</span>` : ''}
-                    
-                    ${p.condition === "Segunda" ? `
-                        <span onclick="event.stopPropagation(); renderReRideInfo()" 
-                              class="bg-blue-600 hover:bg-blue-700 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase cursor-pointer transition-colors shadow-sm">
-                            RE-RIDE
-                        </span>
-                    ` : ''}
+                    ${p.condition === "Segunda" ? `<span onclick="event.stopPropagation(); renderReRideInfo()" class="bg-blue-600 hover:bg-blue-700 text-white text-[8px] md:text-[9px] px-1.5 py-0.5 rounded font-bold uppercase cursor-pointer shadow-sm">RE-RIDE</span>` : ''}
                 </div>
             </div>
-
-            <div class="p-3 md:p-5 flex flex-col items-start min-w-0" style="text-align: left !important;">
-                <h3 onclick="${navAction}"
-                    class="font-bold text-[10px] md:text-[13px] uppercase text-gray-800 cursor-pointer hover:text-red-700 mb-2 md:mb-3 w-full block break-words leading-tight"
-                    style="text-align: left !important; margin-left: 0 !important;">
+            <div class="p-3 md:p-5 flex flex-col items-start min-w-0">
+                <h3 onclick="${navAction}" class="font-bold text-[10px] md:text-[13px] uppercase text-gray-800 cursor-pointer hover:text-red-700 mb-2 md:mb-3 w-full block break-words leading-tight">
                     ${p.name}
                 </h3>
-
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-auto gap-2" style="text-align: left !important;">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-auto gap-2">
                     <div class="min-w-0 flex flex-col">
-                        <p class="text-[14px] md:text-[17px] font-black text-black leading-tight whitespace-nowrap">
-                            $${p.price.toFixed(2)}
-                        </p>
-                        <p class="text-[11px] md:text-[11px] text-gray-400 font-medium leading-tight whitespace-nowrap">
-                            S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}
-                        </p>
+                        <p class="text-[14px] md:text-[17px] font-black text-black leading-tight">$${p.price.toFixed(2)}</p>
+                        <p class="text-[11px] md:text-[11px] text-gray-400 font-medium leading-tight">S/ ${(p.price * exchangeRateUSDToPEN).toFixed(2)}</p>
                     </div>
-
                     <div class="flex gap-1.5 shrink-0 self-end md:self-center">
-                        <button onclick="${navAction}" 
-                                class="hidden lg:inline-block bg-gray-100 hover:bg-black hover:text-white p-2.5 rounded-full transition-colors">
-                            <i class="fa-solid fa-eye text-xs"></i>
-                        </button>
-                        
-                        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" 
-                                class="bg-black hover:bg-red-700 text-white p-2 md:p-2.5 rounded-full shadow-lg transition-colors flex items-center justify-center">
+                        <button onclick="${isAgotado ? '' : `addToCart(${p.id})`}" class="bg-black hover:bg-red-700 text-white p-2 md:p-2.5 rounded-full shadow-lg transition-colors flex items-center justify-center">
                             <i class="fa-solid fa-cart-plus text-[12px] md:text-xs"></i>
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
-        `;
+        </div>`;
     }).join("");
 
     let productsArea = document.getElementById("products-area");
+    if (!productsArea) { renderCatalogo(); productsArea = document.getElementById("products-area"); }
 
-    if (!productsArea) {
-        renderCatalogo(); 
-        productsArea = document.getElementById("products-area");
-    }
-
-    // --- CIERRE Y RENDERIZADO FINAL ---
     if (productsArea) {
-        // Título dinámico
-        const displayTitle = searchQuery ? `Resultados: ${searchQuery}` : (subcategory ? subcategory : "Catálogo General");
-
+        const title = finalSearchQuery ? `Resultados: ${finalSearchQuery}` : (finalSubcategory ? finalSubcategory : "Catálogo General");
         productsArea.innerHTML = ` 
-        <section class="pt-0 pb-6 md:pb-12 max-w-full mx-auto px-4 md:px-6 overflow-hidden">
-            <div class="flex flex-col items-center mb-6 md:mb-8 gap-4 w-full">
-                <h2 class="text-[16px] md:text-2xl heading-font uppercase text-center leading-[1.1] break-words">
-                    ${displayTitle}
-                </h2>
-            </div>
-
+        <section class="pt-0 pb-6 md:pb-12 max-w-full mx-auto px-4 md:px-6">
+            <h2 class="text-[16px] md:text-2xl heading-font uppercase text-center mb-6">${title}</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
                 ${html || `<p class="col-span-full text-center py-10 text-gray-500">No se encontraron productos.</p>`}
             </div>
-            
-            <!-- Paginación -->
             <div class="flex justify-center items-center gap-4 mt-10">
-                <button 
-                    onclick="changePage(-1, ${category ? `'${category}'` : 'null'}, ${subcategory ? `'${subcategory}'` : 'null'}, ${searchQuery ? `'${searchQuery}'` : 'null'}); window.scrollTo(0,0);"
-                    class="px-4 py-2 border rounded text-sm ${currentPageCatalog === 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">
-                    ←
-                </button>
-
-                <span class="text-sm font-bold">
-                    ${currentPageCatalog} / ${totalPages}
-                </span>
-
-                <button 
-                    onclick="changePage(1, ${category ? `'${category}'` : 'null'}, ${subcategory ? `'${subcategory}'` : 'null'}, ${searchQuery ? `'${searchQuery}'` : 'null'}); window.scrollTo(0,0);"
-                    class="px-4 py-2 border rounded text-sm ${currentPageCatalog === totalPages ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">
-                    →
-                </button>
+                <button onclick="changePage(-1, '${finalCategory}', '${finalSubcategory}', ${finalSearchQuery ? `'${finalSearchQuery}'` : 'null'})" 
+                        class="px-4 py-2 border rounded text-sm ${currentPageCatalog === 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">←</button>
+                <span class="text-sm font-bold">${currentPageCatalog} / ${totalPages}</span>
+                <button onclick="changePage(1, '${finalCategory}', '${finalSubcategory}', ${finalSearchQuery ? `'${finalSearchQuery}'` : 'null'})" 
+                        class="px-4 py-2 border rounded text-sm ${currentPageCatalog === totalPages ? 'opacity-30 cursor-not-allowed' : 'hover:bg-black hover:text-white'}">→</button>
             </div>
-        </section>
-        `;
-
-        // 1. Resetear el estilo del contenedor principal por si venimos de una "Noticia" o "Detalle"
-        const main = document.getElementById("main-content");
-        if (main) {
-            main.style.width = ""; 
-            main.style.maxWidth = "";
-            main.style.margin = "";
-        }
-
-        // 2. Ejecutar guardado automático si es necesario
-        if (typeof initCheckoutAutosave === "function") initCheckoutAutosave();
-
-        // 3. Asegurar que el usuario inicie desde arriba al cambiar de página o filtro
+        </section>`;
+        
         window.scrollTo(0, 0);
     }
 }
 
 function changePage(direction, category, subcategory, searchQuery = null) {
-    if (category === "null") category = null;
-    if (subcategory === "null") subcategory = null;
-    if (searchQuery === "null") searchQuery = null;
+    // 1. Limpieza de parámetros (Normalización)
+    if (category === "null" || category === undefined) category = null;
+    if (subcategory === "null" || subcategory === undefined) subcategory = null;
+    if (searchQuery === "null" || searchQuery === undefined) searchQuery = null;
 
     const PRODUCTS_PER_PAGE_DYNAMIC = window.innerWidth < 768 ? 4 : 12;
 
-    // Calculamos el total de páginas basado en si hay búsqueda o categorías
+    // 2. Lógica de Filtrado (Para calcular el total de páginas correctamente)
     let filtered = products_db.tablas;
     if (searchQuery) {
         const words = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -8335,12 +8287,28 @@ function changePage(direction, category, subcategory, searchQuery = null) {
 
     const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE_DYNAMIC) || 1;
 
+    // 3. Actualización de la variable global
     currentPageCatalog += direction;
 
+    // 4. Validación estricta de límites
     if (currentPageCatalog < 1) currentPageCatalog = 1;
     if (currentPageCatalog > totalPages) currentPageCatalog = totalPages;
 
+    // 5. ACTUALIZACIÓN DINÁMICA DEL HASH (URL)
+    // Usamos URLSearchParams para que sea más limpio y no queden "&" sueltos al final
+    let params = new URLSearchParams();
+    if (category) params.set('cat', category);
+    if (subcategory) params.set('sub', subcategory);
+    if (searchQuery) params.set('search', searchQuery);
+    params.set('p', currentPageCatalog);
+
+    // Actualizamos el hash. Esto permite que si el usuario copia la URL, 
+    // la envíe exactamente en la página que está viendo.
+    window.location.hash = `filtrados?${params.toString()}`;
+
+    // 6. Renderizado inmediato y scroll al inicio de la tienda
     renderFilteredProducts(category, subcategory, searchQuery);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ================= DETALLE PRODUCTO ================= */
@@ -14378,26 +14346,22 @@ window.addEventListener('load', () => {
         const id = params.get('id');
         const cat = params.get('cat');
         const sub = params.get('sub');
+        const pageNum = params.get('p'); // <--- Capturamos la página
 
-        // Lógica para Productos Detallados (Soporta id=54&nombre-del-producto)
+        // Si existe el parámetro p, actualizamos la variable global
+        if (pageNum) {
+            currentPageCatalog = parseInt(pageNum);
+        }
+
         if (page === 'detalle' && id) {
-            // Usamos la función oficial para renderizar el detalle
             renderProductDetail(Number(id)); 
-            
-            // Mantenemos el hash completo en el historial para no perder el nombre en la URL
             history.replaceState({ page: 'detalle', id: Number(id) }, "", hash);
         } 
-        // Lógica para Noticias
-        else if (page === 'noticia' && id) {
-            renderNoticia(Number(id));
+        else if (page === 'filtrados' || sub || pageNum) {
+            // Pasamos los parámetros a navigateTo o directamente a renderFiltered
+            renderFilteredProducts(cat, sub, params.get('search'));
         } 
-        // Lógica para Categorías y Subcategorías
-        else if (page === 'filtrados' || sub) {
-            navigateTo('filtrados', cat, sub, null, true);
-        } 
-        else {
-            navigateTo(page, cat, sub, id, true);
-        }
+        // ... resto de tu lógica
     }, 150); 
 });
 
