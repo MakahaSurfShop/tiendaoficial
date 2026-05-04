@@ -1739,10 +1739,10 @@ stockBySize:{
 },
 {
 id:12,
-name:"Fish Hector Albites 5'6",
+name:"Shortboard Hector Albites 5'6",
 price:100,
 category:"Tablas",
-subcategory:"Fish",
+subcategory:"Shortboards",
 condition:"Segunda",
 keywords:["tabla","surfboard","fish","surf","tablas"],
 img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891088/12344_onniwn.jpg",
@@ -1782,10 +1782,10 @@ stockBySize:{
 },
 {
 id:14,
-name:"Fish Al Merrick 5'6",
+name:"Shortboard Al Merrick 5'6",
 price:300,
 category:"Tablas",
-subcategory:"Fish",
+subcategory:"Shortboards",
 condition:"Segunda",
 keywords:["tabla","surfboard","fish","surf","tablas"],
 img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891701/5_hx9xah.jpg",
@@ -2095,45 +2095,46 @@ stockBySize:{
 }
 },
 {
-id:30,
-name:"Shortboard Snapback 6'4",
-price:220,
-category:"Tablas",
-subcategory:"Shortboards",
-condition:"Segunda",
-keywords:["tabla","surfboard","shortboard","surf","tablas"],
-img:"https://res.cloudinary.com/dkazbai91/image/upload/v1777594550/Dise%C3%B1o_sin_t%C3%ADtulo_77_n634ye.jpg",
-images:[
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891746/24_fc63bt.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891748/25_x3ujwx.jpg"
-],
-description:"Tabla Snapback PU thruster FCS1. 36.1 litros. Incluye deck.",
-sizes:["6'4"],
-colors:["Blanco"],
-stock:0,
-stockBySize:{
-"6'4":0
-}
+  id: 30,
+  name: "Twin Fish Dani Martinez 5'6",
+  price: 300,
+  category: "Tablas",
+  subcategory: "Fish",
+  condition:"Segunda",
+  keywords: ["tabla", "surfboard", "twin fish", "dani martinez", "surf", "tablas"],
+  img: "https://res.cloudinary.com/dkazbai91/image/upload/v1777932905/AVSDSA1243_vkcafg.jpg", 
+  images: [
+"https://res.cloudinary.com/dkazbai91/image/upload/v1777932905/AVSDSADV5_kw8ucw.jpg",
+"https://res.cloudinary.com/dkazbai91/image/upload/v1777932905/AVEEVWAV1_qhc1f8.jpg"
+  ],
+  description: "Twin Fish Dani Martinez. P.U laminado con EP. Sistema Twin FCS2. Medidas: 5'6 x 20.5 x 2.5 - 32.9 Litros. Incluye deck.",
+  sizes: ["5'6"],
+  colors: ["Celeste/Rosado"],
+  stock: 1,
+  stockBySize: {
+    "5'6": 1
+  }
 },
 {
-id:31,
-name:"Shortboard Klimax 6'6",
-price:280,
-category:"Tablas",
-subcategory:"Shortboards",
-keywords:["tabla","surfboard","shortboard","surf","tablas"],
-img:"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891750/26_ond68b.jpg",
-images:[
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891752/27_p4k2za.jpg",
-"https://res.cloudinary.com/dtz97n9cv/image/upload/v1773891755/28_bil6ro.jpg"
-],
-description:"Shortboard Klimax PU thruster Future. 35.2 litros. Incluye deck.",
-sizes:["6'6"],
-colors:["Blanco"],
-stock:0,
-stockBySize:{
-"6'6":0
-}
+  id: 31,
+  name: "Evo Dani Martinez 7'0",
+  price: 570,
+  category: "Tablas",
+  subcategory: "Evolutiva",
+  condition:"Segunda",
+  keywords: ["tabla", "surfboard", "evo", "dani martinez", "surf", "tablas"],
+  img: "https://res.cloudinary.com/dkazbai91/image/upload/v1777932905/VSADAD_tgqc2s.jpg",
+  images: [
+"https://res.cloudinary.com/dkazbai91/image/upload/v1777932905/VSDAD22AV_fxdlvs.jpg",
+"https://res.cloudinary.com/dkazbai91/image/upload/v1777932905/ASVDSAD1_dyg8b3.jpg"
+  ],
+  description: "NUEVA - Tabla Evo Dani Martinez P.U. Sistema Thruster FCS2. Medidas: 7'0 x 20.5 x 2.7 - 41.14 Litros.",
+  sizes: ["7'0"],
+  colors: ["Blanco/Amarillo/Rojo"],
+  stock: 1,
+  stockBySize: {
+    "7'0": 1
+  }
 },
 {
 id:32,
@@ -8135,6 +8136,7 @@ function toggleCategory(cat) {
 }
 
 /* ================= PRODUCTOS ================= */
+
 function renderFilteredProducts(category, subcategory, searchQuery = null) {
     // 1. SINCRONIZACIÓN Y RESET DE PÁGINA
     const params = new URLSearchParams(window.location.hash.split('?')[1]);
