@@ -1398,7 +1398,7 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let exchangeRateUSDToPEN = 3.52;
+let exchangeRateUSDToPEN = 3.45;
 let selectedPaymentMethod = "";
 let selectedSize = null;
 let selectedColor = null;
@@ -2757,7 +2757,7 @@ stockBySize:{"8'0":1}
   "description": "La bota Gul Power Boot con puntera dividida (Split Toe) es la combinación definitiva de calidez y flexibilidad. Diseñada con neopreno de 5mm y refuerzos estratégicos, ofrece una protección superior sin perder el tacto con la tabla.\n\nConstrucción y Materiales:\n- X-FLEX: Neopreno 150% súper elástico para una movilidad natural del pie.\n- FX:LITE: Forro hidrófobo suave como la seda que no retiene agua, manteniendo la bota ligera.\n- BLINDSTITCHED: Costuras pegadas y cosidas para máxima estanqueidad y calor.\n- Refuerzos en talón y puntera para una durabilidad prolongada.\n\nCaracterísticas Técnicas:\n- H10: Suela de alta tecnología que proporciona una sensación de ir descalzo para un control total.\n- LEASHGUARD: Diseño especial que evita que el invento (leash) se atasque entre los dedos.\n- Ajuste Seguro: Correas de tobillo con velcro ajustable para evitar la entrada de agua.",
   "sizes": ["37", "38", "39", "41", "42", "43", "45", "46"],
   "colors": ["Negro"],
-  "stock": 14,
+  "stock": 13,
   "stockBySize": {
     "37": 1,
     "38": 2,
@@ -2765,7 +2765,7 @@ stockBySize:{"8'0":1}
     "41": 2,
     "42": 4,
     "43": 2,
-    "45": 1,
+    "45": 0,
     "46": 1
   }
 },
@@ -3148,7 +3148,7 @@ stockBySize:{"25lt":3}
 {
 id:85,
 name:"Cera sticky bumps cool bodyboard",
-price:3.98,
+price:4.06,
 pricePEN: 13.00, 
 isFixedPrice: true, 
 category:"Accesorios",
@@ -3165,7 +3165,7 @@ stockBySize:{"15gr":6}
 {
 id:86,
 name:"Cera sticky bumps cool",
-price:3.98,
+price:4.06,
 category:"Accesorios",
 subcategory:"Cera",
 keywords:["cera","parafina","wax","accesorios"],
@@ -3180,7 +3180,7 @@ stockBySize:{"15gr":3}
 {
 id:87,
 name:"Cera sticky bumps tour series warm",
-price:3.98,
+price:4.06,
 category:"Accesorios",
 subcategory:"Cera",
 keywords:["cera","parafina","wax","accesorios"],
@@ -3195,7 +3195,7 @@ stockBySize:{"15gr":51}
 {
 id:88,
 name:"Cera sticky bumps tour series cool-coold",
-price:3.98,
+price:4.06,
 category:"Accesorios",
 subcategory:"Cera",
 keywords:["cera","parafina","wax","accesorios"],
@@ -3210,7 +3210,7 @@ stockBySize:{"15gr":0}
 {
 id:89,
 name:"Cera sticky bumps base cool",
-price:3.98,
+price:4.06,
 category:"Accesorios",
 subcategory:"Cera",
 keywords:["cera","parafina","wax","accesorios"],
@@ -3225,7 +3225,7 @@ stockBySize:{"15gr":2}
 {
 id:90,
 name:"Cera sexwax cool to mid warm coconut",
-price:3.98,
+price:4.06,
 category:"Accesorios",
 subcategory:"Cera",
 keywords:["cera","parafina","wax","accesorios"],
@@ -3240,7 +3240,7 @@ stockBySize:{"15gr":35}
 {
 id:91,
 name:"Cera sexwax mid cool to warm coconut",
-price:3.98,
+price:4.06,
 category:"Accesorios",
 subcategory:"Cera",
 keywords:["cera","parafina","wax","accesorios"],
@@ -11746,7 +11746,33 @@ document.getElementById("main-content").innerHTML = `
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 7)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 2)">
+  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
+    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1778190435/WhatsApp-Image-2025-05-12-at-5.48.09-PM-1024x683_g1fvja.jpg"
+      alt="Sudamericano de Surf Chicama 2026"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    
+    <div class="absolute top-4 left-4 bg-[#1f6f78] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+      Copa Centenario
+    </div>
+  </div>
+
+  <div class="px-2">
+    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight italic">
+      Chicama 2026: Perú domina las primeras jornadas del Sudamericano
+    </h3>
+    
+    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
+      La "ola izquierda más larga del mundo" es escenario del triunfo de locales como Catalina Zariquiey y el semillero peruano en el pointbreak de Rázuri.
+    </p>
+    
+    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
+      Leer nota completa <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
+    </span>
+  </div>
+</div>
+
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777412169/3Z6A2801_qjmv4z.jpg"
       alt="Vania Torres Oro en Panamá 2026"
@@ -11770,7 +11796,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 1)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 4)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777220105/Gemini_Generated_Image_pzzlrnpzzlrnpzzl-Photoroom_p8z8x6.png"
       alt="Cristopher Bayona y Vania Torres en Panamá"
@@ -11794,7 +11820,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 2)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 5)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1777135093/Las_emociones_del_surf_ya_se_viven_en_Playa_Venao_La_imponente_Playa_Venao_sede_del_surf_5_qlmvhz.jpg"
       alt="XIX Juegos Panamericanos de Surf Panamá 2026"
@@ -11820,7 +11846,7 @@ document.getElementById("main-content").innerHTML = `
   </div>
 </div>
 
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 3)">
+<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 6)">
   <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
     <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776722135/FOTO-PANAMERICANO_jh5hcs.jpg"
       alt="XIX Juegos Panamericanos de Surf Panamá 2026"
@@ -11842,81 +11868,6 @@ document.getElementById("main-content").innerHTML = `
     
     <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
       Leer nota completa <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
-    </span>
-  </div>
-</div>
-
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 4)">
-  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
-    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670579942_18547845400064403_8870098867041823599_n_tscvn7.jpg"
-      alt="Perú Campeón de Surf Panamá 2026"
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-    
-    <div class="absolute top-4 left-4 bg-[#1f6f78] text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
-      Resultados Finales
-    </div>
-  </div>
-
-  <div class="px-2">
-    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight italic">
-      Perú dicta cátedra en las olas: Dominio total en el Surf de Panamá 2026
-    </h3>
-    
-    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
-      Histórica jornada en Playa Venao: El Team Perú se corona con 3 medallas de oro y una de plata, consolidándose como la máxima potencia del surf juvenil.
-    </p>
-    
-    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
-      Leer crónica completa <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
-    </span>
-  </div>
-</div>
-
-
-<div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 5)">
-  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
-    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1775685788/Copa-Duany-2026-P_qnft2n.jpg"
-      alt="Copa José Duany 2026"
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-    
-    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#1f6f78]">
-      Circuito Nacional
-    </div>
-  </div>
-
-  <div class="px-2">
-    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
-      Histórica Copa José Duany 2026: Récord de Inscritos en Miraflores
-    </h3>
-    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
-      Manuel Robles y Sol Aguirre se coronan en La Pampilla ante más de 300 competidores, marcando un hito en el surf peruano.
-    </p>
-    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
-      Leer crónica completa <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
-    </span>
-  </div>
-</div>
-
-     <div class="group cursor-pointer" onclick="navigateTo('noticia', null, null, 6)">
-  <div class="relative overflow-hidden rounded-[2rem] shadow-sm mb-6 bg-gray-100 h-64">
-    <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif"
-      alt="Surf Fest Pro League 2026"
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-    
-    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#001f3f]">
-      Pro League
-    </div>
-  </div>
-
-  <div class="px-2">
-    <h3 class="font-bold text-2xl mb-3 text-[#001f3f] group-hover:text-[#1f6f78] transition-colors leading-tight">
-      Surf Fest 2026: El circuito de los US$ 80,000
-    </h3>
-    <p class="text-gray-600 mb-6 leading-relaxed line-clamp-2">
-      Conoce el calendario oficial del circuito impulsado por Sofía Mulanovich y el ALAS Pro Tour. Próxima parada: Lobitos.
-    </p>
-    <span class="inline-flex items-center text-[#1f6f78] font-bold text-sm uppercase tracking-widest">
-      Ver calendario y sedes <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-2 transition-transform"></i>
     </span>
   </div>
 </div>
@@ -11974,7 +11925,165 @@ function renderNoticia(id){
 
     // A partir de aquí siguen tus bloques if(id === 7), etc.
 
-if(id === 7){
+if(id === 2){
+    html = `
+<article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
+    <div class="w-full px-6 md:px-12 pt-10">
+        <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
+            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">← Volver</span>
+        </button>
+    </div>
+
+    <header class="w-full px-6 md:px-12 py-16 text-center">
+        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Sudamericano de Surf 2026 (Puerto Malabrigo)</span>
+        <h1 class="text-4xl md:text-8xl heading-font text-[#001f3f] italic font-light tracking-tighter leading-none">Chicama en su Esplendor: Perú Domina la Copa Centenario</h1>
+        <p class="mt-6 text-gray-500 font-medium italic text-xl">Por: Redacción Makaha | Chicama, La Libertad – 7 de mayo de 2026</p>
+    </header>
+
+    <div class="w-full h-[500px] md:h-[85vh] overflow-hidden">
+        <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1778190435/WhatsApp-Image-2025-05-12-at-5.48.09-PM-1024x683_g1fvja.jpg" class="w-full h-full object-cover" alt="Ola de Chicama Sudamericano 2026">
+    </div>
+    
+    <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 md:px-12 py-3">
+        <p class="text-right text-xs text-gray-400 font-light tracking-wide uppercase">Cobertura Especial | Resultados 6 y 7 de Mayo: Shortboard y Bodyboard</p>
+    </div>
+    
+    <div class="w-full px-6 md:px-12 py-20 text-gray-800">
+        <div class="max-w-[1400px] mx-auto space-y-16">
+            
+            <section class="space-y-10 text-2xl leading-relaxed">
+                <p class="first-letter:text-7xl first-letter:font-bold first-letter:text-[#001f3f] first-letter:mr-3 first-letter:float-left">
+                    La emblemática Copa Centenario de Rázuri ha comenzado con toda la fuerza en Puerto Malabrigo. Chicama, reconocida por ser la "ola izquierda más larga del mundo", presentó condiciones clásicas con series fluidas que permitieron a los atletas locales demostrar por qué son los dueños de casa.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
+                    <div class="bg-[#f0f9ff] p-10 rounded-[2rem] border-l-8 border-[#1f6f78] shadow-sm">
+                        <h3 class="text-[#001f3f] font-bold text-4xl mb-6">🇵🇪 Debut de Oro</h3>
+                        <p class="text-2xl mb-4 font-bold text-[#1f6f78]">Catalina Zariquiey Imbatible</p>
+                        <p class="text-xl">En la categoría **Open Damas**, Catalina aseguró su pase a las siguientes rondas tras dominar las largas secciones de la ola con una fluidez técnica que la consolida como favorita del torneo.</p>
+                    </div>
+                    
+                    <div class="bg-[#fefce8] p-10 rounded-[2rem] border-l-8 border-[#ca8a04] shadow-sm">
+                        <h3 class="text-[#001f3f] font-bold text-3xl mb-6">🇵🇪 Semillero en Shortboard</h3>
+                        <p class="text-xl mb-4 font-bold text-[#ca8a04]">Bastián Arévalo y Urpi Torres</p>
+                        <p class="text-lg">Los juveniles peruanos lideraron sus heats en Sub-16 y Sub-18 con puntajes sólidos, superando con autoridad a los representantes de Argentina y Chile en el pointbreak liberteño.</p>
+                    </div>
+
+                    <div class="bg-[#fdf2f2] p-10 rounded-[2rem] border-l-8 border-[#e63946] shadow-sm md:col-span-2">
+                        <h3 class="text-[#001f3f] font-bold text-3xl mb-6">🇵🇪 Dominio en Bodyboard</h3>
+                        <p class="text-xl mb-4 font-bold text-[#e63946]">Camino al Bicampeonato</p>
+                        <p class="text-lg">En la categoría Junior, los locales sumaron puntos vitales buscando repetir el oro de la edición anterior. La lectura de ola fue impecable, aprovechando las secciones críticas de la izquierda.</p>
+                    </div>
+                </div>
+
+                <div class="w-full h-[400px] md:h-[600px] overflow-hidden rounded-[3rem] shadow-xl">
+                    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1778190727/Gemini_Generated_Image_3juxdu3juxdu3jux-Photoroom_xxpber.png" class="w-full h-full object-cover bg-gray-200" alt="Competencia en Chicama">
+                </div>
+
+                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">Impacto en Puerto Malabrigo</h2>
+                <p>El evento ha generado un movimiento económico sin precedentes. Con la llegada de más de **350 competidores** y miles de turistas, la capacidad hotelera y gastronómica de la zona se encuentra al máximo, reafirmando al surf como motor de desarrollo.</p>
+                
+                <div class="bg-gray-100 p-10 rounded-[2rem] italic">
+                    <p class="text-xl leading-relaxed">
+                        "Las series en Chicama exigen un despliegue físico importante debido al largo recorrido de la ola. La consistencia del swell está permitiendo un nivel técnico altísimo en todas las categorías juveniles", comentaron los jueces del torneo.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 py-10">
+                    <div class="lg:col-span-2 space-y-6">
+                        <h3 class="text-4xl font-bold text-[#001f3f]">Lo que se viene: Rondas Finales</h3>
+                        <p class="text-xl">Se espera que las condiciones del mar se mantengan estables. Las finales de Shortboard Open y Junior prometen ser épicas, con un Team Perú que busca quedarse con la mayoría de preseas en casa.</p>
+                    </div>
+                    <div class="bg-[#001f3f] text-white p-8 rounded-3xl">
+                        <h4 class="text-[#1f6f78] font-bold text-2xl mb-4 uppercase">Tip Pro Makaha</h4>
+                        <p class="text-lg opacity-90">Para correr Chicama estos días, recomendamos trajes con tecnología Graphene para soportar las largas sesiones de remo y la temperatura del agua en el norte.</p>
+                    </div>
+                </div>
+
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1778190435/Catalina-Zariquiey_26WorldJuniors_0Y6A0952_Cait-Miers-1024x684_zn5pld.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Atletas Team Perú Chicama 2026">
+            </section>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gray-50 p-8 md:p-20 rounded-[3rem] border border-gray-100 shadow-inner">
+                <div class="space-y-8">
+                    <h4 class="text-[#1f6f78] font-bold text-4xl flex items-center">
+                        <span class="w-12 h-1 bg-[#1f6f78] mr-4"></span>
+                        Cronograma de Cierre
+                    </h4>
+                    <div class="space-y-10 text-xl text-gray-700 leading-relaxed">
+                        <div class="pl-6 border-l-4 border-[#e63946]">
+                            <strong class="text-[#001f3f] text-2xl block mb-2">Próximas 48 horas</strong>
+                            <p>Semifinales y Finales de Shortboard Sub-16 y Sub-18. Perú lidera la mayoría de los cuadros eliminatorios.</p>
+                        </div>
+
+                        <div class="pl-6 border-l-4 border-[#1f6f78]">
+                            <strong class="text-[#001f3f] text-2xl block mb-2">Clausura y Premiación</strong>
+                            <p>Ceremonia oficial en la Plaza de Puerto Malabrigo con presencia de las delegaciones de Argentina, Chile y Brasil.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col bg-[#001f3f] text-white p-12 rounded-[2rem] justify-center shadow-2xl self-start lg:sticky lg:top-10">
+                    <h4 class="font-bold text-3xl mb-6 italic tracking-tight uppercase text-[#1f6f78]">Ranking Sudamericano</h4>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>1. Perú</span>
+                            <span class="text-[#1f6f78] font-bold">Líder Provisional</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>2. Argentina</span>
+                            <span class="text-white/60 font-bold">Escolta</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>3. Chile</span>
+                            <span class="text-white/60 font-bold">Top 3</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/10 p-4 rounded-2xl text-center">
+                            <p class="text-xs uppercase opacity-60">MVP Jornada 1</p>
+                            <p class="font-bold text-lg text-[#1f6f78]">C. Zariquiey</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-2xl text-center">
+                            <p class="text-xs uppercase opacity-60">Revelación</p>
+                            <p class="font-bold text-lg text-yellow-400">B. Arévalo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[400px] md:h-[600px] overflow-hidden rounded-[3rem] shadow-xl">
+                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1778190435/WhatsApp-Image-2026-02-25-at-7.49.27-PM_fkc3kq.jpg" class="w-full h-full object-cover bg-gray-200" alt="Team Perú Chicama">
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center space-y-12 py-10">
+                <h3 class="text-5xl font-bold text-[#001f3f] italic">Perú a la caza del oro total</h3>
+                <p class="text-2xl text-gray-600 leading-relaxed">
+                    Con un arranque espectacular en la "Ola Izquierda más larga del mundo", nuestra delegación demuestra que el semillero peruano está en su mejor momento. La Copa Centenario de Rázuri se queda, por ahora, en casa.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto pt-10 border-t border-gray-100">
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="group flex flex-col md:flex-row items-center justify-between bg-[#e63946] p-8 rounded-3xl text-white transition-all hover:bg-[#b91c1c] shadow-xl">
+                        <div class="text-center md:text-left mb-6 md:mb-0">
+                            <span class="text-xs font-bold uppercase tracking-[0.2em] opacity-80 block mb-2">Sigue el Evento</span>
+                            <h4 class="text-3xl font-bold italic">Resultados en Vivo Team Perú</h4>
+                        </div>
+                        <div class="bg-white text-[#e63946] px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm group-hover:scale-105 transition-transform">
+                            Ver Cuadros
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</article>
+    `;
+}
+
+if(id === 3){
     html = `
 <article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
     <div class="w-full px-6 md:px-12 pt-10">
@@ -12136,7 +12245,7 @@ if(id === 7){
     `;
 }
 
-if(id === 1){
+if(id === 4){
     html = `
 <article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
     <div class="w-full px-6 md:px-12 pt-10">
@@ -12290,7 +12399,7 @@ if(id === 1){
     `;
 }
 
-if(id === 2){
+if(id === 5){
     html = `
 <article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
     <div class="w-full px-6 md:px-12 pt-10">
@@ -12436,7 +12545,7 @@ if(id === 2){
     `;
 }
 
-if(id === 3){
+if(id === 6){
     html = `
 <article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
     <div class="w-full px-6 md:px-12 pt-10">
@@ -12549,312 +12658,6 @@ if(id === 3){
         </div>
     </div>
 </article>
-    `;
-}
-
-if(id === 4){
-    html = `
-<article class="bg-white min-h-screen pb-20 w-full overflow-x-hidden">
-    <div class="w-full px-6 md:px-12 pt-10">
-        <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
-            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver
-        </button>
-    </div>
-
-    <header class="w-full px-6 md:px-12 py-16 text-center">
-        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">IV Juegos Suramericanos de la Juventud</span>
-        <h1 class="text-4xl md:text-8xl heading-font text-[#001f3f] italic font-light tracking-tighter leading-none">Perú dicta cátedra en las olas: Dominio total en Panamá 2026</h1>
-        <p class="mt-6 text-gray-500 font-medium italic text-xl">Playa Venao, Panamá – 16 de abril de 2026</p>
-    </header>
-
-    <div class="w-full h-[500px] md:h-[85vh] overflow-hidden">
-        <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776379241/Gemini_Generated_Image_dlhu2idlhu2idlhu_kkpfwl.png" class="w-full h-full object-cover" alt="Team Perú Campeón de Surf Panamá 2026">
-    </div>
-    
-    <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 md:px-12 py-3">
-        <p class="text-right text-xs text-gray-400 font-light tracking-wide uppercase">Sede: Playa Venao, Los Santos | Resultados Finales Oficiales</p>
-    </div>
-    
-    <div class="w-full px-6 md:px-12 py-20 text-gray-800">
-        <div class="max-w-[1400px] mx-auto space-y-16">
-            
-            <section class="space-y-10 text-2xl leading-relaxed">
-                <p class="first-letter:text-7xl first-letter:font-bold first-letter:text-[#001f3f] first-letter:mr-3 first-letter:float-left">
-                    En una jornada marcada por condiciones épicas en el Pacífico panameño, la delegación peruana de surf ratificó su estatus de potencia continental. Los **IV Juegos Suramericanos de la Juventud Panamá 2026** fueron el escenario donde el "Team Perú" no solo compitió, sino que dominó las aguas de Playa Venao, llevándose la mayoría de las preseas doradas en disputa este 16 de abril.
-                </p>
-
-                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776378596/673139020_18547860835064403_4790871634537114984_n_gwfuik.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Ceremonia de Premiación Surf">
-
-                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">La Reina del Shortboard: Catalina Zariquiey</h2>
-                <p>La figura indiscutible del evento fue **Catalina Zariquiey**. Con una lectura perfecta de las olas y maniobras de alto impacto, la joven surfista peruana se colgó la medalla de **oro** en la categoría Shortboard Femenino. Zariquiey superó en una final de infarto a las representantes de Chile y Argentina, demostrando por qué es considerada una de las mayores promesas del surf mundial.</p>
-
-                <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670605740_18547845409064403_3975565345121345556_n_x9cakv.jpg" class="w-full h-auto max-h-[700px] object-cover rounded-3xl shadow-2xl" alt="Lucciano Campos y Hannah Saavedra">
-
-                <h2 class="text-6xl md:text-7xl heading-font text-[#001f3f]">Bodyboard: Oro por partida doble</h2>
-                <p>El éxito peruano se extendió al Bodyboard, donde el dominio fue absoluto. Lucciano Campos y Hannah Saavedra demostraron una solidez técnica impecable, dejando sin opciones a sus rivales de Brasil y Argentina en las mangas finales.</p>
-            </section>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gray-50 p-8 md:p-20 rounded-[3rem] border border-gray-100 shadow-inner">
-    <div class="space-y-8">
-        <h4 class="text-[#1f6f78] font-bold text-4xl flex items-center">
-            <span class="w-12 h-1 bg-[#1f6f78] mr-4"></span>
-            Hazañas del Medallero
-        </h4>
-        <div class="space-y-10 text-xl text-gray-700 leading-relaxed">
-            <div class="pl-6 border-l-4 border-[#1f6f78]">
-                <strong class="text-[#001f3f] text-2xl block mb-2">Catalina Zariquiey (Shortboard Fem.) – ORO</strong>
-                <p>Figura indiscutible del evento. Con una lectura de olas perfecta y maniobras de alto impacto, superó en una final de infarto a las representantes de Chile y Argentina, ratificando su estatus como promesa mundial.</p>
-            </div>
-
-            <div class="pl-6 border-l-4 border-[#1f6f78]">
-                <strong class="text-[#001f3f] text-2xl block mb-2">Lucciano Campos (Bodyboard Masc.) – ORO</strong>
-                <p>Se impuso con autoridad tras una serie de maniobras aéreas técnicas. Campos dejó sin opciones al brasileño Andre Barros, asegurando el metal más precioso para el equipo incaico.</p>
-            </div>
-            
-            <div class="pl-6 border-l-4 border-[#1f6f78]">
-                <strong class="text-[#001f3f] text-2xl block mb-2">Hannah Saavedra (Bodyboard Fem.) – ORO</strong>
-                <p>Completó la gesta al vencer a la argentina Isabella Assmann. Saavedra mostró una solidez mental clave en los últimos cinco minutos, aprovechando la mejor serie de olas del set.</p>
-            </div>
-            
-            <div class="pl-6 border-l-4 border-[#1f6f78]">
-                <strong class="text-[#001f3f] text-2xl block mb-2">María Paula Conterno (SUP Surf) – PLATA</strong>
-                <p>Sumó una valiosa medalla de plata tras un duelo punto a punto con la chilena Antonia Gutiérrez en la modalidad de Stand Up Paddle.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex flex-col bg-[#001f3f] text-white p-12 rounded-[2rem] justify-center shadow-2xl self-start lg:sticky lg:top-10">
-        <h4 class="font-bold text-3xl mb-6 italic tracking-tight uppercase text-[#1f6f78]">Resumen del Medallero</h4>
-        <p class="text-xl opacity-90 mb-8 leading-relaxed">
-            El balance final de la <strong>ODESUR</strong> en la disciplina de Surf confirma a Perú como líder absoluto con 4 medallas totales.
-        </p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Perú</span>
-                <p class="font-bold text-lg italic">3 Oros, 1 Plata</p>
-            </div>
-            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Chile</span>
-                <p class="font-bold text-lg italic">1 Oro, 1 Plata</p>
-            </div>
-            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Argentina</span>
-                <p class="font-bold text-lg italic">2 Platas</p>
-            </div>
-            <div class="bg-white/10 p-6 rounded-2xl border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-[#1f6f78] font-bold block mb-1">Brasil / Panamá</span>
-                <p class="font-bold text-lg italic">Bronces Destacados</p>
-            </div>
-        </div>
-
-        <div class="mt-10 pt-6 border-t border-white/10 text-center">
-            <span class="text-xs font-bold tracking-widest text-gray-400 uppercase">Cierre de Competencia: 16 de Abril</span>
-        </div>
-    </div>
-</div>
-
-            <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1776377904/670579942_18547845400064403_8870098867041823599_n_tscvn7.jpg" class="w-full h-auto max-h-[800px] object-cover rounded-3xl shadow-2xl" alt="Podio Surf Perú">
-
-            <div class="max-w-4xl mx-auto text-center space-y-12 py-10">
-                <h3 class="text-5xl font-bold text-[#001f3f] italic">Un escenario de clase mundial</h3>
-                <p class="text-2xl text-gray-600 leading-relaxed">
-                    Playa Venao se consolidó como una sede de primer nivel. Las olas, constantes y con buena forma, permitieron que el formato de competencia luciera su mejor cara, enfocada en el desarrollo de atletas de entre 14 y 17 años.
-                </p>
-                <div class="bg-amber-50 border-t-4 border-amber-400 p-10 rounded-3xl">
-                    <p class="text-amber-900 font-bold text-2xl">Dato de interés:</p>
-                    <p class="text-amber-800 text-xl italic">Panamá celebró un crecimiento notable en su nivel competitivo, logrando meterse en fases finales y sumando bronces que entusiasmaron a la afición local en la provincia de Los Santos.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
-    `;
-}
-
-if(id === 5){
-    html = `
-<article class="bg-white min-h-screen pb-20">
-    <div class="max-w-[1440px] mx-auto px-6 pt-10">
-        <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
-            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver
-        </button>
-    </div>
-
-    <header class="max-w-6xl mx-auto px-6 py-16 text-center">
-        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Circuito Peruano de Surf</span>
-        <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] italic font-light tracking-tighter">Manuel Robles y Sol Aguirre coronan la histórica Copa José Duany 2026</h1>
-    </header>
-
-    <img src="https://res.cloudinary.com/dkazbai91/image/upload/v1775685788/Copa-Duany-2026-P_qnft2n.jpg" class="w-full h-[500px] md:h-[750px] object-cover" alt="Copa José Duany 2026 Miraflores">
-    
-    <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 py-2">
-        <p class="text-right text-xs text-gray-400 font-light tracking-wide">MIRAFLORES, LIMA – Playa La Pampilla</p>
-    </div>
-    
-    <div class="w-full mx-auto px-6 py-20 text-gray-800 text-xl leading-relaxed">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div class="lg:col-span-8 space-y-10">
-                <h2 class="text-5xl heading-font text-[#001f3f]">Dominio absoluto en el agua</h2>
-                <p>La playa **La Pampilla** fue el escenario de una jornada épica para el surf nacional. Del 2 al 5 de abril, se llevó a cabo la **Copa José Duany 2026**, la primera fecha del Circuito Peruano de Surf, que este año marcó un hito histórico al registrar la inscripción de **más de 300 surfistas**, la cifra más alta en la historia de la competencia.</p>
-                
-                <p>En la categoría **Open Varones**, **Manuel Robles** se consolidó como la figura del torneo. Tras una serie de rondas eliminatorias muy reñidas, Robles demostró una lectura impecable de las olas de Miraflores, llevándose el título de **Campeón Absoluto**. Su fluidez y maniobras críticas le permitieron superar a sus rivales en una final de infarto.</p>
-
-                <div class="overflow-x-auto bg-gray-50 p-8 rounded-xl border border-gray-100">
-                    <h3 class="text-[#001f3f] font-bold text-2xl mb-6">Resultados Destacados - Fecha 1</h3>
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b border-gray-200 text-sm uppercase tracking-wider text-gray-500">
-                                <th class="py-4">Categoría</th>
-                                <th class="py-4">Ganador(a)</th>
-                                <th class="py-4 text-right">Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-lg">
-                            <tr class="border-b border-gray-100">
-                                <td class="py-6 font-bold text-[#1f6f78]">Open Varones</td>
-                                <td class="py-6 text-[#001f3f]">Manuel Robles</td>
-                                <td class="py-6 text-right text-xs font-bold uppercase text-green-600">Campeón Absoluto</td>
-                            </tr>
-                            <tr class="border-b border-gray-100">
-                                <td class="py-6 font-bold text-[#1f6f78]">Open Damas</td>
-                                <td class="py-6 text-[#001f3f]">Sol Aguirre</td>
-                                <td class="py-6 text-right text-xs font-bold uppercase text-green-600">Campeona Absoluta</td>
-                            </tr>
-                            <tr>
-                                <td class="py-6 font-bold text-[#1f6f78]">Sub-16 Varones</td>
-                                <td class="py-6 text-[#001f3f]">Luca Chipoco</td>
-                                <td class="py-6 text-right text-xs font-bold uppercase text-green-600">Primer Lugar</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div>
-                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">Jerarquía Femenina</h3>
-                        <p class="text-lg">**Sol Aguirre** volvió a brillar en Open Damas. Su capacidad para conectar maniobras con potencia en las derechas de La Pampilla le otorgó el máximo puntaje de la jornada, reafirmando su estatus como referente sudamericana.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">El Semillero</h3>
-                        <p class="text-lg">El joven **Luca Chipoco** se llevó el primer lugar en Sub-16, demostrando un nivel técnico que promete dar de qué hablar en las próximas fechas del circuito nacional organizado por la FENTA.</p>
-                    </div>
-                </div>
-
-                <p>La Copa José Duany destacó por la organización conjunta entre la **FENTA** y el **Club Pacífico Sur**. La masiva asistencia de público y la transmisión en vivo confirmaron que el surf sigue siendo uno de los deportes con mayor crecimiento. El circuito continuará en las próximas semanas para definir a los seleccionados nacionales.</p>
-            </div>
-            
-            <div class="lg:col-span-4 space-y-8">
-                <div class="bg-[#001f3f] text-white p-10 rounded-sm shadow-xl">
-                    <h4 class="heading-font text-3xl mb-6 italic">Ficha del Torneo</h4>
-                    <ul class="space-y-6 text-base opacity-90">
-                        <li class="border-b border-white/20 pb-4"><strong>Evento:</strong> Copa José Duany 2026 (Fecha 1).</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Organiza:</strong> FENTA & Club Pacífico Sur.</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Récord:</strong> +300 surfistas inscritos.</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Ubicación:</strong> Playa La Pampilla, Miraflores.</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Próxima Fecha:</strong> Por confirmar en las siguientes semanas.</li>
-                    </ul>
-                </div>
-                <div class="p-8 border-2 border-gray-100 italic text-gray-500 bg-white">
-                    "El torneo marcó un hito histórico al registrar la cifra más alta de competidores en la historia de la Copa José Duany."
-                    <span class="block mt-4 font-bold text-[#001f3f] not-italic">— Vocería FENTA</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
-    `;
-}
-
-if(id === 6){
-    html = `
-<article class="bg-white min-h-screen pb-20">
-    <div class="max-w-[1440px] mx-auto px-6 pt-10">
-        <button onclick="goBack()" class="group flex items-center text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-[#1f6f78] transition-colors">
-            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Volver
-        </button>
-    </div>
-
-    <header class="max-w-6xl mx-auto px-6 py-16 text-center">
-        <span class="text-[#1f6f78] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Circuito Profesional</span>
-        <h1 class="text-4xl md:text-7xl heading-font text-[#001f3f] italic font-light tracking-tighter">Surf Fest Pro League 2026: El Nuevo Estándar</h1>
-    </header>
-
-    <img src="https://res.cloudinary.com/dtz97n9cv/image/upload/v1775106635/OOSX6WIR35DHRBHNBBCJR35FF4_vipxcn.avif" class="w-full h-[500px] md:h-[750px] object-cover" alt="Surf Fest Pro League Peru">
-    
-    <div class="w-full border-b-8 border-[#1f6f78] bg-gray-50 px-6 py-2">
-        <p class="text-right text-xs text-gray-400 font-light tracking-wide">Imagen: El Comercio Perú</p>
-    </div>
-    
-    <div class="w-full mx-auto px-6 py-20 text-gray-800 text-xl leading-relaxed">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div class="lg:col-span-8 space-y-10">
-                <h2 class="text-5xl heading-font text-[#001f3f]">Profesionalizando el Talento Local</h2>
-                <p>La **Surf Fest Pro League 2026** nace con una misión clara liderada por la icónica **Sofía Mulanovich**: crear una plataforma de alto rendimiento en aguas peruanas. Bajo estándares de la WSL pero en nuestras rompientes, este circuito permite a los surfistas locales competir al más alto nivel sin los costos de viajar al extranjero, profesionalizando la escena nacional con una bolsa histórica de <strong>US$ 80,000</strong>.</p>
-                
-                <div class="overflow-x-auto bg-gray-50 p-8 rounded-xl border border-gray-100">
-                    <h3 class="text-[#001f3f] font-bold text-2xl mb-6">Calendario Oficial 2026</h3>
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b border-gray-200 text-sm uppercase tracking-wider text-gray-500">
-                                <th class="py-4">Sede / Playa</th>
-                                <th class="py-4">Fecha</th>
-                                <th class="py-4 text-right">Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-lg">
-                            <tr class="border-b border-gray-100 italic opacity-60">
-                                <td class="py-6 font-bold text-[#1f6f78]">Punta Roquitas</td>
-                                <td class="py-6">14-15 Marzo</td>
-                                <td class="py-6 text-right text-xs font-bold uppercase">Finalizado</td>
-                            </tr>
-                            <tr class="border-b border-gray-100">
-                                <td class="py-6 font-bold text-[#001f3f]">Lobitos, Piura</td>
-                                <td class="py-6">Junio (Tentativo)</td>
-                                <td class="py-6 text-right text-xs font-bold uppercase text-blue-600 tracking-widest animate-pulse">Próximamente</td>
-                            </tr>
-                            <tr>
-                                <td class="py-6 font-bold text-[#001f3f]">Señoritas, Punta Hermosa</td>
-                                <td class="py-6">Agosto (Tentativo)</td>
-                                <td class="py-6 text-right text-xs font-bold uppercase text-gray-400">Próximamente</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div>
-                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">El Norte: Lobitos</h3>
-                        <p class="text-lg">En junio, el circuito se traslada a las famosas "izquierdas" infinitas de Talara. Un punto crítico para evaluar la técnica en olas de clase mundial.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-[#1f6f78] font-bold text-2xl mb-4">El Sur: Señoritas</h3>
-                        <p class="text-lg">El cierre de temporada en agosto promete potencia pura. Las marejadas de invierno en Punta Hermosa definirán a los campeones del 2026.</p>
-                    </div>
-                </div>
-
-                <p>El respaldo del **ALAS Global Tour** asegura que cada maniobra cuente. Los competidores no solo luchan por la gloria local, sino por puntos vitales para el ranking latinoamericano, abriendo puertas directas a la clasificación internacional. Con más de 150 surfistas por fecha, la competitividad está garantizada.</p>
-            </div>
-            
-            <div class="lg:col-span-4 space-y-8">
-                <div class="bg-[#001f3f] text-white p-10 rounded-sm shadow-xl">
-                    <h4 class="heading-font text-3xl mb-6 italic">Detalles del Circuito</h4>
-                    <ul class="space-y-6 text-base opacity-90">
-                        <li class="border-b border-white/20 pb-4"><strong>Premios:</strong> US$ 80,000 en efectivo a repartir entre las tres fechas.</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Aval:</strong> Certificación ALAS Pro Tour (Puntos para el ranking regional).</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Categorías:</strong> Open Varones y Open Damas de alto rendimiento.</li>
-                        <li class="border-b border-white/20 pb-4"><strong>Swell Forecast:</strong> Fechas finales confirmadas 2 semanas antes según el reporte del mar.</li>
-                    </ul>
-                </div>
-                <div class="p-8 border-2 border-gray-100 italic text-gray-500 bg-white">
-                    "Queremos que el surfista peruano se sienta profesional en su propia casa. El Surf Fest es el puente hacia la WSL."
-                    <span class="block mt-4 font-bold text-[#001f3f] not-italic">— Sofía Mulanovich</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
-
     `;
 }
 
