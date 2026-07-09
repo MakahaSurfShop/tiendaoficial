@@ -14034,6 +14034,27 @@ function closeAllMenus() {
 document.addEventListener("DOMContentLoaded", () => {
   console.log("%cMakaha Surf and Skate Shop Barranco", "font-size:20px; font-weight:bold; color:#0F4C5C;");
   console.log("%cDesarrollado por Flavio Guevara", "color:gray;");
+
+  // --- NUEVO CÓDIGO PARA LEER DE FIREBASE ---
+  const db = firebase.firestore();
+  db.collection("productos").get().then((snapshot) => {
+      if (!snapshot.empty) {
+          let productosFirebase = [];
+          snapshot.forEach(doc => productosFirebase.push(doc.data()));
+          products_db.tablas = productosFirebase;
+          console.log("¡Éxito! Datos cargados desde Firebase. Total: " + productosFirebase.length);
+      } else {
+          console.log("Firebase está vacío, usando catálogo local.");
+      }
+      
+      // Renderizamos la tienda después de decidir qué datos usar
+      renderHome();
+      setupCheckoutValidation();
+  }).catch((error) => {
+      console.error("Error al conectar con Firebase, usando catálogo local:", error);
+      renderHome();
+      setupCheckoutValidation();
+  });
 });
 
 // 1. Esta función activa el input invisible de archivos
