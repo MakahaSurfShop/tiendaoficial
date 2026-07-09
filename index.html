@@ -3405,14 +3405,14 @@ images:["https://res.cloudinary.com/dtz97n9cv/image/upload/v1774035313/131231241
 description:"Leash para surf marca FCS de 7mm.",
 sizes:["8ft"],
 colors:["Celeste"],
-stock:1,
+stock:0,
 
 stockBySize:{
-"8ft":1,
+"8ft":0,
 },
 
 stockByVariant:{
-"8ft-Celeste":1
+"8ft-Celeste":0
 }
 
 },
@@ -6653,8 +6653,8 @@ Solarez EPOXY (Azul): Seguro para todo tipo de tablas (Epoxy). Fórmula de alta 
     description: "Si buscas evolucionar o simplemente disfrutar de cada ola con total control, esta joya es para ti.\n\nESPECIFICACIONES TÉCNICAS:\n• Medidas: 7'4 x 22 ¼ x 3\n• Volumen: 54.7 Litros (Flotación garantizada)\n• Marca: SYL Surfboards\n• Estilo: Resin tint en degradado (Gloss finish)\n\nPRECIO: $580 USD",
     sizes: ["7'4"],
     colors: ["Mango"],
-    stock: 1,
-    stockBySize: { "7'4": 1 }
+    stock: 0,
+    stockBySize: { "7'4": 0 }
 },
 {
     id: 245,
@@ -7683,9 +7683,9 @@ stockByVariant:{
   description: "Funboard SYL Surfboards Epoxy y fibra de basalto 2 Future + Single 8'0 x 22 x 3 - 59 litros.",
   sizes: ["8'0"],
   colors: ["Marrón"], 
-  stock: 1,
+  stock: 0,
   stockBySize: {
-    "8'0": 1
+    "8'0": 0
   }
 },
 
@@ -14929,6 +14929,17 @@ function getProductSlug(name) {
         .replace(/[^\w\s-]/g, '') // Elimina caracteres especiales
         .replace(/[\s_-]+/g, '-')  // Cambia espacios por guiones
         .replace(/^-+|-+$/g, '');  // Limpia extremos
+}
+
+async function migrarProductosAFirestore() {
+    const db = firebase.firestore();
+    const productos = products_db.tablas; 
+    console.log("Iniciando migración...");
+    for (let prod of productos) {
+        await db.collection("productos").doc(prod.id.toString()).set(prod);
+        console.log("Subido: " + prod.name);
+    }
+    alert("¡Migración completada! Mira tu consola de Firebase ahora.");
 }
 
 </script>
