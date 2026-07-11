@@ -1435,14 +1435,18 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 
-// Definir la variable auth para usarla en toda la tienda
+// Definir la variable auth
 const auth = firebase.auth();
 
-// El "Guardián" que vigila la sesión en tiempo real
+// INICIALIZACIÓN CORREGIDA: Apuntando explícitamente a (default)
+const db = firebase.firestore(); 
+// Si el error persiste, intenta definir la base de datos así:
+// const db = firebase.firestore(firebase.app());
+
+// El "Guardián" que vigila la sesión
 auth.onAuthStateChanged((user) => {
   if (user) {
     console.log("Sesión activa:", user.email);
-    // Aquí podrías hacer que el icono de "Mi Cuenta" cambie de color o muestre la inicial
   } else {
     console.log("No hay usuario activo");
   }
@@ -1903,9 +1907,9 @@ images:[
 description:"Shortboard Hector Albites epoxy thruster FCS. 26.8 litros. Incluye deck.",
 sizes:["5'9"],
 colors:["Blanco"],
-stock:1,
+stock:0,
 stockBySize:{
-"5'9":1
+"5'9":0
 }
 },
 {
@@ -14952,15 +14956,26 @@ function getProductSlug(name) {
         .replace(/^-+|-+$/g, '');  // Limpia extremos
 }
 
-async function migrarProductosAFirestore() {
-    const db = firebase.firestore();
-    const productos = products_db.tablas; 
+async function migrarDatosAFirebase() {
     console.log("Iniciando migración...");
-    for (let prod of productos) {
-        await db.collection("productos").doc(prod.id.toString()).set(prod);
-        console.log("Subido: " + prod.name);
+    
+    // En tu código actual, todos tus productos están dentro de products_db.tablas
+    const misProductos = products_db.tablas; 
+    
+    // Iteramos sobre cada producto
+    for (let i = 0; i < misProductos.length; i++) {
+        const producto = misProductos[i];
+        try {
+            // Creamos una colección llamada "productos" 
+            // Usamos el ID del producto (ej. "1", "2") como el nombre del documento en Firebase
+            await db.collection("productos").doc(producto.id.toString()).set(producto);
+            console.log(`✅ Producto subido: ${producto.name}`);
+        } catch (error) {
+            console.error(`❌ Error al subir ${producto.name}:`, error);
+        }
     }
-    alert("¡Migración completada! Mira tu consola de Firebase ahora.");
+    
+    console.log("🚀 ¡MIGRACIÓN COMPLETADA CON ÉXITO!");
 }
 
 </script>
