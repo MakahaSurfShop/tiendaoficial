@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14994,25 +14995,39 @@ function getProductSlug(name) {
 }
 
 async function migrarDatosAFirebase() {
-    console.log("Iniciando migración...");
-    
-    // En tu código actual, todos tus productos están dentro de products_db.tablas
-    const misProductos = products_db.tablas; 
-    
-    // Iteramos sobre cada producto
+
+    console.log("Inicio");
+
+    const misProductos = products_db.tablas;
+
+    console.log("Productos:", misProductos.length);
+
     for (let i = 0; i < misProductos.length; i++) {
+
         const producto = misProductos[i];
+
+        console.log("Subiendo", i, producto.name);
+
         try {
-            // Creamos una colección llamada "productos" 
-            // Usamos el ID del producto (ej. "1", "2") como el nombre del documento en Firebase
-            await db.collection("productos").doc(producto.id.toString()).set(producto);
-            console.log(`✅ Producto subido: ${producto.name}`);
-        } catch (error) {
-            console.error(`❌ Error al subir ${producto.name}:`, error);
+
+            await db.collection("productos")
+                .doc(producto.id.toString())
+                .set(producto);
+
+            console.log("OK", producto.name);
+
+        } catch (e) {
+
+            console.error("ERROR", producto.name, e);
+
+            throw e;
+
         }
+
     }
-    
-    console.log("🚀 ¡MIGRACIÓN COMPLETADA CON ÉXITO!");
+
+    console.log("FINALIZADO");
+
 }
 
 </script>
