@@ -7958,6 +7958,60 @@ const subcategoryImages = {
 
 };
 
+// =========================================================
+// 1. FUNCIÓN PARA SUBIR PRODUCTOS (MIGRACIÓN)
+// =========================================================
+async function subirProductosAFirestore() {
+  console.log("Iniciando migración de productos a Firebase...");
+  
+  // OJO: Apuntamos a 'products_db.tablas' que es donde están tus arrays de productos
+  const misProductos = products_db.tablas; 
+
+  for (let i = 0; i < misProductos.length; i++) {
+    const producto = misProductos[i];
+    try {
+      // Usamos .set() con el ID para no duplicar los productos si actualizas la página
+      await db.collection("productos").doc(producto.id.toString()).set(producto);
+      console.log(`✅ Subido: ${producto.name}`);
+    } catch (error) {
+      console.error(`❌ Error al subir: ${producto.name}`, error);
+    }
+  }
+  
+  console.log("🚀 ¡Migración completada! Revisa tu consola de Firebase.");
+}
+
+// ⚠️ DESCOMENTA esta línea solo UNA VEZ para subir los datos. 
+// Una vez que suban, vuelve a ponerle las barras // para que no se suban cada vez que entras a la web.
+// subirProductosAFirestore();
+
+
+// =========================================================
+// 2. FUNCIÓN PARA LEER EL CATÁLOGO DESDE LA NUBE
+// =========================================================
+async function cargarCatalogoDesdeNube() {
+  try {
+    const snapshot = await db.collection("productos").get();
+    const productosEnLaNube = [];
+    
+    snapshot.forEach((doc) => {
+      productosEnLaNube.push(doc.data());
+    });
+
+    console.log("Catálogo descargado de Firebase:", productosEnLaNube);
+
+    // AQUÍ es donde debes conectar con tu función que dibuja los productos.
+    // Si tu función actual se llama por ejemplo "renderProducts()", debes enviarle "productosEnLaNube"
+    // Ejemplo: renderProducts(productosEnLaNube);
+
+  } catch (error) {
+    console.error("Error al cargar el catálogo desde Firebase:", error);
+  }
+}
+
+// Llama a la función para que el catálogo cargue apenas entres a la web
+cargarCatalogoDesdeNube();
+
 /* ================= NAVEGACIÓN ================= */
 
 function navigateTo(page, category = null, subcategory = null, id = null, fromPopState = false) {
@@ -14993,42 +15047,6 @@ function getProductSlug(name) {
         .replace(/[^\w\s-]/g, '') // Elimina caracteres especiales
         .replace(/[\s_-]+/g, '-')  // Cambia espacios por guiones
         .replace(/^-+|-+$/g, '');  // Limpia extremos
-}
-
-async function migrarDatosAFirebase() {
-
-    console.log("Inicio");
-
-    const misProductos = products_db.tablas;
-
-    console.log("Productos:", misProductos.length);
-
-    for (let i = 0; i < misProductos.length; i++) {
-
-        const producto = misProductos[i];
-
-        console.log("Subiendo", i, producto.name);
-
-        try {
-
-            await db.collection("productos")
-                .doc(producto.id.toString())
-                .set(producto);
-
-            console.log("OK", producto.name);
-
-        } catch (e) {
-
-            console.error("ERROR", producto.name, e);
-
-            throw e;
-
-        }
-
-    }
-
-    console.log("FINALIZADO");
-
 }
 
 </script>
