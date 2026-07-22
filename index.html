@@ -1436,13 +1436,14 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 
-// Definir la variable auth
+// Definir servicios básicos
 const auth = firebase.auth();
-
-// INICIALIZACIÓN CORREGIDA: Apuntando explícitamente a (default)
 const db = firebase.firestore(); 
-// Si el error persiste, intenta definir la base de datos así:
-// const db = firebase.firestore(firebase.app());
+
+// Forzar la activación de la red para evitar que se quede en modo local (offline)
+db.enableNetwork().catch((err) => {
+    console.error("Error al activar la red de Firestore:", err);
+});
 
 // El "Guardián" que vigila la sesión
 auth.onAuthStateChanged((user) => {
